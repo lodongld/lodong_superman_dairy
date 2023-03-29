@@ -1,0 +1,67 @@
+
+// #filemanagement_page {
+ 
+//   .fileContainer {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: start;
+//     align-items: start;
+//     width: 100%;
+  
+//     .fileSearch, .fileSelect, .input-group-text {
+//       box-sizing: border-box; 
+//       margin: 0; 
+//       border: none;
+//       outline: none;
+//       background: none;
+//     }
+  
+//     .fileSearch {
+//       border-bottom: 1px solid #999;
+//       border-radius: 0%;
+  
+//       &:focus {
+//         box-shadow: none;
+//       }
+//     }
+  
+//     .input-group-text {
+//       border-bottom: 1px solid #999;
+//       border-radius: 0%;
+//     }
+  
+//     .fileSelect {
+//       width: 100%;
+//     }
+//   }
+  
+//   #dropBox {
+//     border: 1px solid #c0c0c0;
+//     text-align: center;
+//     cursor: pointer;
+//     width: 100%;
+//   }
+  
+//   #fileInfo { 
+//     border: 1px solid #c0c0c0;
+//     line-height: 40px;
+//   }
+  
+//   #cancelBtn {
+//     cursor: pointer;
+  
+//     &:hover {
+//       color: #d30000;
+//       font-weight: bold;
+  
+//       ~ #fileInfo {
+//         background: #999;
+//         transition: width 0.5s;
+//         transition-timing-function: ease;
+        
+//       }
+//     }
+//   }
+
+
+// }

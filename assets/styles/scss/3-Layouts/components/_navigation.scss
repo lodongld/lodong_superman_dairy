@@ -1,0 +1,38 @@
+.navigation {
+    .nav-list.nav {
+        .nav-link {
+            color: $gray-600;
+            position: relative;
+            padding-top: $s1;
+            padding-bottom: $s1;
+            padding-left: 0;
+            padding-right: 0;
+            font-size: 17px !important;
+
+            &::after {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                content: "";
+                background-color: $darkprimary;
+                width: 100%;
+                height: 1px;
+                transform: scaleX(0);
+                transform-origin: left;
+                @include transition(300ms);
+            }
+
+            &:not(:first-of-type) {
+                margin-left: $s4;
+            }
+
+            &:hover, &.active {
+                color: $darkprimary;
+
+                &::after {
+                    transform: scaleX(1);
+                }
+            }
+        }
+    }
+}

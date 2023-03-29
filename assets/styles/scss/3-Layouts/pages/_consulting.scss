@@ -1,0 +1,455 @@
+#consulting_page {
+
+    .counselling {
+        // border-top border-bottom my-4
+        margin-top: $s4;
+        margin-bottom: $s4;
+        // border: 1px solid red;
+
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        .counselling-left{
+            // min-width: 250px;
+            // max-width: 250px;
+            width: 250px;
+
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+
+            max-height: calc(100vh - (122px + (2 * $s3) + (2 * $s2) + (1.5 * $s5))) !important;
+            min-height: calc(100vh - (122px + (2 * $s3) + (2 * $s2) + (1.5 * $s5))) !important;
+            
+            @include breakpoint-lg {
+                width: 60px;
+            }
+            
+            .counselling-left_top {
+                .input-group {
+                    border: 0;
+                    border-radius: 0;
+    
+                    input {
+                        border-radius: 0;
+                        border: 0;
+                        padding-top: $s2;
+                        padding-bottom: $s2;
+                        box-shadow: none;
+                        padding-left: $s2;
+                        // border: 1px solid red;
+                        
+                        @include breakpoint-md {
+                            padding-left: 0;
+                            padding-right: 2px;
+                        }
+                    }
+    
+                    button {
+                        background: $transparent;
+                        border-radius: 0;
+                        border: 0;
+                        padding-top: $s2;
+                        padding-bottom: $s2;
+                        box-shadow: none;
+                        // border: 1px solid red;
+
+                        @include breakpoint-md {
+                            padding-left: 2px;
+                            padding-right: 2px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            i {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .counselling-left_bot {
+                width: 100%;
+                flex-grow: 1;
+                overflow-y: auto;
+                overflow-x: hidden;
+                // border: 1px solid red;
+
+                .chats {
+                    cursor: pointer;
+
+                    padding: $s2;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+
+                    &:hover, &.active {
+                        background-color: $gray-100;
+                    }
+
+                    .chat-left {
+                        // border: 1px solid red;
+                        width: 190px !important;
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        flex-direction: row;
+                        flex-wrap: nowrap;
+
+                        .chat-profile {
+                            height: 44px;
+                            width: 44px;
+                        }
+
+                        .chat-details {
+                            margin-left: $s2;
+                            display: flex;
+                            justify-content: start;
+                            align-items: start;
+                            flex-direction: column;
+                            font-size: 14px !important;
+
+                            .chat-name {
+                                font-weight: bolder !important;
+                            }
+                            .chat-lastMsg {
+                                width: calc(250px - 60px - 45px - $s2);
+                                font-weight: lighter !important;
+
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
+                        }
+                    }
+
+                    .chat-right {
+                        // border: 1px solid red;
+                        margin-left: $s2;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        flex-wrap: nowrap;
+                        width: 40px;
+
+                        .chat-status {
+                            height: 8px;
+                            width: 8px;
+                            background-color: $primary;
+                            border-radius: 50%;
+                        }
+
+                        .chat-lastTime {
+                            font-size: 11px !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        .counselling-right {
+            flex-grow: 1;
+            width: calc(100% - 250px);
+            // width: 100%;
+
+            @include breakpoint-lg {
+                width: calc(100% - 60px);
+                
+            }
+
+            .chat-MsgDiv {
+                max-height: calc(100vh - (122px + (2 * $s3) + (2 * $s2) + (1.5 * $s5))) !important;
+                height: calc(100vh - (122px + (2 * $s3) + (2 * $s2) + (1.5 * $s5))) !important;
+                min-height: calc(100vh - (122px + (2 * $s3) + (2 * $s2) + (1.5 * $s5))) !important;
+                width: 100%;
+                
+                display: flex;
+                justify-content: start;
+                align-items: start;
+                flex-direction: column;
+                flex-wrap: nowrap;
+
+
+                .chat-MsgVisible {
+                    flex-grow: 1;
+                    width: 100%;
+                    padding: $s2;
+
+                    overflow-y: auto;
+                    overflow-x: hidden;
+    
+                    .chat-MsgHistory {
+                        width: 100%;
+
+                        .mgsdate {
+                            text-align: center;
+                        }
+
+                        .mgssend {
+                            width: 100%;
+                            display: flex;
+                            justify-content: flex-end;
+                            align-items: flex-end;
+                            margin-bottom: $s3;
+        
+                            .mgssend-content {
+                                min-width: auto !important;
+                                max-width: 90%;
+                                display: flex;
+                                justify-content: end;
+                                align-items: end;
+                                
+        
+                                .mgssend-time {
+                                    text-align: right;
+                                    padding: 0 $s2;
+                                    font-size: 11px;
+                                }
+        
+                                .mgssend-mgs {
+                                    // background-color: $blueGray-200;
+                                    border: 1px solid $primary;
+                                    color: $dark;
+                                    padding: $s1 $s2;
+                                    border-radius: $s2;
+                                    border-bottom-right-radius: 0;
+                                    width: auto !important;
+                                    word-wrap: break-word !important;
+                                    min-height: 30px;
+                                    // text-align: justify;
+                                    // text-justify: inter-word;
+                                }
+
+                                .mgssend-imgs {
+                                    display: flex;
+                                    justify-content: end;
+                                    align-items: end;
+                                    flex-direction: row;
+                                    flex-wrap: wrap;
+
+                                    border-radius: $s2;
+                                    border-bottom-right-radius: 0;
+                                    background-color: $transparent;
+                                    border: 1px solid $primary;
+                                    // color: $dark;
+                                    // padding: $s2;
+                                    width: fit-content !important;
+                                    // text-align: right;
+                                    // word-wrap: break-word;
+                                    margin-right: $s2;
+
+                                    
+
+                                    a {
+                                        display: flex;
+
+                                        img {
+                                            border: 1px solid $primary;
+                                            max-height: 250px;
+                                            width: auto;
+                                            max-width: 100%;
+                                            height: auto;
+                                            margin: $s1;
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+        
+                        .mgsread {
+                            width: 100%;
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            margin-bottom: $s3;
+        
+        
+                            .mgsread-content {
+                                max-width: 90%;
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: flex-end;
+        
+                                .mgsread-mgs {
+                                    border-radius: $s2;
+                                    border-bottom-left-radius: 0;
+                                    background-color: $transparent;
+                                    border: 1px solid $dark;
+                                    color: $dark;
+                                    padding: $s2;
+                                    width: auto;
+                                    word-wrap: break-word;
+                                    margin-left: $s2;
+                                }
+
+                                .mgsread-imgs {
+                                    display: flex;
+                                    justify-content: start;
+                                    align-items: start;
+                                    flex-direction: row;
+                                    flex-wrap: wrap;
+                                    
+                                    border-radius: $s2;
+                                    border-bottom-left-radius: 0;
+                                    background-color: $transparent;
+                                    border: 1px solid $dark;
+                                    // color: $dark;
+                                    // padding: $s2;
+                                    width: fit-content !important;
+                                    // word-wrap: break-word;
+                                    margin-left: $s2;
+
+                                    
+
+                                    a {
+                                        
+                                        display: flex;
+                                        margin: $s1;
+
+                                        border: 1px solid $dark;
+                                        max-height: 250px;
+                                        width: auto;
+                                        max-width: 100%;
+                                        height: auto;
+
+                                        img {
+                                            // border: 1px solid $dark;
+                                            max-height: 248px;
+                                            width: auto;
+                                            max-width: 100%;
+                                            height: auto;
+                                        }
+
+                                    }
+
+                                }
+        
+                                .mgsread-time {
+                                    text-align: left;
+                                    padding: 0 $s2;
+                                    font-size: 11px;
+                                }
+                            }
+        
+                        }
+                    }
+                
+                }
+                
+
+                #chatMsgForm {
+                    max-height: 240px !important;
+                    padding: $s2;
+                    display: flex;
+                    justify-content: start;
+                    align-items: end;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+
+                    .chat-MsgFormUploadLabel {
+                        font-size: 1.5rem;
+                        padding: 0;
+                        background: $transparent;
+                        border: 0;
+                    }
+
+                    .chat-MsgFormInput {
+                        margin: 0 $s2;
+                        border-radius: $s1;
+                        max-height: calc(240px - (2 * $s2));
+                        width: 100%;
+                        // border-left: 1px solid $primary;
+                        border: 1px solid $primary;
+                        overflow: hidden;
+                        
+                        #chatImgContainer {
+                            width: inherit;
+                            display: block;
+                            overflow-x: auto;
+
+                            #mgsSendImgDiv {
+                                width: inherit;
+                                padding: $s2;
+                                padding-top: calc($s2 + $s1);
+                                display: flex;
+                                justify-content: start;
+                                align-items: center;
+                                flex-wrap: row;
+                                
+                                .mgsSendImg {
+                                    height: 60px; 
+                                    width: 60px ;
+                                    margin-right: $s3;
+
+                                    .mgsSendImgClose {
+                                        display: flex !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+    
+                                        .mgsSendImgCloseBtn {
+                                            color: $white;
+                                            display: flex !important;
+                                            justify-content: center !important;
+                                            align-items: center !important;
+                                            height: 20px !important; 
+                                            width: 20px !important;
+                                            padding: 0 !important;
+                                        }
+                                    }
+    
+                                    .mgsSendImgCont {
+                                        display: flex !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                        overflow: hidden;
+                                        height: 60px; 
+                                        width: 60px;
+    
+                                        img {
+                                            height: 60px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        #mgsSendTxtDiv {
+                            border: 1px solid $transparent;
+
+                            &.hasnoimg {
+                                // max-height: 226px !important;
+                                max-height: calc(240px - (4 * $s2));
+                                overflow-y: auto;
+                            }
+                            
+                            &.hasimg {
+                                // max-height: 130px !important;
+                                max-height: calc(240px - (4 * $s2) - $s1 - (2 * $s2) - 60px);
+                                overflow-y: auto;
+                            }
+
+                            #mgsSendInput {
+                                height: calc(1.5em + 0.75rem + 2px);
+                                padding: $s2;
+                                box-shadow: none;
+                                border: 1px solid $transparent !important;
+                                // border: 1px solid red;
+
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+}

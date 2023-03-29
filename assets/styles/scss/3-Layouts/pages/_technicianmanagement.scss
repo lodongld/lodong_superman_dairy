@@ -1,0 +1,94 @@
+#technicianmanagement_page {
+    #techmContainer {
+        // border: 1px solid red;
+        margin-top: $s3;
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+
+        height: calc(100vh - (50px + (2 * $s5) + $s3 + 39px)) !important;
+        min-height: calc(100vh - (50px + (2 * $s5) + $s3 + 39px)) !important;
+        max-height: calc(100vh - (50px + (2 * $s5) + $s3 + 39px)) !important;
+    
+        @include breakpoint-md {
+            height: calc(100vh - (50px + (2 * $s3) + $s3 + 39px)) !important;
+            min-height: calc(100vh - (50px + (2 * $s3) + $s3 + 39px)) !important;
+            max-height: calc(100vh - (50px + (2 * $s3) + $s3 + 39px)) !important;
+        }
+
+        #techmData {
+            // margin-bottom: $s3;
+            padding: $s2;
+            width: 100%;
+            flex-grow: 1;
+            overflow-y: auto;
+
+            height: calc(100vh - (50px + (2 * $s5) + (3 * $s3) + 79px + 112px)) !important;
+            min-height: calc(100vh - (50px + (2 * $s5) + (3 * $s3) + 79px + 112px)) !important;
+            max-height: calc(100vh - (50px + (2 * $s5) + (3 * $s3) + 79px + 112px)) !important;
+        
+            @include breakpoint-md {
+                height: calc(100vh - (50px + (5 * $s3) + 79px + 112px)) !important;
+                min-height: calc(100vh - (50px + (5 * $s3) + 79px + 112px)) !important;
+                max-height: calc(100vh - (50px + (5 * $s3) + 79px + 112px)) !important;
+            }
+
+            // border: 1px solid red;
+
+
+            #techmDataCont {
+                .techmTechData {
+                    padding: $s3;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+
+                    .techmTechDetails {
+                        margin-left: $s2;
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: start;
+                        flex-direction: column;
+
+                        .techmTechName {
+                            font-size: 15px;
+                            font-weight: bold;
+                        }
+
+                        .techmTechNum {
+                            font-size: 13px;
+                            font-weight: lighter;
+                        }
+                    }
+
+                    .techmTechSwitch {
+
+                    }
+                }
+
+
+            }
+        }
+
+        #techmPagination {
+            // border: 1px solid red;
+            // margin-bottom: $s3;
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            // height: 40px !important;
+        }
+        
+        #techmForm {
+            // margin-top: $s3;
+            width: 100%;
+        }
+    }
+}

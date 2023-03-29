@@ -1,0 +1,3807 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favico/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favico/site.webmanifest">
+    <link rel="mask-icon" href="assets/img/favico/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+
+    <!-- CSS  -->
+    <link rel="stylesheet" href="assets/vendors/dataTables-1.13.1/css/datatables.min.css" />
+    <link rel="stylesheet" href="assets/vendors/font_awesome-6pro/font-awesome.css" />
+    <link rel="stylesheet" href="assets/vendors/select2-4.1.x/css/select2.min.css"  />
+    <link rel="stylesheet" href="assets/vendors/select2-4.1.x/css/select2-bootstrap-5-theme.min.css" />
+    <link rel="stylesheet" href="assets/vendors/bootstrap-5.1.3/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/vendors/lightbox-jquery/lightbox.css" />
+    <link rel="stylesheet" href="assets/styles/css/main.css" />
+
+    <title>Keflavik</title>
+  </head>
+  <body class="container-fluid bg-light vh-100">
+    <header id="header" class="max bg-primary position-fixed fixed-top" style="height: 100px">
+      <div class="brand d-flex justify-content-between align-items-center flex-column py-2">
+        <div class="toggle">
+          <div id="btn-toggle-collapse" class="btn-toggle toggle-collapse btn btn-primary shadow active rounded-circle">
+            <i id="icon-collapse" class="fa-solid fa-chevron-left"></i>
+          </div>
+        </div>
+
+        <a id="home_btn" href="#home">
+          <img class="brand-full" src="assets/img/logo/logo-full.png" alt="" height="30px" />
+          <img class="brand-icon" src="assets/img/logo/logo-icon.png" alt="" height="30px" />
+        </a>
+      </div>
+      <div class=""></div>
+    </header>
+    
+    <aside id="side-navbar" class="max side-navbar bg-light">
+      <!-- profile -->
+      <a id="profile_btn" href="#profile" class="profile cursor-pointer py-2 py-md-4 d-flex 
+      justify-content-center align-items-center bg-light" >
+        <div class="rounded-circle overflow-hidden" style="height: 44px">
+          <img class="consProfileImg" id="nvprofileImg" src="" alt="" height="44px" width="44px" />
+        </div>
+        <span class="consName h5 ms-2 text-dark" id="nvprofilename"></span>
+      </a>
+
+      <div class="side-navbar_tabs list-group bg-light">
+        <div class="side-navbar_tabs_top">
+          <div class="accordion accordion-flush">
+          
+            <!-- View all contract -->
+            <a id="viewallcontracts_btn" href="#viewallcontracts" class="list-group-item" aria-current="true" data-bs-toggle="tooltip" data-bs-placement="right" title="계약 전체 보기">
+              <i class="fa-light fa-file-lines"></i>
+              <span class="ms-2"> 계약 전체 보기 </span>
+            </a>
+
+            <!-- Contract Writing -->
+            <a id="contractwriting_btn" href="#contractwriting" class="list-group-item" aria-current="true" data-bs-toggle="tooltip" data-bs-placement="right" title="계약서 작성">
+              <i class="fa-light fa-file-pen"></i>
+              <span class="ms-2"> 계약서 작성 </span>
+            </a>
+
+            <!-- Order Accordion-->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="order-heading" data-bs-toggle="tooltip" data-bs-placement="right" title="발주" >
+                <button id="order_btn" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#order_collapse" aria-expanded="false" aria-controls="order-collapse" >
+                  <i class="fa-light fa-file-pen"></i>
+                  <span class="me-3">발주</span>
+                </button>
+              </h2>
+              <div id="order_collapse" class="accordion-collapse collapse" aria-labelledby="order-heading" data-bs-parent="#accordionorderExample" >
+                <div class="accordion-body shadow">
+                  <!-- Order Status -->
+                  <a id="orderstatus_btn" href="#orderstatus" class="accordion-body-item" data-bs-toggle="tooltip" data-bs-placement="right" title="발주 현황" >
+                    <i class="fa-regular fa-square-1"></i>
+                    <span>발주 현황</span>
+                  </a>
+
+                  <!-- Order Management -->
+                  <a id="ordermanagement_btn" href="#ordermanagement" class="accordion-body-item" data-bs-toggle="tooltip" data-bs-placement="right" title="발주 관리" >
+                    <i class="fa-regular fa-square-2"></i>
+                    <span>발주 관리</span>
+                  </a>
+                </div>
+              </div>
+            
+            </div>
+
+            <!-- File Management -->
+            <a id="filemanagement_btn" href="#filemanagement" class="list-group-item" aria-current="true" data-bs-toggle="tooltip" data-bs-placement="right" title="파일관리">
+              <i class="fa-light fa-folder"></i>
+              <span class="ms-2"> 파일관리 </span>
+            </a>
+
+            <!-- Fair Accordion -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="fair-heading" data-bs-toggle="tooltip" data-bs-placement="right" title="박람회" >
+                <button id="fair_btn" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fair_collapse" aria-expanded="false" aria-controls="fair-collapse" >
+                  <i class="fa-light fa-landmark"></i>
+                  <span class="me-3">박람회</span>
+                </button>
+              </h2>
+              <div id="fair_collapse" class="accordion-collapse collapse" aria-labelledby="fair-heading" data-bs-parent="#accordionfairExample" >
+                <div class="accordion-body shadow">
+                  
+
+                  <!-- Fair Management -->
+                  <a id="fairmanagement_btn" href="#fairmanagement" class="accordion-body-item" data-bs-toggle="tooltip" data-bs-placement="right" title="박람회 관리" >
+                    <i class="fa-regular fa-square-1"></i>
+                    <span>박람회 관리</span>
+                  </a>
+
+                  <!-- Online Fair -->
+                  <a id="onlinefair_btn" href="#onlinefair" class="accordion-body-item" data-bs-toggle="tooltip" data-bs-placement="right" title="온라인 박람회" >
+                    <i class="fa-regular fa-square-2"></i>
+                    <span>온라인 박람회</span>
+                  </a>
+                  
+                </div>
+              </div>
+            
+            </div>
+
+            <div style="margin-top: 2px;"></div>
+
+            <!-- Settings Accordion -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="settings-heading" data-bs-toggle="tooltip" data-bs-placement="right" title="설정" >
+                <button id="settings_btn" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#settings_collapse" aria-expanded="false" aria-controls="settings-collapse" >
+                  <i class="fa-light fa-gear"></i>
+                  <span class="me-3">설정</span>
+                </button>
+              </h2>
+              <div id="settings_collapse" class="accordion-collapse collapse" aria-labelledby="settings-heading" data-bs-parent="#accordionsettingsExample" >
+                <div class="accordion-body shadow">
+                  <!-- Payment Request Management -->
+                  <a id="paymentrequestmanagement_btn" href="#paymentrequest" class="accordion-body-item" data-bs-toggle="tooltip" data-bs-placement="right" title="결제 요청 관리" >
+                    <i class="fa-regular fa-square-1"></i>
+                    <span>결제 요청 관리</span>
+                  </a>
+
+                  <!-- Technician Management -->
+                  <a id="technicianmanagement_btn" href="#technicianmanagement" class="accordion-body-item" data-bs-toggle="tooltip" data-bs-placement="right" title="기술자 관리" >
+                    <i class="fa-regular fa-square-2"></i>
+                    <span>기술자 관리</span>
+                  </a>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+
+        <div class="side-navbar_tabs_bot my-2 mb-4 bg-transparent">
+          <div class="accordion accordion-flush bg-transparent">
+            <!-- Log out -->
+            <button id="logout_btn" class="list-group-item bg-transparent" aria-current="true" data-bs-toggle="tooltip"  data-bs-placement="right" title="로그아웃">
+              로그아웃
+            </button>
+
+            <!-- menu -->
+            <div class="accordion-item">
+              <div id="menu_collapse" class="accordion-collapse collapse" aria-labelledby="menu-heading" data-bs-parent="#accordionmenuExample" >
+                <div class="accordion-body">
+                  
+                  <!-- contract -->
+                  <a id="contract_btn" href="#contract" class="accordion-body-item" data-bs-toggle="tooltip" data-bs-placement="right" title="계약서" >
+                    <i class="fa-regular fa-circle-4"></i>
+                    <span>계약서</span>
+                  </a>
+
+                  <!-- Consulting -->
+                  <a id="consulting_btn" href="#consulting" class="accordion-body-item" data-bs-toggle="tooltip" data-bs-placement="right" title="상담" >
+                    <i class="fa-regular fa-circle-3"></i>
+                    <span>상담</span>
+                  </a>
+
+                  <!-- Card Usage History -->
+                  <a id="cardusagehistory_btn" href="#cardusagehistory" class="accordion-body-item" data-bs-toggle="tooltip" data-bs-placement="right" title="카드사용내역" >
+                    <i class="fa-regular fa-circle-2"></i>
+                    <span>카드사용내역</span>
+                  </a>
+
+                  <!-- Master -->
+                  <a id="master_btn" href="#master" class="accordion-body-item" data-bs-toggle="tooltip" data-bs-placement="right" title="마스터" >
+                    <i class="fa-regular fa-circle-1"></i>
+                    <span>마스터</span>
+                  </a>
+                </div>
+              </div>
+
+              <h2 class="accordion-header" id="menu-heading" data-bs-toggle="tooltip" data-bs-placement="right" title="메뉴" >
+                <button id="menu_btn" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menu_collapse" aria-expanded="false"  aria-controls="menu-collapseTwo" >
+                  메뉴
+                </button>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main id="main-content" class="max">
+      <!-- HOME PAGE -->
+      <section id="home_page" class="d-block content">
+        <!-- INSIDE CONTENTS -->
+        <div class="card-main shadow bg-white col-12 p-3 p-md-5">
+          <div class="row g-3">
+            <!-- top side -->
+            <template id="revenueTemp">
+              <div class="d-flex justify-content-between align-items-center flex-column flex-nowrap">
+                <h6 class="fw-bold"> 이번달 시공건수 </h6>
+                <div class="d-flex justify-content-between align-items-end flex-row flex-nowrap">
+                  <p class="text-primary fw-bold h1 lh-1">{{casenum}}</p>
+                  <p class="text-dark lh-1 h4"> 건 </p>
+                </div>
+              </div>                  
+              <div class="d-flex justify-content-between align-items-center flex-column flex-nowrap ">
+                <h6 class="fw-bold"> 이번달 누적매출 </h6>
+                <div class="d-flex justify-content-between align-items-end flex-row flex-nowrap">
+                  <p class="text-primary fw-bold h1 lh-1"> {{sales}} </p>
+                  <p class="text-dark lh-1 h4"> 원 </p>
+                </div>
+              </div>
+            </template> 
+
+            <div id="home_page-top" class="col-12">
+              <div class="card shadow-sm p-3 rounded-10">
+                <div id="revenueCont" class="d-flex justify-content-evenly align-items-center flex-row flex-nowrap"></div>
+              </div>
+            </div>
+
+            <!-- bottom side -->
+            <div id="home_page-bot" class="col-12 flex-grow-1">
+              <div class="row g-3">
+                <!-- calendar -->
+                <div class="col-xl-7">
+                  <div id="daily_view" class="card shadow-sm rounded-10">
+
+                    <h4 id="daily_title"> </h4>
+
+                    <div id="daily_date-column" class="daily_date-column">
+                      <div id="daily_date_prevColumn" class="fetchedDates"></div>
+                      <div id="daily_date_currColumn" class="fetchedDates"></div>
+                      <div id="daily_date_nextColumn" class="fetchedDates"></div>
+                    </div>
+
+                    <h6 id="daily_subtitle">오늘의 태스크</h6>
+
+                    <div id="daily_eventTime-column" class="daily_eventTime-column">
+                      <div id="daily_time_column" class="fw-bold">
+                        <div class="daily_time-time">00시</div>
+                        <div class="daily_time-time">01시</div>
+                        <div class="daily_time-time">02시</div>
+                        <div class="daily_time-time">03시</div>
+                        <div class="daily_time-time">04시</div>
+                        <div class="daily_time-time">05시</div>
+                        <div class="daily_time-time">06시</div>
+                        <div class="daily_time-time">07시</div>
+                        <div class="daily_time-time">08시</div>
+                        <div class="daily_time-time">09시</div>
+                        <div class="daily_time-time">10시</div>
+                        <div class="daily_time-time">11시</div>
+                        <div class="daily_time-time">12시</div>
+                        <div class="daily_time-time">13시</div>
+                        <div class="daily_time-time">14시</div>
+                        <div class="daily_time-time">15시</div>
+                        <div class="daily_time-time">16시</div>
+                        <div class="daily_time-time">17시</div>
+                        <div class="daily_time-time">18시</div>
+                        <div class="daily_time-time">19시</div>
+                        <div class="daily_time-time">20시</div>
+                        <div class="daily_time-time">21시</div>
+                        <div class="daily_time-time">22시</div>
+                        <div class="daily_time-time">23시</div>
+                      </div>
+
+                      
+                      <div id="event-holiday">  </div>
+
+                      <div id="event-tasks"> 
+                        <div class="event-lists" data-time="tt00"> </div>
+                        <div class="event-lists" data-time="tt01"> </div>
+                        <div class="event-lists" data-time="tt02"> </div>
+                        <div class="event-lists" data-time="tt03"> </div>
+                        <div class="event-lists" data-time="tt04"> </div>
+                        <div class="event-lists" data-time="tt05"> </div>
+                        <div class="event-lists" data-time="tt06"> </div>
+                        <div class="event-lists" data-time="tt07"> </div>
+                        <div class="event-lists" data-time="tt08"> </div>
+                        <div class="event-lists" data-time="tt09"> </div>
+                        <div class="event-lists" data-time="tt10"> </div>
+                        <div class="event-lists" data-time="tt11"> </div>
+                        <div class="event-lists" data-time="tt12"> </div>
+                        <div class="event-lists" data-time="tt13"> </div>
+                        <div class="event-lists" data-time="tt14"> </div>
+                        <div class="event-lists" data-time="tt15"> </div>
+                        <div class="event-lists" data-time="tt16"> </div>
+                        <div class="event-lists" data-time="tt17"> </div>
+                        <div class="event-lists" data-time="tt18"> </div>
+                        <div class="event-lists" data-time="tt19"> </div>
+                        <div class="event-lists" data-time="tt20"> </div>
+                        <div class="event-lists" data-time="tt21"> </div>
+                        <div class="event-lists" data-time="tt22"> </div>
+                        <div class="event-lists" data-time="tt23"> </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- right side -->
+                <div class="col-xl-5">
+                  <div class="row g-3">
+
+                    <!-- chat -->
+                    <div class="col-12">
+                      <div id="homeChat-sec" class="card shadow-sm ps-4 pt-3 pe-3 pb-0 rounded-10">
+                        <h4 class="fw-bold mb-3">채팅</h4>
+
+                        <template id="homeChatTemplate">
+                          <div class="homeChatDiv mb-3 me-2">
+                            <div class="d-flex justify-content-between align-items-center flex-row flex-nowrap">
+                              <div class="d-flex justify-content-between align-items-center">
+                                <img src="./assets/img/images/tree.png" alt="" height="44px" width="44px"
+                                />
+                                <div class="ms-2 ms-md-3 d-flex justify-content-around align-items-start flex-column">
+                                  <p class="fs-14px fw-bold text-dark">{{custName}}</p>
+                                  <p class="fs-14px text-muted">{{message}}</p>
+                                </div>
+                              </div>
+                              <p class="fs-14px text-muted">{{lastChat}}</p>
+                            </div>
+                          </div>
+                        </template>
+
+                        <!-- display data will be generated here -->
+                        <div id="homeChatCont"> </div>
+                      </div>
+                    </div>
+
+                    <!-- req  -->
+                    <div class="col-12">
+                      <div id="homeOrder-sec" class="card shadow-sm ps-4 pt-3 pe-3 pb-0 rounded-10">
+                        <h4 class="fw-bold mb-3">요청 계약서</h4>
+
+                        <template id="homeOrderTemp">
+                          <div class="homeOrderDiv mb-3 me-2">
+                            <div class="row g-0">
+                              <div class="col-5">
+                                <p class="h5 fw-bold">{{homeOrderCustName}}</p>
+                              </div>
+
+                              <div class="col-2">
+                                 <p id="homeOrderStatus{{homeOrderId}}" class="h6">{{homeOrderstatus}}</p>
+                              </div>
+
+                              <div class="col-5">
+                                <!-- double button (일반: Normal | 보류: Hold)-->
+                                <div id="homeNormalHold{{homeOrderId}}" class="{{ btnNorhold }}">
+                                  <div class="d-flex justify-content-end align-items-end flex-row flex-wrap">
+                                    <button type="button" data-orderId="{{homeOrderId}}" onclick="homeViewOrderDetails(this)" class="viewOrderModal btn btn-sm btn-outline-primary text-nowrap">
+                                      계약서 보기
+                                    </button>
+                                    <button type="button" data-orderId="{{homeOrderId}}" class="openWriteQuote btn btn-sm btn-primary text-nowrap ms-2">견적서 쓰기</button>
+                                  </div>
+                                </div>
+
+                                <!-- single button (반려: Reject)-->
+                                <div id="homeReject{{homeOrderId}}" class="{{ btnReject }}">
+                                  <div class="d-flex justify-content-end align-items-end flex-row flex-wrap">
+                                    <button type="button" data-orderId="{{homeOrderId}}" class="openOrderInfo btn btn-sm btn-outline-primary text-nowrap">
+                                      계약서 수정
+                                    </button>
+                                  </div>
+                                </div>
+
+                                <!-- single button (삭제: Delete) -->
+                                <div id="homeDelete{{homeOrderId}}" class="{{ btnDelete }}">
+                                  <div class="d-flex justify-content-end align-items-end flex-row flex-wrap">
+                                    <button type="button" data-orderId="{{homeOrderId}}" onclick="homeViewOrderDetails(this)" class="viewOrderModal btn btn-sm btn-outline-primary text-nowrap">
+                                      계약서 보기
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <p class="text-muted text-end d-block fs-14px">{{homeOrderdate}}</p>
+                            </div>
+
+                          </div>
+                          
+                        </template>
+
+                        <!-- display data will be generated here -->  
+                        <div id="homeOrderCont"> </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- PROFILE PAGE -->
+      <section id="profile_page" class="d-none content">
+        <div class="card-main shadow bg-white col-xl-6 p-3 p-md-5">
+          <!-- INSIDE CONTENTS -->
+          <h2> 프로필 </h2>
+
+          <div  class="mt-4 d-flex justify-content-start align-items-center flex-row w-100">
+            <div class="rounded-circle overflow-hidden bg-gray-200">
+              <img id="profProfileImg" class="profProfileImg" src="" alt="profile image">
+            </div>
+
+            <div id="constructorData" class="ms-3 d-flex justify-content-center align-items-start flex-column" style="height: 98px;">
+              <p id="profName" class='fs-25px fw-bold'> </p>
+              <div class='d-flex justify-content-start align-items-center flex-row flex-wrap'>
+                  <p id="profNumber" class='fs-17px text-gray300 my-1 me-4'> </p>
+                  <button type='button' id="viewbusinesslicenseBtn" class='text-gray300 btn btn-outline-secondary'> 사업자등록증 보기 </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="my-3 d-flex justify-content-start align-items-center flex-row w-100">
+            <div class="me-3" style="min-width:98px;"> </div>
+            <p id="profProducts" class="text-gray300 fs-17px text-wrap"></p>
+          </div>
+
+          <hr class="hr-1 bg-dark">
+
+          <div class="mt-5 mb-2">
+            <form>
+              <div class="row mb-3">
+                <label for="" class="col-sm-2 col-form-label fs-17px text-gray300 fw-bold"> 회사주소 </label>
+                <div class="col-sm-10">
+                  <div class="input-group ">
+                    <textarea id="profAddress" class=" form-control border" disabled></textarea>
+                    <button type="button" id="profAddress_btn" class="border btn text-gray300 fs-10px shadow-none bg-white">
+                      <i class="fa-light fa-pen"></i>
+                      <span class="ms-1">수정하기</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="" class="col-sm-2 col-form-label fs-17px text-gray300 fw-bold"> 상세주소 </label>
+                <div class="col-sm-10">
+                  <div class="input-group ">
+                    <textarea id="profAddress2" class="form-control border" disabled></textarea>
+                    <button type="button" id="profAddress2_btn" class="border btn text-gray300 fs-10px shadow-none bg-white">
+                      <i class="fa-light fa-pen"></i>
+                      <span class="ms-1">수정하기</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row mb-3">
+                <label for="" class="col-sm-2 col-form-label fs-17px text-gray300 fw-bold"> 회사소개 </label>
+                <div class="col-sm-10">
+                  <div class="input-group">
+                    <textarea id="profIntro" class="form-control textarea-5 border" disabled></textarea>
+                    <button type="button" id="profIntro_btn" class="border btn text-gray300 fs-10px shadow-none bg-white">
+                      <i class="fa-light fa-pen"></i>
+                      <span class="ms-1">수정하기</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="d-flex align-items-center">
+                  <div class="col-2 col-form-label fs-17px text-gray300 fw-bold" > 프로필 <br/> 이미지 </div>
+                  <div class="col-10">
+                    <label for="editprofile" class="btn btn-light rounded-circle p-0">
+                      <div class="d-flex justify-content-center align-items-center" style="height: 160px; width: 160px;">
+                        <i class="fa-light fa-pen-to-square text-secondary" style="font-size: 50px"></i>
+                        <input id="editprofile" type="file" class="form-control file-profile d-none" accept="image/*">
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="alert alert-success d-none" id="alertpp" role="alert"></div>
+
+              <div class="mt-5 text-end">
+                <button type="button" id="profilesaveBtn" class="btn btn-primary">저장</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ALL CONTRACT PAGE -->
+      <section id="viewallcontracts_page" class="d-none content">
+        <div class="card-main shadow bg-white col-12 p-3 p-md-5">
+          <!-- INSIDE CONTENTS -->
+          <div class="">
+            <h2>계약 전체 보기</h2>
+            <div class="mt-4 p-1">
+              <div class="row g-3 align-items-start">
+                <div class="col-12 col-lg-6">
+                    <div class="navigation ">
+                      <nav class="nav-list nav flex-nowrap">
+                        <a id="viewallcontracts-01_btn" href="#viewallcontractsbyapartmentcomplex" class="nav-link text-nowrap"> 아파트 단지별 보기 </a>
+                        <a id="viewallcontracts-02_btn" href="#viewallcontractsbyaccountsreceivable" class="nav-link text-nowrap"> 미수금 보기 </a>
+                        <a id="viewallcontracts-03_btn" href="#viewallcontractsbyperiod" class="nav-link text-nowrap"> 기간별 보기 </a>
+                      </nav>
+                    </div>
+                </div>
+                
+
+                <template id="cvselectTemplate">
+                  <option value="{{id}}">{{name}}</option>
+                </template>
+
+
+                <div id="viewallcontracts_selectapartmentcomplex01_div" class="d-none col-12 col-lg-6">
+                  <div class="col-12 d-flex justify-content-center justify-content-lg-end">
+                    <div class="row g-2 justify-content-end align-items-center flex-row">
+                      <div class="col-md-12 col-xxl-8">
+                        <div class="row g-2">
+                          <div class="col-10">
+                            <div class="input-group">
+                              <select name="acselectType" id="acselectType" class="form-select form-select-sm bg-light cursor-pointer" style="width: 30%;">
+                                <option value="선택" hidden>선택</option>
+                                <option value="phone">전화번호</option>
+                                <option value="lake">동호수</option>
+                              </select>
+                              <input type="text" name="acsearchText" id="acsearchText" class="form-control form-control-sm" style="width: 55%;">
+                            </div>
+                          </div>
+                          <button class="btn btn-primary btn-sm text-nowrap" id="acsearchBtn" style="width: 15%;"> 검색 </button>
+                        </div>
+                      </div>
+                    
+                      <div class="col-md-12 col-xxl-4">
+                        <select id="acapartmentsearch" class="form-select form-select-sm" data-placeholder="아파트 단지 선택"></select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="viewallcontracts_selectapartmentcomplex02_div" class="d-none col-12 col-lg-6">
+                  <div class="col-12 d-flex justify-content-center justify-content-lg-end">
+                      <div class="row g-2 justify-content-end align-items-center flex-row">
+                        <div class="col-md-12 col-xxl-8">
+                          <div class="row g-2">
+                            <div class="col-10">
+                              <div class="input-group">
+                                <select name="arselectType" id="arselectType" class="form-select form-select-sm bg-light cursor-pointer" style="width: 30%;">
+                                  <option hidden>선택</option>
+                                  <option value="phone">전화번호</option>
+                                  <option value="lake">동호수</option>
+                                </select>
+                                <input type="text" name="arsearchText" id="arsearchText" class="form-control form-control-sm" style="width: 55%;">
+                              </div>
+                            </div>
+                            <button id="arsearchBtn"  class="btn btn-primary btn-sm text-nowrap" style="width: 15%;"> 검색 </button>
+                          </div>
+                        </div>
+                        <div class="col-md-12 col-xxl-4 ">
+                          <select id="arapartmentsearch" class="form-select form-select-sm" data-placeholder="아파트 단지 선택"></select>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+
+
+                <div id="viewallcontracts_calendar_div" class="d-none col-12 col-lg-6">
+                  <div class="col-12 d-flex justify-content-center justify-content-xl-end align-items-center flex-wrap">
+
+                    <div class="d-flex justify-content-start align-items-center flex-row flex-nowrap">
+                      <div id="calendar_title" class=" h1 lh-1 fw-bold text-center" style="width: 320px"> 2월 1째주, 2023 </div>
+                      <div id="calendarprevBtn">
+                        <button id="calendar_prevBtn" class="btn btn-light text-primary fs-16px me-2"><i class="fa-solid fa-caret-left monthly"></i></button>
+                      </div>
+                      <div id="calendarnxtBtn">
+                        <button id="calendar_nxtBtn" class="btn btn-light text-primary fs-16px"><i class="fa-solid fa-caret-right "></i></button>
+                      </div>
+                    </div>
+
+                    <div class="ms-3 text-center my-1 my-xl-0" style="width: 120px">
+                      <select id="calendar_select" class="form-select" onchange="getCalendarRenderValue()">
+                        <option value="monthly">월별</option>
+                        <option value="weekly">주별</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <template id="contracttable_template">
+              <tr>
+                <td>{{createAt}}</td> 
+                <td class="text-left">{{homeName}}</td>
+                <td>{{homeDong}}</td>
+                <td>{{homeHosu}}</td>
+                <td>{{homeType}}</td>
+                <td>{{homePyeong}}</td>
+                <td>{{phoneNumber}}</td>
+                <td>{{name}}</td>
+                <td>{{productName}}</td>
+                <td>{{price}}</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-primary" onclick="viewContractDetails(this)" data-contractID="{{contractID}}">보기</button>
+                </td>
+                <td><span class="{{requestDate_class}}">{{requestDate}}</span></td>
+                <td><span class="{{workDate_class}}">{{workDate}}</span></td>
+                <td>{{note}}</td>
+                <td>{{userConstructorName}}</td>
+                <td><span class="{{completeConstruct_class}}">{{completeConstruct}}</span></td>
+                <td><span class="{{completePay_class}}">{{completePay}}</span></td>
+              </tr>                        
+            </template> 
+
+            <div id="viewallcontracts-01_div" class="d-none card border-0 mt-2">
+              <div class="data-table table-responsive p-1 overflow-x-auto text-nowrap">
+                <table id="viewallcontractsbyac_table" class="table">
+                    <thead>
+                        <tr>
+                          <th> 생성날짜 </th>
+                          <th> 아파트단지 </th>
+                          <th> 동 </th>
+                          <th> 호수 </th>
+                          <th> 타입 </th>
+                          <th> 평수 </th>
+                          <th> 전화번호 </th>
+                          <th> 고객명 </th>
+                          <th> 신청서비스 </th>
+                          <th> 견적가 </th>
+                          <th> 계약상세 </th>
+                          <th> 신청일정 </th>
+                          <th> 시공일정 </th>
+                          <th> 비고 </th>
+                          <th> 시공담당자 </th>
+                          <th> 시공여부 </th>
+                          <th> 결제여부 </th>
+                        </tr>
+                    </thead>
+                    <tbody id="contractac_cont"> </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="viewallcontracts-02_div" class="d-none card border-0 mt-2">
+              <div class="data-table table-responsive p-1 overflow-x-auto text-nowrap">
+                <table id="viewallcontractsbyar_table" class="display table">
+                    <thead>
+                      <tr>
+                        <tr>
+                          <th> 생성날짜 </th>
+                          <th> 아파트단지 </th>
+                          <th> 동 </th>
+                          <th> 호수 </th>
+                          <th> 타입 </th>
+                          <th> 평수 </th>
+                          <th> 전화번호 </th>
+                          <th> 고객명 </th>
+                          <th> 신청서비스 </th>
+                          <th> 견적가 </th>
+                          <th> 계약상세 </th>
+                          <th> 신청일정 </th>
+                          <th> 시공일정 </th>
+                          <th> 비고 </th>
+                          <th> 시공담당자 </th>
+                          <th> 시공여부 </th>
+                          <th> 결제여부 </th>
+                        </tr>
+                      </tr>
+                    </thead>
+                    <tbody id="contractar_cont"></tbody>
+                </table>
+              </div>
+            </div>
+            
+            <!-- calendar -->
+            <div id="viewallcontracts-03_div" class="d-none mt-2">
+              <div class="calendar-card">
+
+                <template id="monthly_workers_template">
+                  <div class="monthly_workers-name cursor-pointer" onclick="monthlyWorkerClick1(this)" ondblclick="monthlyWorkerClick2(this)" data-worker-id="{{ userConstructorId }}" data-worker-name="{{ name }}">{{ name }}</div>                    
+                </template>
+
+                <template id="weekly_workers_template">
+                  <div class="weekly_workers-name cursor-pointer" onclick="weeklyWorkerClick1('{{ userConstructorId }}')" data-worker-id="{{ userConstructorId }}" data-worker-name="{{ name }}">{{ name }}</div>                    
+                </template>
+ 
+                <!-- soon to be reusable -->
+                <template id="monthly_contracts_template">
+                  <div class="monthly-contracts cursor-pointer" data-contract-id="{{ id }}" onclick="viewTaskDetails(this)">
+                    <div class="row row-cols-5 g-0">
+                      <div class="col-4  text-center">{{ apartmentName }}</div>
+                      <div class="col-2  text-center">{{ apartmentDong }}</div>
+                      <div class="col-1  text-center">{{ apartmentHosu }}</div>
+                      <div class="col-3  text-center">{{ productName }}</div>
+                      <div class="col-2  text-center">{{ process }}</div>
+                    </div>
+                  </div>
+                </template>
+
+                <template id="weekly_contracts_template">
+                  <div class="weekly-contracts cursor-pointer" data-contract-id="{{ id }}" onclick="viewTaskDetails(this)">
+                    <div class="row row-cols-5 g-0">
+                      <div class="col-4  text-center">{{ apartmentName }}</div>
+                      <div class="col-2  text-center">{{ apartmentDong }}</div>
+                      <div class="col-1  text-center">{{ apartmentHosu }}</div>
+                      <div class="col-3  text-center">{{ productName }}</div>
+                      <div class="col-2  text-center">{{ process }}</div>
+                    </div>
+                  </div>
+                </template>
+
+                <div id="monthly_view" class="calendar-container d-flex">
+                  <div id="monthly_workers-container" class="monthly_workers-container">
+                    <div id="monthly_workers-head" class="monthly_workers-head">
+                      <div class="monthly_workers-all active" data-worker-id="all" data-worker-name="all" onclick="monthlyWorkerAll()"> 전체 </div>
+                    </div>
+                    <div id="monthly_workers-body" class="monthly_workers-body"></div>
+                  </div>
+
+                  <div id="monthly_calendar-container" class="monthly-calendar-container">
+                    <div id="monthly_calendar-head" class="monthly_calendar-head">
+                      <div class="monthly_calendar-head-legend"> <!-- SUNDAY-->
+                        <div class="weekday">일</div>
+                      </div>
+                      <div class="monthly_calendar-head-legend"> <!-- MONDAY-->
+                        <div class="weekday">월</div>
+                      </div>
+                      <div class="monthly_calendar-head-legend"> <!-- TUESDAY-->
+                        <div class="weekday">화</div>
+                      </div>
+                      <div class="monthly_calendar-head-legend"> <!-- WEDNESDAY-->
+                        <div class="weekday">수</div>
+                      </div>
+                      <div class="monthly_calendar-head-legend"> <!-- THURSDAY-->
+                        <div class="weekday">목</div>
+                      </div>
+                      <div class="monthly_calendar-head-legend"> <!-- FRIDAY-->
+                        <div class="weekday">금</div>
+                      </div>
+                      <div class="monthly_calendar-head-legend"> <!-- SATURDAY-->
+                        <div class="weekday">토</div>
+                      </div>
+                    </div>
+
+
+                    <div id="monthly_calendar-body" class="monthly_calendar-body">
+                      <div id="monthly_calendar-body-days" class="days drop"></div>
+                    </div>
+                  </div>
+
+
+                  <div id="monthly_contracts-container" class="monthly_contracts-container">
+                    <div id="monthly_contracts-head" class="monthly_contracts-head">
+                      <div class="row g-1">
+                        <div class="col-4">아파트단지</div>
+                        <div class="col-2">동</div>
+                        <div class="col-1">호수</div>
+                        <div class="col-3">신청서비스</div>
+                        <div class="col-2">과정</div>
+                      </div>
+                    </div>
+                    <div id="monthly_contracts-body" class="monthly_contracts-body"></div>  
+                  </div>
+                </div>
+                
+                <div id="weekly_view" class="calendar-container d-none">
+                  <div id="weekly_workers-container" class="weekly_workers-container">
+                    <div id="weekly_workers-head" class="weekly_workers-head"></div>
+                    <div id="weekly_workers-body" class="weekly_workers-body"></div>
+                  </div>
+
+                  <div id="weekly_calendar-container" class="weekly-calendar-container">
+                    <div id="weekly_calendar-head" class="weekly_calendar-head">
+                      <div class="weekly_calendar-head-legend"> <!-- SUNDAY-->
+                        <div class="weekdate"></div>
+                        <div class="weekday">일</div>
+                      </div>
+                      <div class="weekly_calendar-head-legend"> <!-- MONDAY-->
+                        <div class="weekdate"></div>
+                        <div class="weekday">월</div>
+                      </div>
+                      <div class="weekly_calendar-head-legend"> <!-- TUESDAY-->
+                        <div class="weekdate"></div>
+                        <div class="weekday">화</div>
+                      </div>
+                      <div class="weekly_calendar-head-legend"> <!-- WEDNESDAY-->
+                        <div class="weekdate"></div>
+                        <div class="weekday">수</div>
+                      </div>
+                      <div class="weekly_calendar-head-legend"> <!-- THURSDAY-->
+                        <div class="weekdate"></div>
+                        <div class="weekday">목</div>
+                      </div>
+                      <div class="weekly_calendar-head-legend"> <!-- FRIDAY-->
+                        <div class="weekdate"></div>
+                        <div class="weekday">금</div>
+                      </div>
+                      <div class="weekly_calendar-head-legend"> <!-- SATURDAY-->
+                        <div class="weekdate"></div>
+                        <div class="weekday">토</div>
+                      </div>
+                    </div>
+
+                    <div id="weekly_calendar-body" class="weekly_calendar-body"></div>
+                  </div>
+
+                  <div id="weekly_contracts-container" class="weekly_contracts-container">
+                    <div id="weekly_contracts-head" class="weekly_contracts-head">
+                      <div class="row g-1">
+                        <div class="col-4">아파트단지</div>
+                        <div class="col-2">동</div>
+                        <div class="col-1">호수</div>
+                        <div class="col-3">신청서비스</div>
+                        <div class="col-2">과정</div>
+                      </div>
+                    </div>
+
+                    <div id="weekly_contracts-body" class="weekly_contracts-body"></div>  
+                  
+                  </div>
+                  
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTRACT WRITING PAGE -->
+      <section id="contractwriting_page" class="d-none content">
+        <div class="card-main shadow bg-white col-12 p-3 p-md-5">
+          <!-- INSIDE CONTENTS -->
+          <h2>계약서 작성</h2>
+
+          <!-- topside -->
+          <div class="mt-3">
+            <div class="row g-2">
+              <!-- phone -->
+              <div class="col-12">
+                <div class="row g-0">
+                  <div class="col-xl-6">
+                    <div class="row g-2">
+                      <div class="col-2">
+                        <label class="form-label fw-bold my-0 my-md-2 p-0 lh-1"> 전화번호 </label>
+                      </div>                  
+                      <div class="col-5 col-md-4">
+                        <input type="text" id="cwphonenum" class="form-control" placeholder="전화번호">
+                      </div>
+                      <div class="col-5 col-lg-6">
+                        <button id="cwretrieveCustBtn" type="button" class="btn btn-primary text-nowrap"> 고객정보 불러오기 </button>
+                      </div>                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- name, apartment, note -->
+              <div class="col-12 col-xl-6">
+                <div class="row g-2">
+                  <!-- name -->
+                  <div class="col-2">
+                    <label class="form-label fw-bold my-2 p-0 lh-1"> 고객명 </label>
+                  </div>
+                  <div class="col-10 col-lg-4">
+                    <input type="text" id="cwcustname" class="form-control" value="" placeholder="이민지">
+                  </div>
+
+                  <!-- apartment name -->
+                  <template id="cwapartmenttemp">
+                    <option value="{{ apid }}">{{ apname }}</option>
+                  </template>
+
+                  <div class="col-2  text-start text-lg-end">
+                    <label class="form-label fw-bold my-0 my-md-2 p-0 lh-1"> 아파트명 </label>
+                  </div>
+                  <div class="col-10 col-lg-4 ">
+                    <select id="cwapartment" class="form-select" data-placeholder="아파트명"> </select>
+                  </div>
+
+                  <!-- note -->
+                  <div class="col-2  align-items-start">
+                    <label class="form-label fw-bold m-0 p-0"> 비고 </label>
+                  </div>
+                  <div class="col-10 ">
+                    <textarea id="cwnote" class="form-control textarea-5 textarea-xl-12" placeholder="특이사항"></textarea>
+                  </div>
+
+                  <!-- product -->
+                  <template id="cwproducttemp">
+                    <option value="{{ prodid }}">{{ prodname }}</option>
+                  </template>
+
+                  <div class="col-2 align-items-start">
+                    <label class="form-label fw-bold m-0 p-0"> 신청상품 </label>
+                  </div>
+                  <div class="col-10 col-xl-6 col-xxl-4">
+                    <select id="cwproduct" class="form-select" data-placeholder="신청상품"> </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- dong, hosu/lake, type, average, movein date, construction date, cash receipt -->
+              <div class="col-12 col-xl-6">
+                <div class="row g-2">
+
+                  <!-- dong -->
+                  <div class="col-2  text-start text-xl-center d-flex align-items-lg-center justify-content-xl-center">
+                    <label class="form-label fw-bold my-0 p-0 lh-1"> 동 </label>
+                  </div>
+                  <div class="col-10 col-md-4 ">
+                    <input type="text" id="cwdong" class="form-control" value="" placeholder="동">
+                  </div>
+
+                  <!-- hosu / lake -->
+                  <div class="col-2 text-start text-md-center d-flex align-items-lg-center justify-content-md-center">
+                    <label class="form-label fw-bold my-0 p-0 lh-1"> 호수 </label>
+                  </div>
+                  <div class="col-10 col-md-4 ">
+                    <input type="text" id="cwhosu" class="form-control" value="" placeholder="호수">
+                  </div>
+
+                  <!-- type -->
+                  <div class="col-2  text-start text-xl-center d-flex align-items-lg-center justify-content-xl-center">
+                    <label class="form-label fw-bold my-0 p-0 lh-1"> 타입 </label>
+                  </div>
+                  <div class="col-10 col-md-4 ">
+                    <input type="text" id="cwtype" class="form-control" value="" placeholder="타입">
+                  </div>
+
+                  <!-- average -->
+                  <div class="col-2 text-start text-md-center d-flex align-items-lg-center justify-content-md-center">
+                    <label class="form-label fw-bold my-0 p-0 lh-1"> 평수 </label>
+                  </div>
+                  <div class="col-10 col-md-4 ">
+                    <input type="text" id="cwaverage" class="form-control" value="" placeholder="평수 (㎡) ">
+                  </div>
+
+                  <!-- movein date -->
+                  <div class="col-2 text-start text-xl-center d-flex align-items-lg-center justify-content-xl-center">
+                    <label class="form-label fw-bold my-0 p-0 lh-1"> 입주일자 </label>
+                  </div>
+                  <div class="col-10 col-lg-4 col-xl-10 col-xxl-4">
+                    <div class="row gx-2 gy-0">
+                      <div class="col-9">
+                        <input type="date" id="cwmoveindate" value="" class="form-control">
+                      </div>
+                      <div class="col-3">
+                        <button type="button" class="cwmoveinbtn btn btn-primary text-nowrap" id="cwmoveinbtn" data-status="false"> 확정 </button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- construction date -->
+                  <div class="col-2 text-start text-xl-center d-flex align-items-lg-center justify-content-md-center">
+                    <label class="form-label fw-bold my-0 p-0 lh-1"> 시공요청일자 </label>
+                  </div>
+                  <div class="col-10 col-lg-4 col-xl-10 col-xxl-4">
+                    <div class="row gx-2 gy-0">
+                      <div class="col-9">
+                        <input type="date" id="cwconstructiondate" class="form-control">
+                      </div>
+                      <div class="col-3">
+                        <button type="button" class="cwconstructionbtn btn btn-primary text-nowrap" id="cwconstructionbtn" data-status="false"> 확정 </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- cash receipt -->
+                  <div class="col-2 text-start text-lg-center d-flex align-items-lg-start justify-content-xl-center">
+                    <label class="form-label fw-bold m-0 p-0 lh-1 mt-1"> 현금영수증 </label>
+                  </div>
+                  <div class="col-10">
+                    <div class="row g-0">
+                      <!-- application -->
+                      <div class="col-6 col-lg-3 col-xl-6 col-xxl-3">
+                        <div class="form-check d-flex align-items-center">
+                          <input class="form-check-input cwreceipttype" type="radio" name="cwreceipttype" id="cwapplication" value="false" >
+                          <label class="form-check-label my-0 ps-2 cursor-pointer" for="cwapplication"> 신청 </label>
+                        </div>
+                      </div>
+                      <!-- not applied -->
+                      <div class="col-6 col-lg-3 col-xl-6 col-xxl-3 ">
+                        <div class="form-check d-flex align-items-center">
+                          <input class="form-check-input cwreceipttype" type="radio" name="cwreceipttype" id="cwnotapplied" value="true" checked>
+                          <label class="form-check-label my-0 ps-2 cursor-pointer" for="cwnotapplied"> 미신청 </label>
+                        </div>
+                      </div>
+                      <!-- for income deduction -->
+                      <div class="col-6 col-lg-3 col-xl-6 col-xxl-3 cwreceiptCont d-none">
+                        <div class="form-check d-flex align-items-center">
+                          <input class="form-check-input cwreceipt" type="radio" name="cwreceipt" id="cwincomedd" value="true">
+                          <label class="form-check-label my-0 ps-2 cursor-pointer" for="cwincomedd">  소득공제용 </label>
+                        </div>
+                      </div>
+                      <!-- for proof of expenditure -->
+                      <div class="col-6 col-lg-3 col-xl-6 col-xxl-3 cwreceiptCont d-none">
+                        <div class="form-check d-flex align-items-center">
+                          <input class="form-check-input cwreceipt" type="radio" name="cwreceipt" id="cwproofexp" value="false">
+                          <label class="form-check-label my-0 ps-2 cursor-pointer" for="cwproofexp"> 지출증빙용 </label>
+                        </div>
+                      </div>                        
+                    </div>
+                  </div>
+
+                  <!-- phone number -->
+                  <div class="col-2 text-start text-md-end cwreceiptCont d-none">
+                    <label class="form-label fw-bold my-0 my-lg-2 p-0 lh-1"> &nbsp; </label>
+                  </div>
+                  <div class="col-10 col-md-4 cwreceiptCont d-none">
+                    <input type="hidden" id="cwrequestid" value="">
+                    <input type="hidden" id="cwestimateid" value="">
+                    <input type="hidden" id="cwcustid" value="">
+                    <input type="text" id="cwcustphone" class="form-control" value="" placeholder="전화번호">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <template id="prodArrListTemplate">
+            <tr>
+              <td>{{productName}}</td>
+              <td>{{price}}</td>
+              <td style="width: 100px">{{count}}</td>
+              <td><button class="deleteData btn btn-sm btn-light text-danger" data-id="{{id}}"><i class="fa-regular fa-xmark"></i></button></td>
+            </tr>
+          </template>
+
+          <template id="discArrListTemplate">
+            <tr>                
+              <td>{{discountContent}}</td>
+              <td>{{discount}}</td>
+              <td><button class="deleteDiscount btn btn-sm btn-light text-danger" data-id="{{id}}"><i class="fa-regular fa-xmark"></i></button></td>
+            </tr>
+          </template>
+
+          <!-- table -->
+          <div class="table-responsive text-nowrap mt-3 p-1">
+            <div class="row gy-0 gx-2">
+              <!-- sub products -->
+              <div class="col-xl-6">
+                <div class="hr-2 bg-primary"></div>
+                
+                <table id="cwdataTable" class="display table">
+                  <!-- to display data -->
+                  <tbody id="cwdataCont" class="border-bottom" ></tbody>   
+
+                  <!-- form -->
+                  <tbody class="border-0 border-bottom border-primary" style="border-width: 2px !important;">
+                    <tr>
+                      <td><input type="text" class="form-control form-control-sm text-center" id="cwproductname" placeholder="품명 입력" /></td>
+                      <td><input type="number" class="form-control form-control-sm text-center" id="cwproductamount" placeholder="단가 입력" /></td>
+                      <td style="width: 100px">
+                        <div class="input-group input-group-sm flex-nowrap ">
+                          <button class="input-group-text text-primary" onclick="decrement()"><i class="fa-regular fa-minus"></i></button>
+                          <input type="number" id="productQty" class="form-control text-center text-primary" min="1" placeholder="1" value="1" style="width: 40px" />
+                          <button class="input-group-text text-primary" onclick="increment()"><i class="fa-regular fa-plus"></i></button>
+                        </div>
+                      </td>
+                      <td><button id="cwAddDataProd" class="btn btn-sm btn-light text-primary"><i class="fa-regular fa-plus"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- discounts -->
+              <div class="col-xl-6">
+                <div class="hr-2 bg-primary"></div>
+                <table id="cwdiscTable" class="display table">
+
+                  <!-- to display data -->
+                  <tbody id="cwdiscCont" class="border-bottom" style="max-height: 200px; overflow-y: auto;"></tbody>
+                  
+                  <!-- form -->
+                  <tbody class="border-0 border-bottom border-primary" style="border-width: 2px !important;">
+                    <tr>
+                      <td><input type="text" class="form-control form-control-sm text-center" id="cwdiscounttype" placeholder="할인 여부 입력" /></td>
+                      <td><input type="number" class="form-control form-control-sm text-center" id="cwdiscountamount" placeholder="할인가 입력"></td>
+                      <td><button id="cwAddDiscount" class="btn-sm btn btn-light text-primary"><i class="fa-regular fa-plus"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+          <!-- botside -->
+          <div class="p-1">
+            <div class="row gy-1 gx-2">
+              <div class="col-xl-6">
+                <div class="d-flex justify-content-between align-items-center flex-row border-bottom border-dark py-1 px-3" style="height: 46px">
+                  <div class="d-inline-flex">
+                    <p class="m-0 p-0 h5">계약금</p>
+                    <p id="cwdownpayment" class="m-0 p-0 h5 ms-5">0</p>
+                  </div>
+                  <p class="text-danger fs-12px">· 계약금은 환불되지 않습니다. </p>
+                </div>
+              </div>
+
+              <div class="col-xl-6">
+                <div class="d-flex justify-content-between align-items-center flex-row border-bottom border-dark py-1 px-3" style="height: 46px">
+                  
+                  <div class="form-check d-flex align-items-center">
+                    <input class="form-check-input" type="radio" id="cwvat" value="false" data-waschecked="false">
+                    <label class="form-check-label cursor-pointer ms-2" for="cwvat"> VAT 포함 </label>
+                  </div>
+
+                  <p class="mx-2">합계</p>
+
+                  <div class="d-flex justify-content-start align-items-center flex-row">
+                    <p class="text-primary cwsum fw-bold h2" id="cwTotalCont">0</p>
+                    <p class="text-primary mx-2">원</p>
+                  </div>
+
+                  <button type="button" id="cwaccept" class="btn btn-primary text-nowrap"> 수락 </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ORDER PAGES -->
+      <!-- ORDER STATUS PAGE -->
+      <section id="orderstatus_page" class="d-none content">
+        <div class="card-main shadow bg-white col-12 p-3 p-md-5">
+          <!-- INSIDE CONTENTS -->
+          <h2>발주현황</h2>
+
+          <!-- datatables -->
+          <div id="" class="d-block card my-4 border-0">
+            <div class="data-table table-responsive p-1 overflow-x-auto text-nowrap">
+              <table id="orderstatus_table" class="display table">
+                  <thead class="text-center bg-primary">
+                    <tr class="text-white">
+                      <th> 주소명 </th>
+                      <th> 실측일자 </th>
+                      <th> 발주일자 </th>
+                      <th> 제작완료일자 </th>
+                      <th> 출고여부 </th>
+                      <th> 시공여부 </th>
+                      <th> 발주서보기 </th>
+                      <th> 견적서보기 </th>
+                    </tr>
+                  </thead>
+                  <template id="orderstatusTemp">
+                    <tr>
+                      <td>{{apartmentName}}<br/>{{ east }}-{{ lake }} </td>
+                      <td>{{measureDate}}</td>
+                      <td>{{orderDate}}</td>
+                      <td >
+                        <div class="d-flex justify-content-center align-items-center flex-row">
+                          <input id="osManuDate{{workingId}}" type="date" class="form-control rounded-0 border-0 shadow-none fs-14px" value="{{manuDate}}" placeholder="{{ manuDate }}" style="width: 150px;" data-id="{{workingId}}" onchange="osManuDate(this)">
+                        </div>
+                      </td>
+                      <td>
+                        <div class="switch-div">
+                          <label for="osForward{{workingId}}" class="switch">
+                            <input id="osForward{{workingId}}" type="checkbox" class="switch-input" data-id="{{workingId}}" onchange="osForward(this)"/>
+                            <span class='switch-label' data-off='NO' data-on='YES'></span> 
+                            <span class='switch-handle'></span> 
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="switch-div">
+                          <label for="osConstruct{{workingId}}" class="switch">
+                            <input id="osConstruct{{workingId}}" type="checkbox" class="switch-input" data-id="{{workingId}}" onchange="osConstruct(this)"/>
+                            <span class='switch-label' data-off='NO' data-on='YES'></span> 
+                            <span class='switch-handle'></span> 
+                          </label>
+                        </div>
+                      </td>
+                      <td> 
+                        <button type="button" class="btn btn-outline-primary btn-sm" id="orderImg{{ workingId }}" data-id="{{workingId}}" data-array="{{ orderFileId }}" onclick="viewOrderImages(this)">
+                          보기
+                        </button>
+                      </td>
+                      <td> 
+                        <button type="button" class="btn btn-outline-primary btn-sm" data-contractID="{{workingId}}" onclick="viewOrderStatusDetails(this)">
+                          보기
+                        </button> 
+                      </td>
+                    </tr>
+                  </template>
+                  <!-- generate data here -->
+                  <tbody id="orderstatus_cont"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORDER MANAGEMENT PAGE -->
+      <section id="ordermanagement_page" class="d-none content">
+        <div class="card-main shadow bg-white col-xl-6 p-3 p-md-5">
+          <!-- INSIDE CONTENTS -->
+          <h2>발주관리</h2>
+          
+          <form > 
+            <div class="my-4"> 
+              <div class="mb-4">
+                <div class="d-flex justify-content-start align-items-center">
+                  <p class="form-label fw-bold p-0 m-0">발주서발송</p>
+                  <div class="d-flex justify-content-center align-items-center flow-row">
+                    <label class="switch mx-3" >
+                      <input id="ormanSend" class="switch-input" type="checkbox" />
+                      <span class="switch-label"  data-off="Off" data-on="On"></span> 
+                      <span class="switch-handle"></span> 
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-4">
+                <div class="d-inline-flex">
+                  <div class="form-check">
+                    <label class="form-check-label cursor-pointer" for="ormanMethodEmail">
+                      <span class="fw-bold"> 이메일 </span>  
+                    </label>
+                      <input class="form-check-input cursor-pointer" type="radio" name="sendMethod" id="ormanMethodEmail" checked>
+                  </div>
+
+                  <div class="ms-4 form-check">
+                    <label class="form-check-label cursor-pointer" for="ormanMethodPhone">
+                      <span class="fw-bold"> SNS </span>  
+                    </label>
+                      <input class="form-check-input cursor-pointer" type="radio" name="sendMethod" id="ormanMethodPhone">
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label id="ormanLabel" class="form-label fw-bold">이메일 입력</label>
+                <input type="" class="form-control" id="ormanMethod" placeholder="">
+              </div>
+
+              <button id="ormanSendBtn" class="btn btn-primary w-100" type="button">입력완료</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- FILE MANAGEMENT PAGE -->
+      <section id="filemanagement_page" class="d-none content">
+        <div class="card-main shadow bg-white col-xl-6 p-3 p-md-5">
+          <!-- INSIDE CONTENTS -->
+          <h2>파일관리</h2>
+
+          <div class="my-4">
+
+            <!-- select option -->
+            <div class="mb-3 ">
+              <template id="fileApartmentListTemp">
+                <option value="{{ apartmentId }}"> {{apartmentName}} </option>
+              </template>
+  
+              <label class="form-label">아파트 단지</label>
+
+              <div class="card rounded-2 p-2 pt-1">
+                <div class="input-group mb-2 rounded-0">
+                  <input id="fileSearchApartment" type="text" class="form-control border-0 border-bottom shadow-none rounded-0 ps-0" placeholder="아파트 단지 이름">
+                  <span class="input-group-text bg-transparent rounded-0 border-0 border-bottom"><i class="fa-regular fa-search"></i></span>
+                  
+                </div>
+
+                <select id="fileApartmentListCont" class="form-select ps-0 pt-0 border-0 rounded-0 bg-transparent shadow-none"  size="10">
+                  <!-- list of apartments -->
+                </select>
+              </div>
+            </div>
+
+            <!-- file input -->
+            <div class="">
+              <label class="form-label">파일 업로드</label>
+
+              <!-- file input -->
+              <label id="fileImageInput" class="d-block user-select-none">
+                <div  class="card rounded-2 p-3">
+                  <div id="fileInputDiv" class="d-flex justify-content-center align-items-center flex-row">
+                    <i class="fa-light fa-file-plus"></i>
+                    <p class="ms-2">파일을 마우스로 끌어 오세요</p>
+                    <input id="fileUpload" type="file" class="form-control d-none"  accept="image/*" disabled>
+                  </div>
+
+                  <div id="fileInputThumbnail" class="mt-3 pt-2 d-none border-top">
+                    <div class="d-flex justify-content-start align-items-center flex-row">
+                      <button id="fileUploadThumbBtn" type="button" class="btn-close fs-12px"></button>
+                      <i class="fa-light fa-image mx-3"></i>
+                      <p id="fileImageName" class="fileImageName"></p>
+                    </div>
+                    <div class="mt-2" style="height: 202px">
+                      <img id="fileThumbnailDiv" src="" alt="preview-image"  class="img-thumbnail border rounded mx-auto d-block" style="height: 200px">
+                    </div>
+                  </div>
+                </div>
+              </label>
+
+              <template id="fileImageDisplayTemp">
+                <div class="d-flex justify-content-start align-items-center flex-row">
+                  <button id="fileGetThumbBtn" type="button" class="btn-close fs-12px" data-id="{{ imageId }}"></button>
+                  <i class="fa-light fa-image mx-3"></i>
+                  <p class="imageName">{{ imageName }}</p>
+                </div>
+                <div class="my-2" style="height: 202px">
+                  <img src="{{ image }}" alt="" class="img-thumbnail rounded mx-auto d-block" style="height: 200px">
+                </div>
+              </template>
+
+              <!-- image display -->
+              <div id="fileImageDisplay" class="d-none card rounded-2 p-3 pb-1 overflow-hidden"></div>
+
+              <!-- upload btn -->
+              <div class="text-end mt-3">
+                <button id="fileUploadBtn" class="btn btn-primary">업로드</button>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- FAIR PAGES -->
+      <!-- ONLINE FAIR PAGE -->
+      <section id="onlinefair_page" class="d-none content">
+        <div class="card-main shadow bg-white col-12 p-3 p-md-5 col-md-12">
+
+          <!-- INSIDE CONTENTS EXHIBITION LISTS-->
+          <div id="exhibitionListSection" class="d-block">
+            <h2>박람회</h2>
+
+            <div class="d-flex justify-content-end align-items-center flex-nowrap flex-row"> 
+              <input type="text" id="searchExhiName" class="form-control form-control-sm" placeholder="박람회 이름 검색" style="width: 300px">
+              <button type="button" id="searchExhiBtn" class="btn btn-sm btn-primary ms-2">검색</button>
+            </div>
+
+            <div id="exhibitionListSectionBody">
+              <div id="exhibitionListsData"></div>
+              <div id="exhibitionListsPagination"></div>
+            </div>
+          </div>
+
+          
+          <!-- INSIDE CONTENTS EXHIBITION BOARDS-->
+          <div id="exhibitionBoardListSection" class="d-none">
+            <h2 id="exhibiBackBtn" class="cursor-pointer">
+              <i class="fa-solid fa-chevron-left"></i>
+              <span class="ms-2">박람회</span>
+            </h2>
+
+            <div class="d-flex justify-content-end align-items-center flex-row flex-wrap">
+              <div class="" style="width: 250px">
+                <template id="ofSelectConstructorListTemp">
+                  <option value="{{contructorId}}"> {{contructorName}} </option>
+                </template>
+
+                <select id="ofSelectConstructorList" class="form-select form-select-sm"  data-placeholder="전체">
+                  <option></option>
+                </select>
+              </div>
+            </div>
+
+            <!-- exhibition board template -->
+            <template id="exhibitionBoardListsTemp">
+              <div class="exbDiv{{constructorId}} exbDiv col-12 border-bottom py-4">
+                <div class="row g-4">
+
+                  <!-- IFRAME // YOUTUBE -->
+                  <div class="leftExb col-lg-7" data-board-id="{{ boardid }}">
+                    <div class="bg-dark overflow-hidden d-flex justify-content-center align-items-center" style="height:520px">
+
+                      {{#boolLink}}
+                        <iframe src="{{ link }}" frameborder="0" allowfullscreen class="iframe"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" >
+                        </iframe>
+                      {{/boolLink}}
+
+                      {{^boolLink}}
+                        <img src="{{ imgsrc }}" class="img-fluid w-100" alt="no-video">
+                      {{/boolLink}}
+
+                    </div>
+                  </div>
+
+                  <!-- POST INFO -->
+                  <div class="rightExb col-lg-5">
+
+                    <div id="profiletotag{{ boardid }}" class="profiletotag">
+                      <!-- PROFILE DETAILS -->
+                      <div class="profile_details mb-2">
+                        <div class="d-flex justify-content-start align-items-center">
+                          <img src="assets/img/images/tree.png" alt="" height="44px" width="44px" />
+                          <span class="h5 ms-2 text-dark">{{ constructorname }}</span>
+                        </div>
+                      </div>
+
+                      <!-- CONTENT -->
+                      <p class="aboutus mb-2">{{aboutus}}</p>
+
+                      <!-- HASHTAGS -->
+                      <p class="hashtags link-primary">{{ hashtag }}</p>
+                    </div>
+
+                    <hr class="hr my-1"> </hr>
+
+                    <!-- COMMENT SECTION -->
+                    <div id="commentsec{{ boardid }}" class="commentsec mb-1">
+                      <div id="ofBoardCommentsCont{{ boardid }}" class="ofBoardCommentsDiv row g-2 " data-board-id="{{ boardid }}">
+                        <!-- comment div -->
+                      </div>
+                    </div>
+
+                    <!-- COMMENT INPUT TEXT -->
+                    <div id="boardinputg{{ boardid }}" class="boardinputg input-group border-0 border-bottom border-muted">
+                      <input id="ofBoardInput{{ boardid }}" type="text" class="form-control border-0 shadow-none ps-0" placeholder="댓글달기" >
+                      <button id="ofBoardBtn{{ boardid }}" type="button" data-board-id="{{ boardid }}" onclick="boardAddComment(this)" class="btn btn-outline-light text-primary border-0 bg-transparent shadow-none" >게시</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </template>
+            <!-- end of exhibition board template -->
+
+
+            <!-- comments template -->
+            <template id="ofBoardCommentsTemplate">
+              <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center flex-row flex-nowrap">
+                  <div class="d-flex justify-content-start align-items-center flex-row">
+                    <div class="d-flex justify-content-start align-items-center">
+                      <img src="assets/img/images/tree.png" alt="" height="32px" width="32px" />
+                      <span class="ms-2 text-dark fs-14px fw-bold">{{ commenterName }}</span>
+                    </div>
+                    <div class="ms-3 fs-14px">{{ commentContent }}</div>
+                  </div>
+  
+                  <!-- reply button -->
+                  <button class="btn text-muted fs-12px shadow-none" onclick="makeReplyComment(this)" data-cg-id="{{commentGroupId}}" data-board-id="{{boardId}}">답글달기</button>
+                </div>
+  
+                <!-- reply comments div -->
+                {{#hasCommentGroup}}
+                <div id="ofBoardReplyDiv{{commentGroupId}}" class="{{ disToggleBtn }}" >
+                  <!-- show reply button -->
+                  <button class="btn text-muted shadow-none fs-12px d-flex justify-content-center align-items-center px-0" data-cg-id="{{commentGroupId}}" onclick="displayReplies(this)">
+                    <div class="d-flex justify-content-center align-items-center ">
+                      <div class="bg-secondary rounded-pill" style="height: 1px; width: 32px;"></div>
+                    </div>
+                    <span class="ms-2">답글 닫기</span>
+                  </button>
+
+                  <!-- reply comments -->
+                  <div id="ofBoardReplyCont{{commentGroupId}}" class="d-none" style="margin-left: 36px">
+                    
+                  </div>
+                </div>
+                {{/hasCommentGroup}}
+              </div>
+            </template>
+            <!-- end of comments template -->
+
+            <!-- comments reply template -->
+            <template id="ofBoardReplyTemplate">
+              <div class="reply mb-1"> 
+                <div class="d-flex justify-content-start align-items-center flex-row">
+                  <div class="d-flex justify-content-start align-items-center">
+                    <img src="assets/img/images/tree.png" alt="" height="32px" width="32px" />
+                    <span class="ms-2 text-dark fs-14px fw-bold">{{commenterName}}</span>
+                  </div>
+                  <div class="ms-3 fs-14px">{{commentContent}}</div>
+                </div> 
+              </div>
+            </template>
+            <!-- end of comments reply template -->
+
+            <div id="exhibitionBoardListsDiv" class="mt-3">
+              <div id="exhibitionBoardListsCont" class="row gy-3 ">
+
+                <!-- POST SECTION WHOLE DIV -->
+
+                <!-- END OF POST SECTION WHOLE DIV -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAIR MANAGEMENT PAGE -->
+      <section id="fairmanagement_page" class="d-none content">
+        <div class="card-main shadow bg-white col-12 p-3 p-md-5">
+          <!-- INSIDE CONTENTS -->
+          <h2 id="fairmanagement-01_title" class="d-none">박람회 관리</h2>
+          <h2 id="fairmanagement-02_title" class="d-none">입주자 관리</h2>
+          <div class="navigation my-3">
+            <nav class="nav-list nav">
+              <a id="fairmanagement-01_btn" class="nav-link" href="#fairmanagement"> 박람회 생성 </a>
+              <a id="fairmanagement-02_btn" class="nav-link" href="#tenantmanagement"> 입주자 관리 </a>
+            </nav>
+          </div>
+
+          <!-- fair management -->
+          <div id="fairmanagement-01_div" class="d-none card my-4 border-0">
+            <!-- first part -->
+            <div class="mb-3 d-flex justify-content-between around-items-start flex-row">
+
+              <div class="flex-grow-1">
+
+                <div class="row gy-2 align-items-end">
+                  <!-- apartment lists -->
+                  <div class="col-lg-6 col-xxl-4">
+                    <div class="d-flex justify-content-start align-items-end flex-row flex-nowrap">
+                      <div class="flex-grow-1">
+                        <template id="fmSelectApartmentTemp">
+                          <option value='{{apartmentid}}'>{{apartmentname}}</option> 
+                        </template>
+
+                        <select id="fmSelectApartmentList" class="form-select" data-placeholder="아파트 이름 검색">
+                          <option></option>
+                          <!-- generate select apartment list here -->
+                        </select>
+                      </div>
+                      <p class="fw-bold form-label text-nowrap ms-3"> 온라인 박람회 </p>
+                    </div>
+                  </div>
+
+                  <!-- data range -->
+                  <div class="col-lg-6 col-xxl-3">
+                    <div class="d-flex justify-content-between align-items-start flex-column flex-nowrap ">
+                      <label for="" class="form-label fw-bold">일정 관리</label>
+                      <div class="input-group">
+                        <input type="date" id="fmstart" class="form-control" name="start" autocomplete="off" placeholder="mm/dd/yyyy">
+                        <span class="input-group-text px-2"><i class="fa-regular fa-minus"></i></span>
+                        <input type="date" id="fmend" class="form-control rounded-end" name="end" autocomplete="off" placeholder="mm/dd/yyyy">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- offline fair -->
+                  <div class="col-lg-6 col-xxl-2">
+                    <div class="d-flex justify-content-center align-items-center flex-row flex-nowrap p-1">
+
+                        <label class="fw-bold form-label m-0 p-0 text-nowrap me-2"> 오프라인 박람회 </label>
+  
+                        <div class="d-flex flow-row text-muted m-0 p-0">
+                          <label class="switch">
+                            <input id="switch_offlinefair" class="switch-input" type="checkbox" />
+                            <span class="switch-label" data-off="Off" data-on="On"></span> 
+                            <span class="switch-handle"></span> 
+                          </label>
+                        </div>
+
+
+                    </div>
+                  </div>
+
+                  <!-- time range -->
+                  <div id="switch_offlinefair_time" class="col-lg-6 col-xxl-3 d-none">
+                    <div class="d-flex justify-content-between align-items-start flex-column flex-nowrap ">
+                        <label for="" class="form-label fw-bold">시간 관리</label>
+                        <div id="timerange" class="input-group input-timerange">
+                          <input type="time" id="fmstart_time" class="form-control cursor-pointer" name="fmstart_time" autocomplete="off" />
+                          <span class="input-group-text px-2"><i class="fa-regular fa-minus"></i></span>
+                          <input type="time" id="fmend_time" class="form-control cursor-pointer" name="fmend_time" autocomplete="off" />
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- submit button -->
+              <div class="ms-2" style="width: 57px">
+                <label class="form-label d-none d-lg-block opacity-0">&nbsp;</label>
+                <button id="fmAddExhibitionBtn" type="button" class="btn btn-primary text-nowrap my-0" > 추가 </button>
+              </div>
+            </div>
+
+            <!-- second part -->
+            <div class="mb-3 d-flex justify-content-between around-items-start flex-row">
+              <div class="flex-grow-1">
+                <div class="row gy-2 align-items-end">
+
+                  <!-- exhibition apartment list -->
+                  <div class="col-lg-4">
+                    <div class="d-flex justify-content-start align-items-start flex-column flex-nowrap">
+                      <label for="" class="form-label fw-bold"> 
+                        <span class="me-2"> 아파트단지별 조회 </span>
+                        <i class="fa-regular fa-chevron-down m-0 p-0"></i> 
+                      </label>
+
+                      <template id="fairExhibitionTemp">
+                        <option value="{{exhibitionId}}">{{exhitionName}}</option>
+                      </template>
+
+                      <select id="fairExhibitionCont" class="form-select shadow-none border" size="6" style="height: 165px">
+                        <!-- generate exhibition -->
+                      </select>
+
+                    </div>
+                  </div>
+
+                  <!-- exhibition category list -->
+                  <div class="col-lg-4">
+                    <label for="" class="form-label fw-bold"> 참여시공사 관리 </label>
+                    
+                    <div class="card rounded px-3 py-2 overflow-x-hidden overflow-y-auto" style="height: 165px">
+
+                      <div class="input-group border-bottom border-primary">
+                        <input id="fmAddFairCategoryInput" type="text" class="form-control border-0 ps-0 shadow-none bg-white" placeholder="카테고리 입력" disabled>
+                        <button id="fmAddFairCategoryBtn" type="button" class="input-group-text link-primary bg-transparent border-0"> 
+                          <i class="fa-regular fa-plus"></i>
+                        </button>
+                      </div>
+    
+                      <div id="fmFairCatListDiv">
+                        <template id="fmFairCategoryTemp">
+                          <li class="fmcategory" data-cat-id="{{categoryId}}" data-cat-name="{{category}}">
+                            <span class="fmFairCatName btn btn-sm btn-outline-primary"> {{category}} </span>
+                            <span class="fmFairCatDelBtn btn btn-sm btn-outline-secondary"><i class="fa-regular fa-times"></i></span>
+                          </li>
+                        </template>
+
+                        <ul id="fmFairCatLists" class="m-0 p-0">                         
+                          <!-- generate list of category here -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- all constructor list -->
+                  <div class="col-lg-4">
+                    
+                    <div class="d-flex justify-content-start align-items-start flex-column flex-nowrap">
+                      <label for="" class="form-label d-none d-xl-block opacity-100"> &nbsp; </label>
+
+                      <div class="card rounded px-3 py-2 overflow-x-hidden overflow-y-auto w-100" style="height: 165px">
+
+                        <div class="input-group border-bottom border-primary">
+                          <input id="fmConstructorInputSearch" type="text" class="form-control border-0 ps-0 shadow-none" placeholder="시공사 이름 검색">
+                          <span class="input-group-text link-primary bg-transparent border-0"><i class="fa-regular fa-magnifying-glass"></i></span>
+                        </div>
+                        
+                        <template id="fmConstructorTemp">
+                          <option value="{{contructorId}}">{{contructorName}}</option>
+                        </template>
+
+                        <select id="fmConstructorCont" class="m-0 p-0 shadow-none form-select border-0 rounded-0 mt-1" size="4"> </select>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- submit button add constuctor -->
+              <div class="ms-2" style="width: 57px">
+                <label class="form-label opacity-0">&nbsp;</label>
+                <button id="fmAddExhibitionConstructorBtn" type="button" class="btn btn-primary text-nowrap my-0"> 추가 </button>
+              </div>
+            </div>
+
+
+            <template id="fmExhibiParticipants_template">
+              <tr>
+                <!-- category -->
+                <td>{{category}}</td> 
+                <!-- constructor name -->
+                <td>{{constructorname}}</td>
+                <!-- phone number -->
+                <td>{{repcontact}}</td>
+                <!-- answer -->
+                <td>
+                  <div class="switch-div">
+                    <label class="switch" style="cursor: default !important;">
+                      <input id="fmanswer{{boardid}}" type="checkbox" class="answer-switch switch-input" disabled/>
+                      <span class='switch-label' data-off='NO' data-on='YES'></span> 
+                      <span class='switch-handle'></span> 
+                    </label>
+                  </div>
+                </td>
+                <!-- pay -->
+                <td>
+                  <div class="switch-div">
+                    <label class="switch" style="cursor: default !important;">
+                      <input id="fmpay{{boardid}}" type="checkbox" class="payment-switch switch-input" disabled/>
+                      <span class="switch-label"  data-off="NO" data-on="YES"></span> 
+                      <span class="switch-handle"></span> 
+                    </label>
+                  </div>
+                </td>
+                <!-- about us -->
+                <td>
+                  <button type='button' class='btn btn-sm btn-outline-dark' onclick="viewThisAboutUs(this)" title='회사이름' data-aboutus='{{aboutus}}'>
+                    <i class='fa-solid fa-share'></i>
+                  </button>
+                </td>
+                <!-- link -->
+                <td >
+                  <div class="center">
+                    <a href="{{link}}" class="disALink {{ disALink }}" target="_blank" data-id="{{boardid}}">{{link}}</a>
+                    <div class="disInputLink input-group input-group-sm {{ disInputLink }}" data-id="{{boardid}}">
+                      <span class="input-group-text"><i class="fa-solid fa-link"></i></span>
+                      <input type="text" id="fmvideo{{boardid}}" class="form-control" placeholder="링크입력" disabled>
+                    </div>
+                  </div>
+                </td>
+                <!-- hashtag -->
+                <td >
+                  <div class="center">
+                    <a href="#" class="disAHashtag {{ disAHashtag }}" data-id="{{boardid}}"> {{ hashtag }} </a>
+                    <div class="disInputHashtag input-group input-group-sm {{ disInputHashtag }}" data-id="{{boardid}}">
+                      <span class="input-group-text"><i class="fa-solid fa-hashtag"></i></span>
+                      <input type="text" id="fmhashtag{{boardid}}" class="form-control" placeholder="태그입력(3개까지 입력 가능)" disabled>
+                    </div>
+                  </div>
+                </td>
+                <!-- buttons -->
+                <td>
+                  <button type="button" class="btn btn-sm btn-outline-primary editBtn" data-id="{{boardid}}">
+                    <i class="fa-solid fa-pen"></i>
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-primary updateBtn d-none" data-id="{{boardid}}">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-danger deleteBtn" data-id="{{boardid}}">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </template>
+
+            <!-- table -->
+            <div class="mb-3">
+              <div class="table-responsive p-1 overflow-x-auto text-nowrap">
+                <table id="fmExhibiParticipants_table" class="display table">
+                    <thead>
+                      <tr>
+                        <th> 카테고리 </th>
+                        <th> 시공사 </th>
+                        <th> 대표연락처 </th>
+                        <th> 응답 </th>
+                        <th> 참가비용납입 </th>
+                        <th> 회사소개 </th>
+                        <th> 동영상 </th>
+                        <th> 태그 </th>
+                        <th>  </th>
+                      </tr>
+                    </thead>
+
+                    <tbody id="fmExhibiParticipants_table_body">
+                      <!-- generate data here -->
+
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- tenant management -->
+          <div id="fairmanagement-02_div" class="d-none card my-3 border-0">
+            <div class="mb-3">
+              <div class="row gy-2">
+                <div class="col-md-12 col-lg-6 col-xl-4">
+                  <label for="" class="form-label fw-bold">  
+                    <span class="me-2"> 아파트단지별 조회  </span>
+                    <i class="fa-regular fa-chevron-down"></i> 
+                  </label>
+
+                  <template id="tenantApartmentTemp">
+                    <option value="{{apartmentId}}" data-win="{{hasWinners}}">{{apartmentName}}</option>
+                  </template>
+
+                  <select id="tenantApartmentCont" class="form-select" size="4">
+                    <!-- generate data here -->
+                  </select>
+                </div>
+                
+                <div class="col-md-12 col-lg-6 col-xl-7">
+                  <div class="row gy-2">
+                    <div class="col-4 col-lg-6 col-xxl-4">
+                      <label class="form-label fw-bold"> 추첨 기준 </label>
+                      <input id="tenantCriteria" type="number" class="form-control" placeholder="#" disabled>
+                    </div>
+
+                    <div class="col-4 col-lg-6 col-xxl-4">
+                      <label class="form-label fw-bold"> 추첨 세대 </label>
+                      <input id="tenantGen" type="number" class="form-control" placeholder="우승자 수" disabled>
+                    </div>
+
+                    <div class="col-4 col-lg-6 col-xxl-4">
+                      <p class="form-label fw-bold opacity-0"> &nbsp; </p>
+                      <!-- Button trigger modal -->
+                      <button id="tenantDrawBtn" type="button" class="btn btn-warning"> 경품추첨 </button>
+                    </div>
+                  </div>                  
+                </div>
+              </div>
+            </div>
+  
+            <!-- tables -->
+            <div class="d-block card border-0">
+              <div class="table-responsive p-1 overflow-x-auto text-nowrap">
+                <template id="tenantTemp">
+                  <tr>
+                    <td> {{apartment}} </td>
+                    <td> {{dong}} </td>
+                    <td> {{lake}} </td>
+                    <td> {{type}} </td>
+                    <td> {{name}} </td>
+                    <td> {{contactnum}} </td>
+                    <td> {{numcontract}} </td>
+                  </tr>
+                </template>
+                <table id="tenantmanagement_table" class="display table">
+                  <thead>
+                    <tr>
+                      <th> 아파트 </th>
+                      <th> 동 </th>
+                      <th> 호수 </th>
+                      <th> 타입 </th>
+                      <th> 이름 </th>
+                      <th> 연락처 </th>
+                      <th> 계약건수 </th>
+                    </tr>
+                  </thead>
+                  <tbody id="tenantCont" class="text-center text-dark fs-14px">
+                    <!-- generate data here -->
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- buttom form -->
+            <div class="mt-3">
+              <div id="tenantmanagement_div" class="w-100">
+                <div class="d-flex justify-content-end align-items-center flex-row">
+                  <button id="tenantmanagement_div_btn" type="button" class="btn btn-primary"> 항목추가 </button>
+                </div>
+              </div>
+
+              <div id="tenantmanagement_form_div" class="w-100 d-none">
+
+                <div class="d-flex justify-content-end align-items-center flex-row flex-wrap">
+                  <form id="tenantmanagement_form" action="" class="">
+                    <div class="row g-2 justify-content-start justify-content-xl-end ">
+                      <div class="col-4 col-xl-2">
+                        <input type="text" id="pdapartname" class="form-control" placeholder="아파트이름">
+                      </div>
+                      <div class="col-4 col-xl-1">
+                        <input type="text" id="pddong" class="form-control" placeholder="동">
+                      </div>
+                      <div class="col-4 col-xl-1">
+                        <input type="text" id="pdlake" class="form-control" placeholder="호수">
+                      </div>
+                      <div class="col-4 col-xl-1">
+                        <input type="text" id="pdtype" class="form-control" placeholder="타입">
+                      </div>
+                      <div class="col-4 col-xl-2">
+                        <input type="text" id="pdname" class="form-control" placeholder="이름">
+                      </div>
+                      <div class="col-4 col-xl-2">
+                        <input type="text" id="pdphone" class="form-control" placeholder="전화번호">
+                      </div>
+                      <div class="col-4 col-xl-1">
+                        <input type="text" id="pdnumcontracts" class="form-control" placeholder="계약건수">
+                      </div>
+                      <div class="col-4 col-xl-1">
+                        <button id="addTenantBtn" type="button" class="w-100 btn btn-outline-primary"> 추가 </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SETTINGS PAGES -->
+      <!-- PAYMENT REQUEST MANAGEMENT PAGE -->
+      <section id="paymentrequestmanagement_page" class="d-none content">
+        <div class="card-main shadow bg-white col-xl-6 p-3 p-md-5">
+          <!-- INSIDE CONTENTS -->
+          <h2> 결제요청 </h2>
+          <div class="my-4">
+            <form action="">
+              <div class="mb-3">
+                <div class="d-flex justify-content-between align-items-center flex-row">
+                  <label for="formGroupExampleInput" class="form-label fw-bold"> 결제요청 </label>
+                  <button id="payTempBtn" type="button" class="btn shadow-none fs-15px text-gray300"> 
+                    <i class="fa-light fa-pen"></i>
+                    <span class="ms-1">수정하기</span>
+                  </button>
+                </div>
+                <textarea class="form-control textarea-12" id="payTemplate"></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label fw-bold">
+                  결제요청 템플릿
+                </label>
+                <select class="form-select" id="paybank" data-placeholder="은행 선택">
+                  <option value="LandBank">LandBank</option>
+                  <option value="BDO">BDO</option>
+                  <option value="BPI">BPI</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <input type="text" class="form-control"  id="paybankAccount" id="exampleFormControlInput1" placeholder="계좌번호를 입력해주세요.">
+              </div>
+
+              <button type="submit" id="payBtn" class="btn btn-primary w-100"> 입력완료 </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECHNICIAN MANAGEMENT PAGE -->
+      <section id="technicianmanagement_page" class="d-none content">
+        <div class="card-main shadow bg-white col-12 col-xl-6 p-3 p-md-5">
+          <h2>기술자 관리</h2>
+          <div id="techmContainer">
+            <div id="techmData">
+              <div id="techmDataCont" class="row g-3"> 
+                
+              </div>
+            </div>
+
+            <div id="techmPagination"> </div>
+
+            <div id="techmForm">
+              <div class="mb-2">
+                <label class="form-label fw-bold mb-1">기술자 초대</label>
+                <div class="row g-2">
+                  <div class="col">
+                    <input type="text" class="form-control" id="techmName" placeholder="이름을 입력해 주세요.">
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" id="techmPhoneNum" placeholder="‘-’ 제외하고 전화번호를 입력해 주세요.">
+                  </div>
+                </div>
+              </div>
+              
+              <button type="button" id="invBtn" class="btn btn-primary w-100">입력완료</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MENU PAGES -->
+      <!-- CONTRACT PAGE --> 
+      <section id="contract_page" class="d-none content">
+        <div class="card-main shadow bg-white col-12 p-3 p-md-5">
+          <!-- INSIDE CONTENTS -->
+          <h2> 계약서 목록 </h2>
+          <div id="cpContainer" class="mt-3">
+
+            <div id="cpFilter">
+              <select name="listSelect" id="listSelect" class="form-select listSelect">
+                <option value="전체">전체</option>
+                <option value="일반">일반</option>
+                <option value="보류">보류</option>
+                <option value="반려">반려</option>
+                <option value="삭제">삭제</option>
+              </select>
+              
+              <div class="d-inline-flex d-none">
+                <div class="mx-2">
+                  <input type="text" class="form-control" id="listSearch" placeholder="ex)101동 1011호 → 101 1011">
+                </div>
+                <div>
+                  <button type="button" id="listBtn" class="btn btn-primary text-nowrap">검색</button>
+                </div>
+              </div>
+            </div>
+
+
+            <div id="cpContent">
+              <div id="cpData">
+                <!-- generate contract data here -->
+                <div id="contractlistCont" class="row g-3"> </div>
+              </div>
+
+
+              <div id="cpBtns">
+                <button type="button" id="cpOpenContractWriting" class="btn btn-outline-primary rounded-pill me-3">
+                  <span class="me-2"> 견적서 추가 </span>
+                  <i class="fa-light fa-plus"></i>
+                </button>
+                <button type="button" id="cpOpenChat" class="btn btn-primary rounded-circle rounded-bot-end-2" style="height: 55px; width:55px;">
+                  <i class="fa-solid fa-ellipsis"></i>
+                </button>
+              </div>
+
+
+              <div id="cpPagination">
+                <div id="contractListsPagination"></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONSULTING PAGE -->
+      <section id="consulting_page" class="d-none content">
+        <div class="card-main shadow bg-white col-12 p-3 p-md-5">
+          <!-- INSIDE CONTENTS -->
+          <div class="d-flex justify-content-start align-items-center flex-row">
+            <h2>상담</h2>
+            <div class="ms-5">
+              <select name="" id="" class="form-select">
+                <option value="고객">고객</option>
+                <option value="주관사">주관사</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="counselling border-top border-bottom">
+            <div class="counselling-left border-end">
+              <div class="counselling-left_top border-bottom">
+                <div class="input-group">
+                  <input id="chatSearch" type="text" class="form-control" placeholder="아파트 단지 이름">
+                  <button type="button" class="input-group-text btn btn-light"><i class="fa-regular fa-search"></i></button>
+                </div>
+              </div>
+
+              <template id="chatRoom_temp">
+                <div class="chats" data-customerID="{{ custId }}" data-roomID="{{ roomId }}" onclick="openThisChat(this)">
+                  <div class="chat-left">
+                    <img src="assets/img/images/tree.png" alt="chat-profile" class="chat-profile" />
+                    <div class="chat-details">
+                      <p class="chat-name"> {{ custName }} </p>
+                      <p class="chat-lastMsg"> {{ message }} </p>
+                    </div>
+                  </div>
+                  <div class="chat-right">
+                    <div class="chat-status"> </div>
+                    <p class="chat-lastTime"> {{ lastChat }} </p>
+                  </div>
+                </div>
+              </template>
+
+              <!-- contact list -->
+              <div id="chatRoom_cont" class="counselling-left_bot"></div>
+            </div>
+
+            <div class="counselling-right">
+              <div class="chat-MsgDiv">
+                <div class="chat-MsgVisible">
+                  <div id="chatMsgHistory" class="chat-MsgHistory"></div>
+                </div>
+
+  
+                <div id="chatMsgForm" class="chat-MsgForm border-top w-100">
+                  <label for="mgsSendUpload" class="chat-MsgFormUploadLabel btn btn-light">
+                    <i class="text-primary fa-thin fa-image"></i>
+                    <input type="file" id="mgsSendUpload" accept="image/*" hidden multiple>
+                  </label>
+
+                  <div class="chat-MsgFormInput">
+                      <div id="chatImgContainer" class="d-none">
+                        <div id="mgsSendImgDiv" > </div>
+                      </div>
+                      <div id="mgsSendTxtDiv" class="">
+                        <textarea id="mgsSendInput" class="form-control"></textarea>
+                      </div>
+                  </div>
+
+                  <button type="button" id="mgsSendBtn" class="chat-MsgFormSubmit btn btn-primary rounded-circle">
+                    <i class="fa-regular fa-arrow-up"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD USAGE HISTORY PAGE -->
+      <section id="cardusagehistory_page" class="d-none content">
+        <div class="card-main shadow bg-white col-12 p-3 p-md-5 col-md-12">
+          <!-- INSIDE CONTENTS -->
+          <div class="">
+            <h2>카드사용 내역</h2>
+            <div class="mt-4 p-1">
+              <div class="row g-4 align-items-center">
+                <div class="col-12 col-lg-7">
+                    <div class="navigation">
+                      <nav class="nav-list nav flex-nowrap">
+                        <a id="cardusagehistory-01_btn" href="#cardusagehistorybydate" class="nav-link active"> 날짜별로 보기 </a>
+                        <a id="cardusagehistory-02_btn" href="#cardusagehistorybycard" class="nav-link" > 카드별로 보기 </a>
+                        <a id="cardusagehistory-03_btn" href="#cardusagehistorybyaccount" class="nav-link" > 계정별로 보기 </a>
+                      </nav>
+                    </div>
+                </div>
+  
+                <div id="cardusagehistory_date01_div" class="d-block col-12 col-lg-5">
+                  <div class="row justify-content-center justify-content-lg-end">
+                    <div class="col-8 col-md-8 col-lg-12 col-xl-12 col-xxl-6">
+                      <input id="cardusagehistory_date01" type="date" class="form-control form-control-sm">
+                    </div>
+                  </div>
+                </div>
+
+
+                <div id="cardusagehistory_card02_div" class="d-none col-12 col-lg-5">
+                  <div class="row justify-content-center justify-content-lg-end">
+                    <div class="col-8 col-md-8 col-lg-12 col-xl-12 col-xxl-6">
+                      <select id="cardusagehistory_card02" class="form-select form-select-sm my-1" data-placeholder="카드 번호 선택">
+                        <option></option>
+                        <option value="전체">전체</option>
+                        <option value="2"> 5476 </option>
+                        <option value="3"> 2946 </option>
+                        <option value="2"> 8864 </option>
+                        <option value="3"> 7512 </option>
+                        <option value="2"> 2359 </option>
+                        <option value="3"> 1665 </option>
+                        <option value="2"> 5476 </option>
+                        <option value="3"> 2946 </option>
+                        <option value="2"> 5476 </option>
+                        <option value="3"> 2946 </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="cardusagehistory_account03_div" class="d-none col-12 col-lg-5 ">
+                  <div class="row justify-content-center justify-content-lg-end">
+                    <div class="col-8 col-md-8 col-lg-12 col-xl-12 col-xxl-6">
+                      <select id="cardusagehistory_account03" class="form-select form-select-sm my-1" data-placeholder="계정 선택">
+                        <option></option>
+                        <option value="전체">전체</option>
+                        <option value="식대">식대</option>
+                        <option value="경비">경비</option>
+                        <option value="일반">일반</option>
+                        <option value="주차">주차</option>
+                        <option value="비품">비품</option>
+                        <option value="기타">기타</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            <div id="cardusagehistory-01_div" class="d-none card border-0 mt-2">
+              <div class="data-table table-responsive p-1 overflow-x-auto text-nowrap">
+                <table id="cardusagehistorybydate_table" class="display table">
+                  <thead class="text-center bg-primary">
+                    <tr class="text-white">
+                      <th> 카드번호(뒤 4자리) </th>
+                      <th> 날짜 </th>
+                      <th> 시간 </th>
+                      <th> 금액 </th>
+                      <th> 상호 </th>
+                      <th> 게정(관리자가 직접 입력) </th>
+                    </tr>
+                  </thead>
+                  <tbody">
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td>커피 </td>
+                      <td> 식대 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 주차장 </td>
+                      <td> 주차 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 하이패스 </td>
+                      <td> 경비 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 코레일 </td>
+                      <td> 경비 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 자제 </td>
+                      <td> 비품 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 자제 </td>
+                      <td> 비품 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 교통카드 </td>
+                      <td> 경비 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 주차장 </td>
+                      <td> 주차 </td>
+                    </tr>
+               
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="cardusagehistory-02_div" class="d-none card border-0 mt-2">
+              <div class="data-table table-responsive p-1 overflow-x-auto text-nowrap">
+                <table id="cardusagehistorybycard_table" class="display table">
+                  <thead class="text-center bg-primary">
+                    <tr class="text-white">
+                      <th> 카드번호(뒤 4자리) </th>
+                      <th> 날짜 </th>
+                      <th> 시간 </th>
+                      <th> 금액 </th>
+                      <th> 상호 </th>
+                      <th> 게정(관리자가 직접 입력) </th>
+                    </tr>
+                  </thead>
+                  <tbody">
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td>커피 </td>
+                      <td> 식대 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 주차장 </td>
+                      <td> 주차 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 하이패스 </td>
+                      <td> 경비 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 코레일 </td>
+                      <td> 경비 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 자제 </td>
+                      <td> 비품 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 자제 </td>
+                      <td> 비품 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 교통카드 </td>
+                      <td> 경비 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 주차장 </td>
+                      <td> 주차 </td>
+                    </tr>
+               
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+            <div id="cardusagehistory-03_div" class="d-none card border-0 mt-2">
+              <div class="data-table table-responsive p-1 overflow-x-auto text-nowrap">
+                <table id="cardusagehistorybyaccount_table" class="display table">
+                  <thead class="text-center bg-primary">
+                    <tr class="text-white">
+                      <th> 카드번호(뒤 4자리) </th>
+                      <th> 날짜 </th>
+                      <th> 시간 </th>
+                      <th> 금액 </th>
+                      <th> 상호 </th>
+                      <th> 게정(관리자가 직접 입력) </th>
+                    </tr>
+                  </thead>
+                  <tbody">
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td>커피 </td>
+                      <td> 식대 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 주차장 </td>
+                      <td> 주차 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 하이패스 </td>
+                      <td> 경비 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 코레일 </td>
+                      <td> 경비 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 자제 </td>
+                      <td> 비품 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 자제 </td>
+                      <td> 비품 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 교통카드 </td>
+                      <td> 경비 </td>
+                    </tr>
+                    <tr class="text-center">
+                      <td> 5806 </td>
+                      <td> 2022/10/24 </td>
+                      <td> 20:15 </td>
+                      <td> 20,000 </td>
+                      <td> 주차장 </td>
+                      <td> 주차 </td>
+                    </tr>
+               
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          
+          </div>
+
+
+        </div>
+      </section>
+
+      <!-- MASTER PAGE -->
+      <section id="master_page" class="d-none content">
+        <!-- SUBSCRIPTION MANAGEMENT -->
+        <div id="subscriberManagement" class="d-block">
+          <div class="row g-0">
+            <div class="col-12 col-xl-6 ">
+              <div class="smCard1 p-3 p-md-5">
+                  <h2>마스터</h2>
+  
+                  <div class="d-flex justify-content-between align-items-center flex-row flex-wrap w-100">
+                    <div class="navigation mt-4 mb-4">
+                      <nav class="nav-list nav">
+                        <a id="smMaster01_btn" class="nav-link active" href="#SubscriberManagement">구독자 관리</a>
+                        <a id="smMaster02_btn" class="nav-link" href="#ConstructorManagement">시공사 관리</a>
+                      </nav>
+                    </div>
+                    <button id="smSuperAdmin_btn" class="btn btn-outline-primary"> 박람회 할당 </button>
+                  </div>
+
+                <div class="dataTable table-responsive p-1 overflow-x-auto text-nowrap w-100">
+                  <table id="subscribermanagement_table" class="display table">
+                    <thead>
+                        <tr>
+                          <th> 이름 </th>
+                          <th> 첫구독시작일 </th>
+                          <th> 최근결제날짜 </th>
+                          <th> 매월 결제일 </th>
+                          <th> 결제 여부 </th>
+                        </tr>
+                    </thead>
+                    <template id="cusbydate">
+                      <tr>
+                          <td> 김대림</td>
+                          <td> 2022/10/24</td>
+                          <td> 2022/12/24</td>
+                          <td> 24 </td>
+                          <td class="text-primary fw-bold">Y</td>
+                      </tr>
+                    </template>
+                    <tbody id="smTableBodyCont">
+                      <tr>
+                        <td >김대림</td>
+                        <td >2022/10/24</td>
+                        <td >2022/12/24</td>
+                        <td >24</td>
+                        <td class="text-primary fw-bold">Y</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="this2 w-100 text-end my-3">
+                  <div class="d-flex justify-content-end align-items-center">
+                    <span class="h6 me-3"> 활성화 계정 </span>
+                    <div class="bg-lightprimary rounded-circle d-flex justify-content-center align-items-center" style="height: 100px; width: 100px;">
+                        <span class="text-darkprimary fs-40px fw-bold">23</span> 
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+             <div class="col-12 col-xl-5 col-xxl-4">
+              <div class="smCard2">
+                <div class="smCard2-content">
+                  <h1 class="fs-25px fw-bolder text-center mt-5 mt-xl-4"> 구독 서비스 전환</h1> 
+                  <p class="text-center"> 더욱 더저렴해진가격으로서비스를 이용하세요! </p>
+                  <img src="assets/img/images/switch_subscription.png" class="img-responsive my-3 w-90">
+                  <button class="btn btn-primary w-60 mb-5 mb-xl-4" type="button">입력완료</button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- CONSTRACTOR MANAGEMENT -->
+        <div id="constructorManagement" class="d-none">
+          <div class="card-main shadow bg-white col-12 p-3 p-md-5">
+            <!-- <div class="thisDiv"> -->
+            <h2>마스터</h2>
+            <div class="d-flex justify-content-between align-items-center flex-row flex-wrap w-100 w-xl-50 pe-0 pe-xl-5">
+              <div class="navigation mt-4 mb-4">
+                <nav class="nav-list nav">
+                  <a id="cmMaster01_btn" class="nav-link" href="#SubscriberManagement">구독자 관리</a>
+                  <a id="cmMaster02_btn" class="nav-link active" href="#ConstructorManagement">시공사 관리</a>
+                </nav>
+              </div>
+              <button id="cmSuperAdmin_btn" class="btn btn-outline-primary"> 박람회 할당 </button>
+            </div>
+
+            <!-- </div> -->
+            <template id="cmContentTemplate">
+              <div class="cmCDC col-12 col-xl-6">
+                <div class="cmDatas">
+                  <img src="assets/img/images/tree.png" alt="" height="64px" width="64px" />
+                  <div class="cmDataDetails">
+                    <div class="fw-bold h5">시스템</div>
+                    <div class="d-flex justify-content-start align-items-start flex-row flex-nowrap">
+                      <span> 방충망 / </span>
+                      <span> 시스템에어컨 / </span>
+                      <span> 단열필름 / </span>
+                      <span> 욕실케어 </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+
+            <div class="cmContentDiv">
+              <div id="cmContentDataDiv">
+                <div id="cmContentData" class="row"></div>
+              </div>
+              <div id="cmContentPagination"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUPER ADMIN -->
+        <div id="superAdmin" class="d-none">
+          <div class="card-main shadow bg-white col-12 col-xl-6 p-3 p-md-5">
+            <h2>박람회 할당</h2>
+            <div class="d-flex justify-content-between align-items-center flex-row flex-wrap">
+              <div class="navigation mt-4 mb-4">
+                <nav class="nav-list nav">
+                  <a id="saMaster01_btn" class="nav-link" href="#SubscriberManagement">구독자 관리</a>
+                  <a id="saMaster02_btn" class="nav-link" href="#ConstructorManagement">시공사 관리</a>
+                </nav>
+              </div>
+              <button id="saSuperAdmin_btn" class="btn btn-outline-primary"> 박람회 할당 </button>
+            </div>
+
+            <div class="saContentDiv">
+              <div class="saContent row gy-0 gx-2">
+                <div class="saContentLeft col-4">
+
+                    <div class="row gy-2 gx-0">
+
+                      <div id="saOnlineFairDiv" class="col-12 ">
+                        <div class="accordion accordion-flush" id="saAccordion1">
+                          <div class="accordion-item">
+                            <h6 class="accordion-header" id="saAccordionH1">
+                              <button id="saFlushBtn1" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#saFlushControl1" aria-expanded="false" aria-controls="saFlushControl1">
+                                온라인 박람회 선택
+                              </button>
+                            </h6>
+                            <div id="saFlushControl1" class="accordion-collapse collapse show" aria-labelledby="saAccordionH1" data-bs-parent="#saAccordion1">
+                              <template id="saOnlineFairTemplate">
+                                <div class="saOnFair datalist" data-id="{{id}}"> {{name}} </div>
+                              </template>
+                              <div id="saOnlineFairBody" class="accordion-body"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div id="saCategoryDiv" class="col-12 ">
+                        <div class="accordion accordion-flush"  id="saAccordion2">
+                          <div class="accordion-item">
+                            <h6 class="accordion-header" id="saAccordionH2">
+                              <button id="saFlushBtn2" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#saFlushControl2" aria-expanded="false" aria-controls="saFlushControl2">
+                                카테고리 선택
+                              </button>
+                            </h6> 
+                            <div id="saFlushControl2" class="accordion-collapse collapse" aria-labelledby="saAccordionH2" data-bs-parent="#saAccordion2">
+                              <template id="saCategoryTemplate">
+                                <div class="saCat datalist" data-id="{{id}}"> {{name}} </div>
+                              </template>
+                              <div id="saCategoryBody" class="accordion-body"> </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div id="saContractorDiv" class="col-12 ">
+                        <div class="accordion accordion-flush" id="saAccordion3">
+                          <div class="accordion-item">
+                            <h6 class="accordion-header" id="saAccordionH3">
+                              <button id="saFlushBtn3" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#saFlushControl3" aria-expanded="false" aria-controls="saFlushControl3">
+                                시공사 선택
+                              </button>
+                            </h6>
+                            <div id="saFlushControl3" class="accordion-collapse collapse" aria-labelledby="saAccordionH3" data-bs-parent="#saAccordion3">
+                              <template id="saContractorTemplate">
+                                <div class="saCont" data-id="{{id}}" data-exhiboard-id="{{exhibiBoardId}}">  
+                                  <span class="saContName">{{name}}</span> 
+                                  <button type="button" class="saContDelBtn btn btn-sm btn-light">
+                                    <i class="fa-light fa-xmark"></i>
+                                  </button>
+                                </div>
+                              </template>
+                              <div id="saContractorBody" class="accordion-body"> </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  
+                </div>
+
+                <div class="saContentRightDiv col-8 ">
+                  <div class="saContentRight card">
+                    <div class="saContentRightTop">
+
+                      <div class="saCRTChild">
+                        <div class="saCRTChildDataImgDiv">
+                          <div class="saCRTChildDataImgCont">
+                            <img class="saCRTChildDataImg saDataImg" src="./assets/img/images/tree.png" alt="profile-pic"/>
+                          </div>
+                        </div>
+                        <div class="saCRTChildDataName saDataName"> </div>
+                      </div>
+
+                      <div class="saCRTChild">
+                        <div class="saCRTChildLabel"> 시스템 </div>
+                        <div class="saCRTChildDataProduct saDataProduct"> </div>
+                      </div>
+
+                      <div class="saCRTChild">
+                        <div class="saCRTChildLabel"> 회사주소 </div>
+                        <div class="saCRTChildData saDataAddress1">  </div>
+                      </div>
+
+                      <div class="saCRTChild">
+                        <div class="saCRTChildLabel"> 상세주소 </div>
+                        <div class="saCRTChildData saDataAddress2">  </div>
+                      </div>
+
+                      <div class="saCRTChild">
+                        <div class="saCRTChildLabel"> 회사소개 </div>
+                        <div class="saCRTChildData saDataInfo"> </div>
+                      </div>
+                    </div>
+
+                    <div class="saContentRightMid">
+                      <div class="hr-1"></div>
+                    </div>
+
+                    <div class="saContentRightBot">
+
+                      <form action="" id="saForm">
+
+                        <div class="mb-3">
+                          <label for="" class="form-label"> 동영상 업로드 </label>
+
+                          <div id="saFormTagDiv" class="d-none">
+                            <a id="saFormTag" href="" target="_blank"></a>
+                            <button type="button" id="saFormTagBtn" class="btn btn-sm btn-light"><i class="fa-light fa-pen"></i></button>
+                          </div>
+
+                          <div id="saFormUrlDiv" class="input-group input-group-sm">
+                            <span class="input-group-text"><i class="fa-regular fa-link"></i></span>
+                            <input id="saFormUrl" type="url" class="form-control" placeholder="링크입력" disabled>
+                          </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                          <!-- <label for="fileupload" class="form-label"> 파일 업로드 </label>
+                          <input id="saFormFile" type="file" class="form-control form-control-sm" disabled/> -->
+
+
+                          <label class="form-label"> 파일 업로드 </label>
+                          
+                          <!-- file input -->
+                          <label id="saFormFileContainer" class="d-block">
+                            <div id="saFormFileDiv" class="hasBg">
+                              <i class="fa-light fa-file-plus"></i>
+                              <p> 파일을 마우스로 끌어 오세요 </p>
+                              <input id="saFormFile" type="file" class="form-control"  accept="image/*" disabled hidden>
+                            </div>
+
+                            <!-- display selected file -->
+                            <div id="saFormFileThumbDiv" class="d-none">
+                              <div id="saFormFileThumbDivFirst">
+                                <button id="saFormFileThumbDelBtn" type="button" class="btn-close fs-12px"></button>
+                                <i class="fa-light fa-image"></i>
+                                <p id="saFormFileThumbName" class="saFormFileThumbName"></p>
+                              </div>
+                              <div id="saFormFileThumbDivLast">
+                                <img id="saFormFileThumbImg" src="" alt="preview-image"  class="img-thumbnail">
+                              </div>
+                            </div>
+
+                          </label>
+                          
+                          <div id="saFormFileDisplayContainer" class="d-none">
+
+                            <div id="saFormFileDisplayDiv">
+                              <button id="saFormFileDisplayDelBtn" type="button" class="btn-close" data-id=""></button>
+                              <i class="fa-light fa-image"></i>
+                              <p id="saFormFileDisplayName"></p>
+                            </div>
+
+                            <div id="saFormFileDisplayImgDiv">
+                              <img id="saFormFileDisplayImg" src="" alt="constructor-image" class="img-thumbnail">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="text-end">
+                          <button id="saFormSubmit" type="button" class="btn btn-sm btn-primary" disabled> 업로드 </button>
+                        </div>
+
+                      </form>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+    </main>
+
+    <button id="scrollToTop" class="btn btn-primary" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up-from-line"></i></button>
+
+    <!-- pop-up modal template -->
+    <template id="">
+      <div class="modal-body">
+
+      </div>
+
+      <div class="modal-footer p-0">
+        <button type="button" id="{{ btnId }}" class="btn rounded-0 w-50 m-0 py-3 border-end">
+          확인
+        </button> 
+        <button type="button" class="btn rounded-0 w-50 m-0 py-3" data-bs-dismiss="modal">
+          취소
+        </button>
+      </div>
+
+    </template>
+    <!-- copy template here -->
+    
+    <template id="businesslicensetemp">
+      <div class="modal-body">
+        <div class="d-flex align-items-center justify-content-center">
+          <img class="img-fluid" src="{{image}}" alt="business License">
+        </div>
+      </div>
+    </template>
+
+    <template id="prizeDrawContTemp">
+      <div class="modal-body">
+        <div class="text-center mb-3">
+          <svg width="168" height="41" viewBox="0 0 168 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M126.618 20.5L131.474 12M140.645 28L155.75 18.5M104.5 19L107.737 2.5M65.1184 18.5L61.3421 2M84 16V6M43.5395 20.5L38.1447 12M27.3553 28L12.7895 18.5M12.7895 39L2 35.5M166 35.5L153.592 39" stroke="#BD4400" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <h3>축하합니다</h3>
+        </div>     
+        <div id="priceDrawPartiCont" class="row gx-0">
+          <!-- generate participants data here -->
+        </div>   
+      </div>     
+    </template>   
+
+    <template id="prizeDrawPartiTemp">
+      <div class="col-6"> 
+        <div class="row g-1">
+          <h6 class="col-6 text-center">{{name}}</h6>
+          <h6 class="col-6 text-start">{{phoneNumber}}</h6>
+        </div>
+      </div>
+    </template>
+
+    <template id="holidayAddTemplate">
+      <div class="modal-body">
+        <p class="h3 py-3 text-center"> 
+          <span class="fw-bold">{{ dateMonth }}월</span>  
+          <span class="fw-bold">{{ dateDate }}일</span>에 
+          <span class="fw-bold">{{ workername }}</span> 님을 
+          <br> 휴무일로 지정하시겠습니까?
+        </p>
+
+      </div>
+
+      <div class="modal-footer p-0">
+        <button type="button" id="{{ btnId }}" data-date="{{ dataDate }}" data-id="{{ workerid }}" class="btn rounded-0 w-50 m-0 py-3 border-end">
+          확인
+        </button> 
+        <button type="button" class="btn rounded-0 w-50 m-0 py-3" data-bs-dismiss="modal">
+          취소
+        </button>
+      </div>
+
+    </template>
+
+    <template id="holidayCancelTemplate">
+      <div class="modal-body">
+        <p class="h3 py-3 text-center"> 
+          <span class="fw-bold">{{ dateMonth }}월</span>  
+          <span class="fw-bold">{{ dateDate }}일</span>에 
+          <span class="fw-bold">{{ workername }}</span>
+          <br> 휴무일을 취소하시겠습니까?
+        </p>
+      </div>
+
+      <div class="modal-footer p-0">
+        <button type="button" id="{{ btnId }}" data-holiday="{{ id }}" class="btn rounded-0 w-50 m-0 py-3 border-end">
+          확인
+        </button> 
+        <button type="button" class="btn rounded-0 w-50 m-0 py-3" data-bs-dismiss="modal">
+          취소
+        </button>
+      </div>
+    </template>
+
+    <template id="taskCancelTemplate">
+      <div class="modal-body">
+        <p class="h3 py-3 text-center"> 
+          <span class="fw-bold">{{ dateMonth }}월</span>  
+          <span class="fw-bold">{{ dateDate }}일</span>
+          <span class="fw-bold">{{ timeHr }}:{{ timeMi }}</span>에 
+          <span class="fw-bold">{{ workername }}</span> 님의
+          <br> 작업을 취소하시겠습니까?
+        </p>
+      </div>
+
+      <div class="modal-footer p-0">
+        <button type="button" id="{{ btnId }}" data-task="{{ id }}" class="btn rounded-0 w-50 m-0 py-3 border-end">
+          확인
+        </button> 
+        <button type="button" class="btn rounded-0 w-50 m-0 py-3" data-bs-dismiss="modal">
+          취소
+        </button>
+      </div>
+    </template>
+
+    <template id="taskGetTimeTemplate">
+      <div class="modal-body">
+
+        <p class="h3 py-3 text-center"> 
+          <span class="fw-bold">{{ dateMonth }}월</span>  
+          <span class="fw-bold">{{ dateDate }}일</span>에 
+          <span class="fw-bold">{{ workername }}</span>
+        </p>
+
+        <div class="d-flex align-items-center justify-content-center">
+          <input type="time" id="taskGetTime" class="form-control w-50 " name="date" value="">
+        </div>
+        <div class="invalid-feedback text-danger text-center"></div>
+
+        <p id="taskGetTimeMessage" class="text-danger mt-3 fw-bold text-center"></p>
+
+      </div>
+
+      <div class="modal-footer p-0">
+        <button type="button" id="{{ btnId }}" onclick="{{ value }}ConfirmAddTask('{{ dataDate }}', '{{ workerid }}', '{{ taskid }}', '{{ workername }}')" class="btn rounded-0 w-50 m-0 py-3 border-end">
+          확인
+        </button> 
+        <button type="button" class="btn rounded-0 w-50 m-0 py-3" data-bs-dismiss="modal">
+          취소
+        </button>
+      </div>
+    </template>
+
+    <template id="taskAddTemplate">
+      <div class="modal-body">
+        <p class="h3 py-3 text-center"> 
+          <span class="fw-bold">{{ dateMonth }}월</span>  
+          <span class="fw-bold">{{ dateDate }}일</span>
+          <span class="fw-bold">{{ dtime }}일</span>에 
+          <span class="fw-bold">{{ workername }}</span>
+          <br> 작업을 할당하시겠습니까?
+        </p>
+
+      </div>
+
+      <div class="modal-footer p-0">
+        <button type="button" id="{{ btnId }}" data-date="{{ dataDate }}" data-time="{{ time }}" data-worker-id="{{ workerid }}" data-task-id="{{ taskid }}" class="btn rounded-0 w-50 m-0 py-3 border-end">
+          확인
+        </button> 
+        <button type="button" class="btn rounded-0 w-50 m-0 py-3" data-bs-dismiss="modal">
+          취소
+        </button>
+      </div>
+    </template>
+
+    <template id="exhibitionAboutUsTemp">
+      <div class="modal-body">
+        {{ aboutus }}
+      </div>
+    </template>
+
+    <!-- ORDER DETAILS -->
+    <template id="orderDetailsTemplate">
+      <div class="modal-body">
+        <!-- profile -->
+        <div class="mb-3">
+          <div class="d-flex justify-content-start align-items-center flex-row flex-nowrap">
+            <div class="rounded-circle overflow-hidden" style="height: 44px">
+              <img src="./assets/img/images/tree.png" alt="" height="44px" width="44px" />
+            </div>
+            <span class="h5 ms-2 text-dark"> {{name}} </span>
+          </div>
+        </div>
+
+        <!-- name -->
+        <div class="mb-3">
+          <label for="" class="form-label fw-bold">신청자</label>
+          <input type="text" class="form-control" value="{{name}}" placeholder="김정수">
+        </div>
+
+        <!-- phone -->
+        <div class="mb-3">
+          <label for="" class="form-label fw-bold">전화번호</label>
+          <input type="text" class="form-control" value="{{phoneNumber}}" placeholder="010-2652-1198">
+        </div>
+
+        <!-- address -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">시공 받을 주소</label>
+          <input type="text" class="form-control" value="{{address}}" placeholder="스위첸">
+          <input type="text" class="form-control mt-1" value="{{addressDetail}}" placeholder="205동 1506호">
+        </div>
+
+        <!-- product -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">신청 상품</label>
+          <input type="text" class="form-control" value="{{product}}" placeholder="방충망">
+        </div>
+
+        <!-- note -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">특이사항</label>
+          <textarea class="form-control textarea-4">{{note}}</textarea>
+        </div>
+
+        <div class="mb-3">
+          <div class="row">
+            <!-- move-in date -->
+            <div class="col">
+              <div class="d-flex justify-content-between align-items-center flex-row">
+                <label class="form-label fw-bold m-0 p-0">입주일자</label>
+                <div class="form-check mt-2">
+                  <input type="radio" class="form-check-input opacity-100" id="orderMoveInConfirm" >
+                  <label class="form-check-label opacity-100" for="orderMoveInConfirm"> 확정 </label>
+                </div>
+              </div>
+              <input type="date" id="orderMoveInDate" class="form-control" value="{{moveInDate}}" >
+            </div>
+
+            <!-- Construction request date -->
+            <div class="col">
+              <div class="d-flex justify-content-between align-items-center flex-row">
+                <label class="form-label fw-bold m-0 p-0">시공요청일자</label>
+                <div class="form-check mt-2">
+                  <input type="radio" class="form-check-input opacity-100"  id="orderRequestConfirm" >
+                  <label class="form-check-label m-0 p-0 opacity-100" for="orderRequestConfirm"> 확정 </label>
+                </div>
+              </div>
+
+              <input type="date" class="form-control" value="{{requestDate}}" id="orderRequestDate" >
+            </div>
+          </div>
+        </div>
+
+        <!-- Cash receipts -->
+        <div class="">
+          <div class="row align-items-center">
+
+            <div class="col-6">
+              <div class="d-flex justify-content-between align-items-center flex-row">
+                <label class="form-label fw-bold m-0 p-0">현금영수증</label>
+
+                <!-- Receipt -->
+                <div class="form-check">
+                  <input class="form-check-input opacity-100" name="orderReceipt" type="radio" id="orderReceipt" >
+                  <label class="form-check-label opacity-100" for="orderReceipt"> 신청 </label>
+                </div>
+              </div>
+            </div>
+
+            <div id="orderReceiptDiv" class="col-6 d-none">
+              <div class="d-flex justify-content-between align-items-center flex-row flex-nowrap">
+                <!-- for income deduction -->
+                <div class="form-check">
+                  <input class="form-check-input opacity-100" type="radio" name="orderCashReceipt" id="orderIncomeDeduction" >
+                  <label class="form-check-label opacity-100" for="orderIncomeDeduction"> 소득공제용 </label>
+                </div>
+
+                <!-- for proof of expenditure -->
+                <div class="form-check">
+                  <input class="form-check-input opacity-100" type="radio" name="orderCashReceipt" id="orderProofExpend" >
+                  <label class="form-check-label opacity-100" for="orderProofExpend"> 지출증빙용 </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- number -->
+            <div class="col-12">
+              <input type="text" class="form-control mt-2" value="{{cashReceiptNum}}">
+            </div>
+          </div>
+      </div>
+    </template>
+
+    <!-- CONTRACT DETAILS -->
+    <template id="contractDetailsTemplate">
+      <div class="modal-body">
+        <!-- name -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">신청자</label>
+          <input type="text" class="form-control" value="{{name}}" id="contractName" placeholder="김정수" >
+        </div>
+
+        <!-- phone number -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">전화번호</label>
+          <input type="text" class="form-control" value="{{phoneNumber}}" id="contractPhoneNum1" placeholder="010-2652-1198" >
+        </div>
+
+        <!-- address -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">시공 받을 주소</label>
+          <input type="text" class="form-control" value="{{address}}" id="contractAddress1" placeholder="스위첸" >
+          <input type="text" class="form-control mt-1" value="{{addressDetail}}" id="contractAddress2" placeholder="205동 1506호" >
+        </div>
+
+        
+        <div class="mb-3">
+          <div class="row">
+            <!-- type -->
+            <div class="col">
+              <label class="form-label fw-bold">타입</label>
+              <input type="text" class="form-control" id="contractType" value="{{type}}" placeholder="505" >
+            </div>
+            <!-- average -->
+            <div class="col">
+              <label class="form-label fw-bold">평수</label>
+              <input type="text" class="form-control" id="contractAverage" value="{{average}}" placeholder="60m" >
+            </div>
+          </div>
+        </div>
+
+        <!-- application product -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">신청 상품</label>
+          <input type="text" class="form-control" value="{{product}}" id="contractProduct" placeholder="방충망" >
+        </div>
+
+        <!-- notes -->
+        <div class="mb-3">
+          <label for="" class="form-label fw-bold">특이사항</label>
+          <textarea id="contractNote" class="form-control textarea-4" placeholder="고양이 키우는 집, 큰소음에 주의 요망" >{{note}}</textarea>
+        </div>
+
+        
+        <div class="mb-3">
+          <div class="row">
+            <!-- move-in date -->
+            <div class="col">
+              <div class="d-flex justify-content-between align-items-center flex-row">
+                <label class="form-label fw-bold m-0 p-0">입주일자</label>
+                <div class="form-check mt-2">
+                  <input type="radio" class="form-check-input opacity-100" id="contractMoveInConfirm" >
+                  <label class="form-check-label opacity-100" for="contractMoveInConfirm"> 확정 </label>
+                </div>
+              </div>
+              <input type="date" id="contractMoveInDate" class="form-control" value="{{moveInDate}}" >
+            </div>
+
+            <!-- Construction request date -->
+            <div class="col">
+              <div class="d-flex justify-content-between align-items-center flex-row">
+                <label class="form-label fw-bold m-0 p-0">시공요청일자</label>
+                <div class="form-check mt-2">
+                  <input type="radio" class="form-check-input opacity-100"  id="contractRequestConfirm" >
+                  <label class="form-check-label opacity-100 m-0 p-0" for="contractRequestConfirm"> 확정 </label>
+                </div>
+              </div>
+
+              <input type="date" class="form-control" value="{{requestDate}}" id="contractRequestDate" >
+            </div>
+          </div>
+        </div>
+
+        <!-- Cash receipts -->
+        <div class="">
+          <div class="row align-items-center">
+
+            <div class="col-6">
+              <div class="d-flex justify-content-between align-items-center flex-row">
+                <label class="form-label fw-bold m-0 p-0">현금영수증</label>
+
+                <!-- Receipt -->
+                <div class="form-check">
+                  <input class="form-check-input opacity-100" name="contractReceipt" type="radio" id="contractReceipt" >
+                  <label class="form-check-label opacity-100" for="contractReceipt"> 신청 </label>
+                </div>
+              </div>
+            </div>
+
+            <div id="contractReceiptDiv" class="col-6 d-none">
+              <div class="d-flex justify-content-between align-items-center flex-row flex-nowrap">
+                <!-- for income deduction -->
+                <div class="form-check">
+                  <input class="form-check-input opacity-100" type="radio" name="contractCashReceipt" id="contractIncomeDeduction" >
+                  <label class="form-check-label opacity-100" for="contractIncomeDeduction"> 소득공제용 </label>
+                </div>
+
+                <!-- for proof of expenditure -->
+                <div class="form-check">
+                  <input class="form-check-input opacity-100" type="radio" name="contractCashReceipt" id="contractProofExpend" >
+                  <label class="form-check-label opacity-100" for="contractProofExpend"> 지출증빙용 </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- number -->
+            <div class="col-12">
+              <input type="text" class="form-control mt-2" value="{{phoneNumber}}" id="contractPhoneNum2" placeholder="XXX-XXXX-XXXX" >
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </template>
+
+    <!-- TASK DETAILS -->
+    <template id="taskDetailsTemplate">
+      <div class="modal-body">
+        <!-- profile -->
+        <div class="mb-3">
+          <div class="d-flex justify-content-start align-items-center flex-row flex-nowrap">
+            <div class="rounded-circle overflow-hidden" style="height: 44px">
+              <img src="./assets/img/images/tree.png" alt="" height="44px" width="44px" />
+            </div>
+            <span class="h5 ms-2 text-dark"> {{name}} </span>
+          </div>
+        </div>
+
+        <!-- name -->
+        <div class="mb-3">
+          <label for="" class="form-label fw-bold">신청자</label>
+          <input type="text" class="form-control" value="{{name}}" placeholder="김정수">
+        </div>
+
+        <!-- phone -->
+        <div class="mb-3">
+          <label for="" class="form-label fw-bold">전화번호</label>
+          <input type="text" class="form-control" value="{{phoneNumber}}" placeholder="XXX-XXXX-XXXX">
+        </div>
+
+        <!-- address -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">시공 받을 주소</label>
+          <input type="text" class="form-control" value="{{address}}" placeholder="스위첸">
+          <input type="text" class="form-control mt-1" value="{{addressDetail}}" placeholder="205동 1506호">
+        </div>
+
+        <div class="mb-3">
+          <div class="row">
+            <!-- product -->
+            <div class="col">
+              <label class="form-label fw-bold">타입</label>
+              <input type="text" class="form-control" id="taskProduct" value="{{product}}" placeholder="방충망" >
+            </div>
+            <!-- process -->
+            <div class="col">
+              <label class="form-label fw-bold">평수</label>
+              <input type="text" class="form-control" id="taskProcess" value="{{process}}" placeholder="실측" >
+            </div>
+          </div>
+        </div>
+
+        <!-- note -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">특이사항</label>
+          <textarea class="form-control textarea-4">{{note}}</textarea>
+        </div>
+
+        <div class="mb-3">
+          <div class="row">
+            <!-- move-in date -->
+            <div class="col">
+              <div class="d-flex justify-content-between align-items-center flex-row">
+                <label class="form-label fw-bold m-0 p-0">입주일자</label>
+                <div class="form-check mt-2">
+                  <input type="radio" class="form-check-input opacity-100" id="taskMoveInConfirm" >
+                  <label class="form-check-label opacity-100" for="taskMoveInConfirm"> 확정 </label>
+                </div>
+              </div>
+              <input type="date" id="taskMoveInDate" class="form-control" value="{{moveInDate}}" >
+            </div>
+
+            <!-- Construction request date -->
+            <div class="col">
+              <div class="d-flex justify-content-between align-items-center flex-row">
+                <label class="form-label fw-bold m-0 p-0">시공요청일자</label>
+                <div class="form-check mt-2">
+                  <input type="radio" class="form-check-input opacity-100"  id="taskRequestConfirm" >
+                  <label class="form-check-label opacity-100 m-0 p-0" for="taskRequestConfirm"> 확정 </label>
+                </div>
+              </div>
+
+              <input type="date" class="form-control" value="{{requestDate}}" id="taskRequestDate" >
+            </div>
+          </div>
+        </div>
+
+        <!-- Cash receipts -->
+        <div class="">
+          <div class="row align-items-center">
+
+            <div class="col-6">
+              <div class="d-flex justify-content-between align-items-center flex-row">
+                <label class="form-label fw-bold m-0 p-0">현금영수증</label>
+
+                <!-- Receipt -->
+                <div class="form-check">
+                  <input class="form-check-input opacity-100" name="taskReceipt" type="radio" id="taskReceipt" >
+                  <label class="form-check-label opacity-100" for="taskReceipt"> 신청 </label>
+                </div>
+              </div>
+            </div>
+
+            <div id="taskReceiptDiv" class="col-6 d-none">
+              <div class="d-flex justify-content-between align-items-center flex-row flex-nowrap">
+                <!-- for income deduction -->
+                <div class="form-check">
+                  <input class="form-check-input opacity-100" type="radio" name="taskCashReceipt" id="taskIncomeDeduction" >
+                  <label class="form-check-label opacity-100" for="taskIncomeDeduction"> 소득공제용 </label>
+                </div>
+
+                <!-- for proof of expenditure -->
+                <div class="form-check">
+                  <input class="form-check-input opacity-100" type="radio" name="taskCashReceipt" id="taskProofExpend" >
+                  <label class="form-check-label opacity-100" for="taskProofExpend"> 지출증빙용 </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- number -->
+            <div class="col-12">
+              <input type="text" class="form-control mt-2" value="{{cashReceiptNum}}">
+            </div>
+          </div>
+      </div>
+    </template>
+
+    <!-- CONTRACT LIST DETAILS -->
+    <template id="contractListDetailsTemplate">
+      <div class="modal-body">
+        <!-- profile -->
+        <div class="mb-3">
+          <div class="d-flex justify-content-start align-items-center flex-row flex-nowrap">
+            <div class="rounded-circle overflow-hidden" style="height: 44px">
+              <img src="./assets/img/images/tree.png" alt="" height="44px" width="44px" />
+            </div>
+            <span class="h5 ms-2 text-dark"> {{name}} </span>
+          </div>
+        </div>
+
+        <!-- name -->
+        <div class="mb-3">
+          <label for="" class="form-label fw-bold">신청자</label>
+          <input type="text" class="form-control" value="{{name}}" placeholder="김정수">
+        </div>
+
+        <!-- phone -->
+        <div class="mb-3">
+          <label for="" class="form-label fw-bold">전화번호</label>
+          <input type="text" class="form-control" value="{{phoneNumber}}" placeholder="XXX-XXXX-XXXX">
+        </div>
+
+        <!-- address -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">시공 받을 주소</label>
+          <input type="text" class="form-control" value="{{address}}" placeholder="스위첸">
+          <input type="text" class="form-control mt-1" value="{{addressDetail}}" placeholder="205동 1506호">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold">신청 상품</label>
+          <input type="text" class="form-control" id="contractListProduct" value="{{product}}" placeholder="신청 상품" >
+        </div>
+
+        <!-- note -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">특이사항</label>
+          <textarea class="form-control textarea-4">{{note}}</textarea>
+        </div>
+
+        <div class="mb-3">
+          <div class="row">
+            <!-- move-in date -->
+            <div class="col">
+              <div class="d-flex justify-content-between align-items-center flex-row">
+                <label class="form-label fw-bold m-0 p-0">입주일자</label>
+                <div class="form-check mt-2">
+                  <input type="radio" class="form-check-input opacity-100" id="contractListMoveInConfirm" >
+                  <label class="form-check-label opacity-100" for="contractListMoveInConfirm"> 확정 </label>
+                </div>
+              </div>
+              <input type="date" id="contractListMoveInDate" class="form-control" value="{{moveInDate}}" >
+            </div>
+
+            <!-- Construction request date -->
+            <div class="col">
+              <div class="d-flex justify-content-between align-items-center flex-row">
+                <label class="form-label fw-bold m-0 p-0">시공요청일자</label>
+                <div class="form-check mt-2">
+                  <input type="radio" class="form-check-input opacity-100"  id="contractListRequestConfirm" >
+                  <label class="form-check-label opacity-100 m-0 p-0" for="contractListRequestConfirm"> 확정 </label>
+                </div>
+              </div>
+
+              <input type="date" class="form-control" value="{{requestDate}}" id="contractListRequestDate" >
+            </div>
+          </div>
+        </div>
+
+        <!-- Cash receipts -->
+        <div class="">
+          <div class="row align-items-center">
+
+            <div class="col-6">
+              <div class="d-flex justify-content-between align-items-center flex-row">
+                <label class="form-label fw-bold m-0 p-0">현금영수증</label>
+
+                <!-- Receipt -->
+                <div class="form-check">
+                  <input class="form-check-input opacity-100" name="contractListReceipt" type="radio" id="contractListReceipt" >
+                  <label class="form-check-label opacity-100" for="contractListReceipt"> 신청 </label>
+                </div>
+              </div>
+            </div>
+
+            <div id="contractListReceiptDiv" class="col-6 d-none">
+              <div class="d-flex justify-content-between align-items-center flex-row flex-nowrap">
+                <!-- for income deduction -->
+                <div class="form-check">
+                  <input class="form-check-input opacity-100" type="radio" name="contractListCashReceipt" id="contractListIncomeDeduction" >
+                  <label class="form-check-label opacity-100" for="contractListIncomeDeduction"> 소득공제용 </label>
+                </div>
+
+                <!-- for proof of expenditure -->
+                <div class="form-check">
+                  <input class="form-check-input opacity-100" type="radio" name="contractListCashReceipt" id="contractListProofExpend" >
+                  <label class="form-check-label opacity-100" for="contractListProofExpend"> 지출증빙용 </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- number -->
+            <div class="col-12">
+              <input type="text" class="form-control mt-2" value="{{cashReceiptNum}}">
+            </div>
+          </div>
+      </div>
+    </template>
+
+    <!-- ORDER STATUS MODAL DETAILS -->
+    <template id="estimateDetailsTemplate">
+      <div class="modal-body p-0">
+
+        <div class="estDetailsTop px-4 pb-3 pt-2">
+          <div class="text-center h4 fw-bold mb-2"> 견적서 </div>
+
+          <div class="row gy-1">
+            <!-- customer name -->
+            <div class="col-12">
+              <div class="border-bottom pb-1">
+                <div class="row">
+                  <div class="col-4">
+                    <span class="fw-bold"> 고객명 </span>
+                  </div>
+                  <div class="col-8">
+                    <span> {{ name }} </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- phone number -->
+            <div class="col-12">
+              <div class="border-bottom pb-1">
+                <div class="row">
+                  <div class="col-4">
+                    <span class="fw-bold"> 전화번호 </span>
+                  </div>
+                  <div class="col-8">
+                    <span> {{ phoneNumber }} </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- apartment name -->
+            <div class="col-12">
+              <div class="border-bottom pb-1">
+                <div class="row">
+                  <div class="col-4">
+                    <span class="fw-bold"> 아파트명 </span>
+                  </div>
+                  <div class="col-8">
+                    <span> {{ address }} </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- East Lake -->
+            <div class="col-12">
+              <div class="border-bottom pb-1">
+                <div class="row">
+                  <div class="col-4">
+                    <span class="fw-bold"> 동호수 </span>
+                  </div>
+                  <div class="col-8">
+                    <span> {{ addressDetail }} </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- type -->
+            <div class="col-12">
+              <div class="border-bottom pb-1">
+                <div class="row">
+                  <div class="col-4">
+                    <span class="fw-bold"> 타입 </span>
+                  </div>
+                  <div class="col-8">
+                    <span> {{ type }} </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- average -->
+            <div class="col-12">
+              <div class="border-bottom pb-1">
+                <div class="row">
+                  <div class="col-4">
+                    <span class="fw-bold"> 평수 </span>
+                  </div>
+                  <div class="col-8">
+                    <span> {{ average }} </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- move-in date -->
+            <div class="col-12">
+              <div class="border-bottom pb-1">
+                <div class="row">
+                  <div class="col-4">
+                    <span class="fw-bold"> 입주일자 </span>
+                  </div>
+                  <div class="col-8">
+                    <span class="row"> 
+                      <span class="col">
+                        {{ moveInDate }}
+                      </span>
+                      <div class="col">
+                        <div class="form-check">
+                          <input class="form-check-input opacity-100" type="checkbox" id="moveinconfi">
+                          <label class="form-check-label opacity-100" for="moveinconfi"> 확정 </label>
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Construction request date -->
+            <div class="col-12">
+              <div class="border-bottom pb-1">
+                <div class="row">
+                  <div class="col-4">
+                    <span class="fw-bold"> 시공요청일자 </span>
+                  </div>
+                  <div class="col-8">
+                    <span class="row"> 
+                      <span class="col">
+                        {{ requestDate }}
+                      </span>
+                      <div class="col">
+                        <div class="form-check">
+                          <input class="form-check-input opacity-100" type="checkbox" id="workinconfi">
+                          <label class="form-check-label opacity-100" for="workinconfi"> 확정 </label>
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cash receipt -->
+            <div class="col-12">
+              <div class="border-bottom pb-1">
+                <div class="row">
+                  <div class="col-4">
+                    <span class="fw-bold"> 현금영수증 </span>
+                  </div>
+                  <div class="col-8">
+                    <span>  {{ cashReceipt }} </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- product selection -->
+            <div class="col-12">
+              <div class="border-bottom pb-1">
+                <div class="row">
+                  <div class="col-4">
+                    <span class="fw-bold"> 상품선택 </span>
+                  </div>
+                  <div class="col-8">
+                    <span> {{ product }} </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="estDetailsMid">
+          <div class="px-4 pb-3">
+            <div class="text-center h4 fw-bold m-2"> 견적 상세</div>
+
+            <!-- product -->
+            <div class="estDetailsMidProduct">
+              <!-- header -->
+              <div class="estDetailsMidProductHeader border-bottom py-1 px-3">
+                <div class="row gy-2">
+                  <div class="col-4 text-center">
+                    <span class="fw-bold text-center"> 품명 </span>
+                  </div>
+                  <div class="col-4 text-center">
+                    <span class="fw-bold text-center"> 수량 </span>
+                  </div>
+                  <div class="col-4 text-center">
+                    <span class="fw-bold text-center"> 단가 </span>
+                  </div>
+                </div>
+              </div>
+              <!-- body -->
+              <div id="estDetailsMidProductBody">
+                <div class="border-bottom py-1 px-3">
+                  <div class="row gy-2">
+                      <div class="col-4 text-center">
+                          <span class="text-center"> - </span>
+                      </div>
+                      <div class="col-4 text-center">
+                          <span class="text-center"> - </span>
+                      </div>
+                      <div class="col-4 text-center">
+                          <span class="text-center"> - </span>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- discount -->
+            <div class="estDetailsMidDiscount">
+              <div id="estDetailsMidDiscountContent">
+                <div class="border-bottom py-1 px-3">
+                  <div class="row gy-2">
+                      <div class="col-4 text-center">
+                          <span class="fw-bold text-center"> 할인 </span>
+                      </div>
+                      <div class="col-4 text-center">
+                          <span class="text-center"> - </span>
+                      </div>
+                      <div class="col-4 text-center">
+                          <span class="fw-bold text-center"> - </span>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- downpayment -->
+            <div class="estDetailsMidDownpayment">
+              <!-- content -->
+              <div class="estDetailsMidDownpaymentContent">
+                <div class="border-bottom py-1 px-3" style="border-width: 3px !important;">
+                  <div class="row gy-2">
+                    <div class="col-4 text-center">
+                      <span class="fw-bold text-center"> 계약금 </span>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="text-center text-danger"> · 계약금은 환불되지 않습니다.  </span>
+                    </div>
+                    <div class="col-4 text-center">
+                      <span class="fw-bold text-center"> {{ downpayment }} </span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- significant -->
+            <div class="estDetailsMidSignificant py-2 px-3">
+              <div class="row gx-3">
+                <div class="col-3">
+                  <span class="fw-bold"> 특이사항 </span>
+                </div>
+                <div class="col-9">
+                  <span> {{ note }} </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="estDetailsBot p-3">
+          <div class="d-flex justify-content-between align-items-center flex-row flex-wrap">
+            <div class="d-flex justify-content-start">
+              <span class="h5 fw-bold"> 총 결제금액</span>
+            </div>
+
+            <div class="form-check mx-3">
+              <input class="form-check-input opacity-100" type="checkbox" id="estVat">
+              <label class="form-check-label opacity-100" for="estVat"> VAT 포함 </label>
+            </div>
+            
+            <div class="d-flex justify-content-end align-items-end flex-row flex-nowrap">
+              <span class="h2 fw-bold"> {{ price }}</span>
+              <span class="ms-1">원</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- ORDER FILES NO DATA -->
+    <template id="orderFilesTemp">
+      <div class="modal-body">
+        <div class="text-center fw-bold h4"> {{ message }} </div>
+      </div>
+    </template>
+
+    <!-- ORDER FILES HAS DATA LIGHTBOX-->
+    <div id="orderFiles" class="orderFileImages d-none"></div>
+
+    <!-- MODAL CENTERED -->
+    <div class="modal  fade" id="globalModal" tabindex="-1" aria-labelledby="globalModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content ">
+          <div class="modal-header bg-primary text-white justify-content-center ">
+            <h5 class="modal-title modaltitle"></h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div id="globalModalCont" >
+            
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL NOT CENTERED -->
+    <div class="modal  fade" id="globalModalNC" tabindex="-1" aria-labelledby="globalModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white justify-content-center ">
+            <h5 class="modal-title modaltitleNC"></h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div id="globalModalContNC" >
+            
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    <!-- JAVASCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+    <script src="assets/vendors/jquery-3.6.1/jquery.min.js"></script>
+    <script src="assets/vendors/lightbox-jquery/lightbox.js"></script>
+    <script src="assets/vendors/stomp.js/stomp.js"></script>
+    <script src="assets/vendors/dataTables-1.13.1/js/datatables.min.js"></script>
+    <script src="assets/vendors/bootstrap-5.1.3/js/bootstrap.bundle.js"></script>
+    <script src="assets/vendors/select2-4.1.x/js/select2.min.js"></script>
+    <script src="assets/vendors/bootPag.js/bootPag.min.js"></script>
+    <script src="assets/vendors/mustache-4.2.0/mustache.js"></script>
+    <script src="assets/vendors/notify.js/notify.min.js"></script>
+    <script src="assets/javascript/vendor.js"></script>
+    <script src="assets/javascript/function.js"></script>
+    <script src="assets/javascript/dom.js"></script>
+    <script src="assets/javascript/auth.js"></script>
+    <script src="assets/javascript/main.js"></script>
+    <script src="assets/javascript/calendar_d.js"></script>   <!-- daily -->
+    <script src="assets/javascript/calendar_mw.js"></script>  <!-- monthly/ weekly -->
+    <script src="assets/javascript/profile.js"></script>
+    <script src="assets/javascript/contractlist.js"></script>
+    <script src="assets/javascript/contractview.js"></script>
+    <script src="assets/javascript/contractwriting.js"></script>
+    <script src="assets/javascript/orderstatus.js"></script>
+    <script src="assets/javascript/ordermanagement.js"></script>
+    <script src="assets/javascript/filemanagement.js"></script>
+    <script src="assets/javascript/onlinefair.js"></script>
+    <script src="assets/javascript/fairmanagement.js"></script>
+    <script src="assets/javascript/tenantmanagement.js"></script>
+    <script src="assets/javascript/paymentrequest.js"></script>
+    <script src="assets/javascript/servicemanagement.js"></script>
+    <script src="assets/javascript/sendphotos.js"></script>
+    <script src="assets/javascript/technicianmanagement.js"></script>
+    <script src="assets/javascript/consulting.js"></script>
+    <script src="assets/javascript/cardusage.js"></script>
+    <script src="assets/javascript/subscribermanagement.js"></script>
+    <script src="assets/javascript/constractormanagement.js"></script>
+    <script src="assets/javascript/superadmin.js"></script>
+    <script> if(session === null){ window.location.href = 'login.html'; } </script>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+      import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-messaging.js";
+      
+      function requestPermission() {
+        // console.log('Requesting permission...');
+        Notification.requestPermission().then((permission) => {
+          if (permission === 'granted') {
+            // console.log('Notification permission granted.');
+            const firebaseConfig = {
+                apiKey: "AIzaSyCI4Io4iapiA6KyGQfjFIei4iVuFlIRaLk",
+                authDomain: "superman-diary.firebaseapp.com",
+                projectId: "superman-diary",
+                storageBucket: "superman-diary.appspot.com",
+                messagingSenderId: "893789207027",
+                appId: "1:893789207027:web:f5b82e7860fd5984333a86",
+                measurementId: "G-MT0VH9565L"
+            };
+            
+            const app = initializeApp(firebaseConfig);
+            const messaging = getMessaging(app);
+            const key = 'BN5BEiSVaNrn5e0cM_5W3xaScjgLRtqXpcL3SNsC5AhUgUmYAxulrxRWJC3qfCbWrMbCYBIVx3XdKiLsd80vahI';
+            getToken(messaging, { vapidKey: key }).then((fcm) => {
+              if (fcm) {localStorage.setItem('FCM', fcm);}
+              // else {console.log('No registration token available. Request permission to generate one.');}
+            }).catch((err) => {
+              // console.log('An error occurred while retrieving token. ', err);
+            });
+          } 
+          // else { console.log('no permission.') }
+        });
+      }
+
+      requestPermission();
+    </script>
+
+    <script>
+      
+    </script>
+  </body>
+</html>

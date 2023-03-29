@@ -1,0 +1,194 @@
+
+#home_page {
+    #daily_view {
+        height: calc(100vh - 246px - 2rem) !important;
+        max-height: calc(100vh - 246px - 2rem) !important;
+        padding-left: $s4;
+        padding-top: $s3;
+        padding-bottom: 0;
+        padding-right: 0;
+
+        #daily_title {
+            font-weight: bold;
+            margin-bottom: $s3;
+        }
+
+        #daily_date-column {
+            overflow-x: hidden !important;
+            overflow-y: hidden;
+
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: nowrap;
+
+            min-height: 100px;
+            max-height: 100px;
+            user-select: none;
+            margin-bottom: $s3;
+            // border: 1px solid red;
+
+            &::-webkit-scrollbar{
+                width: 0 !important;
+                background-color:transparent !important;
+            }
+
+            .fetchedDates {
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                flex-direction: row;
+                flex-wrap: nowrap;
+
+                .daily_date-column-legend {
+                    text-align: center;
+                    padding-left: 36px;
+                    padding-right: 36px;
+                    padding-top: $s2;
+                    padding-bottom: $s2;
+                    margin-right: $s3;
+                    border-radius: 0.4rem !important;
+    
+                    &.active {
+                        background-color: $primary;
+                        color: $white;
+                        opacity: 100%;
+                    }
+    
+                    &:not(.active) {
+                        background-color: $secondary;
+                        color: $dark;
+                        opacity: 30% !important;
+                    }
+                
+                    .weekday {
+    
+                    }
+    
+                    .weekdate {
+                        font-size: 36px;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+
+        #daily_subtitle {
+            // border: 1px solid red;
+            margin-bottom: $s3;
+            font-weight: bold;
+        }
+
+        #daily_eventTime-column {
+            // overflow-y-auto flex-grow-1 me-1
+            overflow-y: auto;
+            flex-grow: 1;
+            margin-right: $s1;
+
+            display: flex;
+            justify-self: start;
+            align-items: start;
+            flex-direction: row;
+            flex-wrap: nowrap;
+
+            &::-webkit-scrollbar{
+                width: 0 !important;
+                background-color:transparent !important;
+            }
+
+
+            #daily_time_column {
+                // border-end pe-3 me-3
+                border-right: 1px solid #dee2e6;
+                padding-right: $s3;
+                margin-right: $s3;
+
+                display: flex;
+                justify-content: start;
+                align-items: start;
+                flex-direction: column;
+
+                .daily_time-time {
+                    height: 80px;
+                }
+            }
+
+            #event-holiday {
+                height: 1920px;
+                margin-right: $s2;
+
+                display: flex;
+                justify-content: start;
+                align-items: start;
+                flex-direction: row;
+                flex-wrap: nowrap;
+            
+                .event {
+                    width: 100px !important;
+                    height: inherit !important;
+                }
+            }
+
+            #event-tasks {
+                height: 1920px;
+                flex-grow: 1;
+                display: flex;
+                justify-content: start;
+                align-items: start;
+                flex-direction: column;
+
+                .event-lists {
+                    height: 80px;
+
+                    display: flex;
+                    justify-content: start;
+                    align-items: start;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+
+                    .event {
+                        width: 100px !important;
+                    }
+                }
+            }
+
+        }
+    }
+
+    #homeChat-sec {
+        height: calc(((100vh - 246px - 2rem) / 2) - 0.5rem) !important;
+        max-height: calc(((100vh - 246px - 2rem) / 2) - 0.5rem) !important;
+
+        #homeChatCont {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-top: $s1;
+        }
+    }
+
+    #homeOrder-sec {
+        height: calc(((100vh - 246px - 2rem) / 2) - 0.5rem) !important;
+        max-height: calc(((100vh - 246px - 2rem) / 2) - 0.5rem) !important;
+
+        #homeOrderCont {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-top: $s1;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

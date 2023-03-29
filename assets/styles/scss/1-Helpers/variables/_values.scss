@@ -1,0 +1,22 @@
+$size: 1rem !default;
+
+$s1: $size * .25;
+$s2: $size * .5;
+$s3: $size;
+$s4: $size * 1.5;
+$s5: $size * 3;
+$sauto : auto;
+
+$dimensions: (
+    '0' : 0, 
+    '1' : 0.2rem,
+    '2' : 0.25rem, 
+    '3' : 0.3rem, 
+    '4' : 0.35rem, 
+    '5' : 0.4rem, 
+    '6' : 0.45rem, 
+    '7' : 0.5rem, 
+    '8' : 0.55rem, 
+    '9' : 0.6rem, 
+    '10' : 0.65rem
+ );

@@ -1,0 +1,430 @@
+#viewallcontracts-03_div {
+    .calendar-card {
+        // border: 1px solid red;
+        width: 100% !important;
+        overflow-y: auto !important;
+        padding-bottom: $s2;
+
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        &.max-h {
+            min-height: calc(100vh - (150px + $s5 + (4 * $s3) ))!important;
+            max-height: calc(100vh - (150px + $s5 + (4 * $s3) ))!important;
+            height: calc(100vh - (150px + $s5 + (4 * $s3) )) !important;
+            overflow-y: hidden !important;
+        }
+
+        #monthly_view {
+            display: flex;
+            max-height: inherit;
+            width: 100% !important;
+
+            #monthly_workers-container {
+                min-height: inherit;
+                display: flex;
+                flex-direction: column;
+                min-width: 90px;
+                font-weight: bold;
+                text-align: center;
+                border: 1px solid #dee2e6;
+                border-radius: 0.35rem !important;
+
+                .monthly_workers-head {
+                    height: 40px;
+                    padding: $s2;
+                    border-bottom: 1px solid #dee2e6;
+                    user-select: none;
+
+                    .monthly_workers-all {
+                        cursor: pointer;
+                        &.active {
+                            background-color: $transparent;
+                            color: $primary;
+                        }
+                    }
+                }
+
+                #monthly_workers-body {
+                    flex-grow: 1;
+                    // border: 1px solid red;
+
+                    .monthly_workers-name {
+                        padding-top: $s3;
+                        padding-bottom: $s3;
+                        // flex-grow: 1;
+                        user-select: none;
+
+                        &.selected {
+                            background-color: $primary;
+                            color: $white;
+                        }
+                        &.active {
+                            background-color: $transparent;
+                            color: $primary;
+                        }
+                    }
+                }
+            }
+
+            #monthly_calendar-container {
+                flex-grow: 1 !important;
+                margin-left: $s2;
+                min-width: 842px;
+
+                display: flex;
+                flex-direction: column;
+                border-left: 1px solid #dee2e6;
+                border-top: 1px solid #dee2e6;
+                box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+
+                .monthly_calendar-head {
+                    display: inline-flex;
+                        
+                        .monthly_calendar-head-legend {
+                            padding: $s2;
+                            height: 40px;
+                            min-width: 120px;
+                            width: calc(100% / 7);
+                            border-bottom: 1px solid #dee2e6;
+                            border-right: 1px solid #dee2e6;
+                            font-weight: bold;
+                            
+                            &:first-child {
+                                color: $danger;
+                                // border-right: 0px solid #dee2e6;
+                            }
+    
+                            .weekday {
+                                text-align: end;
+                                
+                            }
+                        }
+
+                }
+
+                .monthly_calendar-body {
+                    #monthly_calendar-body-days {
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+
+                        .dayDiv {
+                            width: calc(100% / 7);
+                            min-width: 120px !important;
+                            // max-width: 140px !important;
+                            border-bottom: 1px solid #dee2e6;
+                            border-right: 1px solid #dee2e6;
+                            padding: $s2;
+
+                            &.hovered {
+                                background: $blueGray-100;
+                            }
+
+                            &.fix-h {
+                                height: 115px;
+                                max-height: 115px;
+                                overflow: hidden;
+                            }
+                            
+                            &:nth-child(1), &:nth-child(8), &:nth-child(15), &:nth-child(22), &:nth-child(29), &:nth-child(36) {
+                                // border-right: 0px solid #dee2e6;
+                                .date {
+                                    color: $danger !important;
+                                }
+                            }
+
+                            .today {
+                                font-weight: bolder !important;
+                                color: $primary !important;
+                            }
+
+                            .date {
+                                user-select: none;
+                                font-weight: bold;
+                                display: block;
+                                text-align: end;
+                                color: $dark;
+                            }
+
+                            .nxtdate, .prevdate {
+                                opacity: 0.5;
+                            }
+                        }
+                    }
+                }
+            }
+
+            #monthly_contracts-container {
+                white-space: nowrap !important;
+                margin-left: $s2;
+                min-width: 480px;
+                text-align: center;
+                min-height: inherit;
+                display: flex;
+                flex-direction: column;
+
+                .monthly_contracts-head {
+                    height: 40px;
+                    background: $primary;
+                    color: $white;
+                    padding: $s2;
+                    align-items: center;
+                    border-top-right-radius: 0.35rem !important;
+                    border-top-left-radius: 0.35rem !important;
+                    font-size: 14px;
+                }
+
+                .monthly_contracts-body {
+                    font-size: 12px;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    border: 1px solid #dee2e6;
+                    border-bottom-right-radius: 0.35rem !important;
+                    border-bottom-left-radius: 0.35rem !important;
+                    flex-grow: 1;
+                    
+                    .monthly-contracts {
+                        margin: $s2;
+                        padding: $s2;
+                        border-radius: 0.25rem !important;
+                        user-select: none;
+                        $num-colors: 100;
+    
+                        @for $i from 0 to $num-colors {
+                            &:nth-child(#{$i}) {
+                                @include random-border();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #weekly_view {
+            display: flex;
+            max-height: inherit;
+            min-height: inherit;
+            height: inherit;
+            width: 100% !important;
+
+            #weekly_workers-container {
+                max-height: inherit;
+                min-height: inherit;
+                height: inherit;
+                display: flex;
+                flex-direction: column;
+                min-width: 90px;
+                font-weight: bold;
+                text-align: center;
+                border: 1px solid #dee2e6;
+                border-radius: 0.35rem !important;
+                
+                #weekly_workers-head {
+                    min-height: 40px;
+                    padding: $s2;
+                    user-select: none;
+                    border-bottom: 1px solid #dee2e6;
+                }
+
+                #weekly_workers-body {
+                    flex-grow: 1;
+                    width: inherit;
+                    // max-height: calc(100vh - (198px + $s5 + (2 * $s3) )) !important;
+                    // min-height: calc(100vh - (198px + $s5 + (2 * $s3) )) !important;
+                    // height: calc(100vh - (198px + $s5 + (2 * $s3) )) !important;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+
+                    &::-webkit-scrollbar{
+                        width:0;
+                        background-color:transparent;
+                    }
+
+                    .weekly_workers-name {
+                        padding-top: $s2;
+                        padding-bottom: $s2;
+                        flex-grow: 1;
+                        user-select: none;
+                        border-bottom: 1px solid #dee2e6;
+                        min-height: 80px !important;
+
+                    }
+                }
+            }
+
+            #weekly_calendar-container {
+                max-height: inherit;
+                min-height: inherit;
+                height: inherit;
+                flex-grow: 1;
+                margin-left: $s2;
+                min-width: 842px;
+
+                display: flex;
+                flex-direction: column;
+                border-left: 1px solid #dee2e6;
+                border-top: 1px solid #dee2e6;
+                box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+                
+                #weekly_calendar-head {
+                    display: inline-flex;
+                    border-right: 1px solid #dee2e6;
+                        
+                        .weekly_calendar-head-legend {
+                            padding: $s2;
+                            height: 40px;
+                            min-width: 120px;
+                            width: calc(100% / 7);
+                            border-bottom: 1px solid #dee2e6;
+                            // border-right: 1px solid #dee2e6;
+                            font-weight: bold;
+
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            flex-direction: row;
+                            flex-wrap: nowrap;
+                            
+                            &:not(:last-child) {
+                                border-right: 1px solid #dee2e6;
+                                // border-right: 0px solid #dee2e6 !important;
+                            }
+
+                            &:first-child {
+                                color: $danger;
+                                // border-right: 0px solid #dee2e6;
+                            }
+    
+                            .weekdate {
+                                text-align: start;
+                                font-size: 26px; 
+                            }
+
+                            .weekday {
+                                text-align: end;
+                            }
+                        }
+
+                }
+
+                #weekly_calendar-body {
+                    display: inline-flex;
+                    flex-grow: 1;
+                    // max-height: min-content;
+                    // width: inherit;
+                    border-right: 1px solid #dee2e6;
+                    border-bottom: 1px solid #dee2e6;
+                    // border: 1px solid red;/
+                    // max-height: calc(100vh - (198px + $s5 + (2 * $s3) )) !important;
+                    // min-height: calc(100vh - (198px + $s5 + (2 * $s3) )) !important;
+                    // height: calc(100vh - (198px + $s5 + (2 * $s3) )) !important;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    // scroll: hidden;
+
+                    &::-webkit-scrollbar{
+                        width:0;
+                        background-color:transparent;
+                    }
+
+                    .weekly_calendar-body-legend {
+                        // border-bottom: 1px solid #dee2e6;
+                        // border-right: 1px solid #dee2e6;
+                        // flex-grow: 1;
+                        width: calc(100% / 7) !important;
+                        // border: 1px solid red;
+                        min-width: 120px !important;
+                        // max-height: calc(100vh - (80px + (2 * $s3)  + (2 * $s3) + 26px + (1 * $s5))) !important;
+                        height: fit-content;
+                        min-height: 80px !important;
+                        
+                        &:not(:last-child) {
+                            border-right: 1px solid #dee2e6;
+                            // border-right: 0px solid #dee2e6 !important;
+                        }
+                        .event-list {
+                            border-bottom: 1px solid #dee2e6;
+                            padding-left: $s2;
+                            padding-right: $s2;
+                            padding-top: $s2;
+                            flex-grow: 1;
+                            font-size: 12px;
+                            min-height: 80px !important;
+
+                            display: flex;
+                            flex-direction: column;
+                            
+                            &.hovered {
+                                background: $blueGray-100;
+                            }
+                            .event {
+                                margin-bottom: $s2;
+                                text-align: center;
+                                padding: $s2;
+                                
+
+                                &.holiday {
+                                    min-height: 72px;
+                                    flex-grow: 1;
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            }
+
+            #weekly_contracts-container {
+                white-space: nowrap !important;
+                margin-left: $s2;
+                min-width: 480px;
+                text-align: center;
+                min-height: inherit;
+                display: flex;
+                flex-direction: column;
+
+                .weekly_contracts-head {
+                    height: 40px;
+                    background: $primary;
+                    color: $white;
+                    padding: $s2;
+                    align-items: center;
+                    border-top-right-radius: 0.35rem !important;
+                    border-top-left-radius: 0.35rem !important;
+                    font-size: 14px;
+                }
+
+                .weekly_contracts-body {
+                    font-size: 12px;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    border: 1px solid #dee2e6;
+                    border-bottom-right-radius: 0.35rem !important;
+                    border-bottom-left-radius: 0.35rem !important;
+                    flex-grow: 1;
+                    
+                    .weekly-contracts {
+                        margin: $s2;
+                        padding: $s2;
+                        border-radius: 0.25rem !important;
+                        user-select: none;
+                        $num-colors: 100;
+    
+                        @for $i from 0 to $num-colors {
+                            &:nth-child(#{$i}) {
+                                @include random-border();
+                            }
+                        }
+                    }
+                }
+            }
+        
+        }
+    }
+}

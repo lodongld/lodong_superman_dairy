@@ -1,0 +1,615 @@
+#master_page {
+    #subscriberManagement {
+        min-height: calc(100vh - 50px) !important;
+        z-index: 101;
+        border-top-left-radius: $s4;
+        border-top-right-radius: $s4;
+        border-bottom-right-radius: $s4;
+        background: $transparent;
+        
+        
+        @include breakpoint-xl {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+            background: $white !important;
+        }
+
+        .smCard1 {
+            min-height: calc(100vh - 50px) !important;
+            border-top-left-radius: $s4;
+            border-top-right-radius: $s4;
+            border-bottom-right-radius: $s4;
+            background: $white !important;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+
+            @include breakpoint-xl {
+                border-top-left-radius: $s4;
+                border-top-right-radius: $s4;
+                border-bottom-right-radius: 0;
+                box-shadow: none !important;
+                background: $transparent !important;
+            }
+        }
+
+        .smCard2 {
+            height: calc(100vh - 50px);
+            background: $transparent !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @include breakpoint-xl {
+                width: 100%;
+                height: auto;
+                justify-content: center;
+                align-items: start;
+                background: $transparent !important;
+                box-shadow: none !important;
+            }
+
+            .smCard2-content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                margin: $s5 0 !important;
+                border-radius: $s2;
+                background: $white !important;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+
+                @include breakpoint-xl {
+                    // width: 100%;
+                    margin: 0 !important;
+                    border-radius: 0;
+                    justify-content: start;
+                    align-items: center;
+                    background: $transparent !important;
+                    box-shadow: none !important;
+                }
+            }
+
+        }
+    }
+
+    #constructorManagement {
+        min-height: calc(100vh - 50px);
+
+        .cmContentDiv {
+            min-height: calc(100vh - 50px - (2 * $s5) - 128px - (2 * $s3));
+            margin: $s2 0;
+            // border: 1px solid red;
+            
+            #cmContentDataDiv {
+                min-height: calc(100vh - 50px - (2 * $s5) - 128px - (2 * $s3) - 40px);
+                max-height: calc(100vh - 50px - (2 * $s5) - 128px - (2 * $s3) - 40px);
+                width: 100%;
+                // border: 1px solid red;
+                display: flex !important;
+                justify-content: start !important;
+                align-items: start !important;
+                margin: 0;
+                padding: 0;
+                overflow-y: auto;
+
+                #cmContentData {
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    // border: 1px solid red; 
+                    
+                    .cmCDC {
+                        &:first-child, &:nth-child(2) {
+                            .cmDatas {
+                                border-top: 1px solid #dee2e6 !important;
+                            }
+                        }
+    
+                        @include breakpoint-xl {
+                            &:nth-child(2) {
+                                .cmDatas {
+                                    border-top: 0px solid #dee2e6 !important;
+                                }
+                            }
+                        }
+                    
+                        .cmDatas {
+                            padding: $s2 0;
+                            border-bottom: 1px solid #dee2e6;
+                            display: flex;
+                            justify-content: start;
+                            align-items: center;
+                            flex-direction: row;
+                            flex-wrap: nowrap;
+    
+                            .cmDataDetails {
+                                margin-left: $s3;
+                                display: flex;
+                                justify-content: start;
+                                align-items: start;
+                                flex-direction: column;
+                                flex-wrap: nowrap;
+    
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            #cmContentPagination {
+                margin-top: $s3;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+            }
+        }
+    }
+
+    #superAdmin {
+        .saContentDiv {
+            min-height: calc(100vh - 50px - (2 * $s5) - 120px - (2 * $s3));
+            // border: 1px solid red;
+
+            .saContent {
+                min-height: inherit;
+
+                .saContentLeft {
+
+                    .datalist {
+                        width: 100%;
+                        margin-bottom: $s2;
+                        cursor: pointer;
+                        user-select: none;
+                        font-size: 14px;
+                        // border: 1px solid red;
+                        &.active {
+                            color: $primary !important;
+                        }
+
+                        &:hover {
+                            color: $blue-500 !important;
+                        }
+                    }
+
+                    .saCont {
+                        width: 100%;
+                        margin-bottom: $s2;
+                        cursor: pointer;
+                        user-select: none;
+                        font-size: 14px;
+
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        flex-direction: row;
+                        flex-wrap: nowrap;
+
+                        &.active {
+                            color: $primary !important;
+                        }
+
+                        &:hover {
+                            color: $blue-500 !important;
+                        }
+
+                        .saContName {
+                            flex-grow: 1;
+                            // border: 1px solid red;
+                        }
+
+                        .saContDelBtn {
+                            box-shadow: none;
+                            background: $transparent;
+                            border: 0;
+                            // padding: 0 $s;
+                            padding-right: $s1;
+                            padding-left: $s2;
+                        }
+                    }
+
+                    .accordion {
+                        .accordion-button {
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            width: 100%;
+                            padding: $s2 !important;
+                            font-size: 14px;
+                            font-weight: bold;
+                            color: $dark;
+                            text-align: left;
+                            background-color: #fff;
+                            border: 0;
+                            border-radius: $s1;
+                            overflow-anchor: none;
+                            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
+                            
+                            @media (prefers-reduced-motion: reduce) {
+                                transition: none;
+                            }
+    
+    
+                            &:not(.collapsed) {
+                                // color: #0034b5;
+                                color: $dark;
+                                background-color: $white;
+                                // box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+                                box-shadow: none !important;
+    
+                                border-bottom: 1px solid $default !important;
+                                border-bottom-right-radius: 0 !important;
+                                border-bottom-left-radius: 0 !important;
+                            }
+    
+                            &:not(.collapsed)::after {
+                                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+                                transform: rotate(-180deg);
+                                // 230034b5
+                            }
+    
+                            &::after {
+                                flex-shrink: 0;
+                                width: $s3;
+                                height: $s3;
+                                margin-left: auto;
+                                content: "";
+                                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+                                background-repeat: no-repeat;
+                                background-size: $s3;
+                                transition: transform 0.2s ease-in-out;
+    
+                                @media (prefers-reduced-motion: reduce) {
+                                    transition: none;
+                                }
+    
+                            }
+    
+                            &:hover {
+                                z-index: 2;
+                            }
+    
+                            &:focus {
+                                z-index: 3;
+                                border-color: $default;
+                                outline: 0;
+                                // box-shadow: 0 0 0 0.25rem rgba(0, 58, 201, 0.25);
+                                box-shadow: none !important;
+                            }
+                        }
+                            
+    
+                        .accordion-header {
+                            margin-bottom: 0;
+                        }
+    
+                        .accordion-item {
+                            background-color: #fff;
+                            border: 1px solid rgba(0, 0, 0, 0.125);
+    
+                            &:first-of-type {
+                                border-top-left-radius: $s1;
+                                border-top-right-radius: $s1;
+                            }
+    
+                            &:first-of-type .accordion-button {
+                                border-top-left-radius: $s1;
+                                border-top-right-radius: $s1;
+                            }
+    
+                            &:not(:first-of-type) {
+                                border-top: 0;
+                            }
+    
+                            &:last-of-type {
+                                border-bottom-right-radius: $s1;
+                                border-bottom-left-radius: $s1;
+                            }
+    
+                            &:last-of-type .accordion-button.collapsed {
+                                border-bottom-right-radius: $s1;
+                                border-bottom-left-radius: $s1;
+                            }
+    
+                            &:last-of-type .accordion-collapse {
+                                border-bottom-right-radius: $s1;
+                                border-bottom-left-radius: $s1;
+                            }
+                        }
+    
+                        .accordion-body {
+                            padding: $s1 $s2;
+                            min-height: inherit !important;
+                        }
+    
+                        &.accordion-flush .accordion-collapse {
+                            border-width: 0;
+    
+                            .accordion-item {
+                                border-right: 0;
+                                border-left: 0;
+                                border-radius: 0;
+                            }
+                            .accordion-item:first-child {
+                                border-top: 0;
+                            }
+                            .accordion-item:last-child {
+                                border-bottom: 0;
+                            }
+                            .accordion-item .accordion-button {
+                                border-radius: $s1 !important;
+                            }
+                        }
+                    }
+
+                    #saOnlineFairDiv {
+                        #saOnlineFairBody {
+                            // min-height: calc(100vh - 50px - (2 * $s5) - 120px - (2 * $s3) - 114px - (2 * $s2)) !important;
+                            // height: calc(100vh - 50px - (2 * $s5) - 120px - (2 * $s3) - 114px - (2 * $s2)) !important;
+                            max-height: calc(100vh - 50px - (2 * $s5) - 120px - (2 * $s3) - 114px - (2 * $s2)) !important;
+                            overflow-y: auto;
+                            padding-top: $s2 !important;
+                            padding-bottom: 0 !important;
+                        }
+                    }
+
+                    #saCategoryDiv {
+                        #saCategoryBody {
+                            // min-height: calc(100vh - 50px - (2 * $s5) - 120px - (2 * $s3) - 114px - (2 * $s2)) !important;
+                            // height: calc(100vh - 50px - (2 * $s5) - 120px - (2 * $s3) - 114px - (2 * $s2)) !important;
+                            max-height: calc(100vh - 50px - (2 * $s5) - 120px - (2 * $s3) - 114px - (2 * $s2)) !important;
+                            overflow-y: auto;
+                            padding-top: $s2 !important;
+                            padding-bottom: 0 !important;
+                        }
+                    }
+
+                    #saContractorDiv {
+                        #saContractorBody {
+                            // min-height: calc(100vh - 50px - (2 * $s5) - 120px - (2 * $s3) - 114px - (2 * $s2)) !important;
+                            // height: calc(100vh - 50px - (2 * $s5) - 120px - (2 * $s3) - 114px - (2 * $s2)) !important;
+                            max-height: calc(100vh - 50px - (2 * $s5) - 120px - (2 * $s3) - 114px - (2 * $s2)) !important;
+                            overflow-y: auto;
+                            padding-top: $s2 !important;
+                            padding-bottom: 0 !important;
+                        }
+                    }
+
+
+                }
+
+                .saContentRight {
+                    height: 100%;
+
+                    .saContentRightTop {
+                        // py-4 px-3
+                        padding: $s4 $s3 0 $s3;
+                        // padding-bottom: $s2;
+
+                        .saCRTChild {
+                            // mb-3 d-flex justify-content-start align-items-center flex-nowrap
+                            margin-bottom: $s3;
+                            display: flex;
+                            justify-content: start;
+                            align-items: start;
+                            flex-direction: row;
+                            flex-wrap: nowrap;
+                            // border: 1px solid red;
+
+                            .saCRTChildLabel {
+                                // text-end fw-bold fs-14px
+                                text-align: end;
+                                font-weight: bold;
+                                font-size: 14px;
+                                min-width: 60px;
+                                max-width: 60px;
+                                white-space: wrap !important;
+                            }
+
+
+                            .saCRTChildDataImgDiv {
+                                display: flex;
+                                justify-content: end;
+                                align-items: center;
+                                width: 60px;
+
+                                .saCRTChildDataImgCont {
+                                    border-radius: 100%;
+                                    overflow: hidden;
+                                    height: 44px;
+                                    width: 44px;
+
+                                    .saCRTChildDataImg {
+                                        height: 44px;
+                                        width: 44px;
+                                        
+                                    }
+                                }
+                            }
+
+                            .saCRTChildDataName {
+                                // flex-grow-1 ms-3 d-flex justify-content-start align-items-center fs-14px text-dark fw-bold
+                                flex-grow: 1;
+                                margin-left: $s3;
+                                display: flex;
+                                justify-content: start;
+                                align-items: center;
+                                font-size: 14px;
+                                color: $dark;
+                                font-weight: bold;
+                                height: 44px;
+
+                                // border: 1px solid red;
+                            }
+
+                            .saCRTChildDataProduct {
+
+                            }
+
+                            .saCRTChildData, .saCRTChildDataProduct {
+                                // flex-grow-1 ms-3 pe-3 fs-14px
+                                flex-grow: 1;
+                                margin-left: $s3;
+                                padding-right: $s3;
+                                font-size: 14px;
+                            }
+                        }
+                    }
+
+                    .saContentRightMid {
+                        margin: 0 $s3;
+                    }
+
+                    .saContentRightBot {
+                        // mt-3 px-3
+                        margin-top: $s3;
+                        margin-bottom: $s3;
+                        padding: 0 $s3;
+
+                        #saForm {
+                            .form-label {
+                                font-size: 14px;
+                                font-weight: bold;
+                            }
+
+                            #saFormTagDiv {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: start;
+                                flex-direction: row;
+                                flex-wrap: nowrap;
+
+                                #saFormTag {
+                                    font-size: 14px;
+                                }
+
+                                #saFormTagBtn {
+                                    font-size: 14px;
+                                    background: $transparent !important;
+                                    padding: 0 !important;
+                                    box-shadow: none;
+                                    border: 0;
+                                }
+                            }
+
+                            #saFormFileContainer {
+                                user-select: none;
+                                border-radius: $s1;
+                                
+                                border: 1px solid $default;
+                                
+                                #saFormFileDiv{
+                                    padding-top: $s2;
+                                    padding-bottom: $s2;
+
+                                    border-top-left-radius: $s1;
+                                    border-top-right-radius: $s1;
+                                    font-size: 14px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    flex-direction: row;
+                                    flex-wrap: nowrap;
+
+                                    cursor: pointer;
+                                    
+                                    p {
+                                        margin-left: $s2;
+                                        font-size: 14px;
+                                    }
+
+                                    &.hasBg {
+                                        background: #E9ECEF;
+                                    }
+                                }
+
+                                #saFormFileThumbDiv {
+                                    border-top: 1px solid $default;
+                                    padding: $s2;
+                                    
+
+                                    &First {
+                                        display: flex;
+                                        justify-content: start;
+                                        align-items: center;
+                                        flex-direction: row;
+                                        flex-wrap: nowrap;
+
+                                        i {
+                                            margin-left: $s3;
+                                            margin-right: $s3;
+                                        }
+
+                                        p {
+                                            font-size: 14px;
+                                        }
+                                    }
+
+                                    &Last {
+                                        margin-top: $s2;
+                                        height: 160px;
+
+                                        #saFormFileThumbImg {
+                                            border: 1px solid $default;
+                                            border-radius: $s1;
+                                            display: block;
+                                            height: 160px;
+                                            margin: 0 auto;
+                                        }
+                                    }
+                                }
+                            }
+
+                            #saFormFileDisplayContainer {
+                                // card rounded-2 p-3 pb-1 overflow-hidden
+                                border-radius: $s1;
+                                padding: $s2;
+                                overflow: hidden;
+                                border: 1px solid $default;
+
+                                #saFormFileDisplayDiv {
+                                    display: flex;
+                                    justify-content: start;
+                                    align-items: center;
+                                    flex-direction: row;
+                                    flex-wrap: nowrap;
+
+                                    #saFormFileDisplayDelBtn {
+                                        font-size: 12px;
+                                    }
+
+                                    i {
+                                        margin-left: $s3;
+                                        margin-right: $s3;
+                                    }
+
+                                    p {
+                                        font-size: 14px;
+                                    }
+                                }
+
+                                #saFormFileDisplayImgDiv {
+                                    margin-top: $s2;
+                                    height: 160px;
+
+                                    #saFormFileDisplayImg {
+                                        border: 1px solid $default;
+                                        border-radius: $s1;
+                                        display: block;
+                                        height: 160px;
+                                        margin: 0 auto;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,261 @@
+.outline-0 {
+    outline: 0 !important;
+}
+
+@each $name, $dimension in $dimensions {
+  .rounded-#{$name} {
+    border-radius: $dimension !important;
+    }
+}
+
+@each $name, $dimension in $dimensions {
+    .rounded-bot-#{$name} {
+        border-bottom-right-radius: $dimension !important;
+        border-bottom-left-radius: $dimension !important;
+    }
+}
+
+
+@each $name, $dimension in $dimensions {
+    .rounded-top-#{$name} {
+        border-top-right-radius: $dimension !important;
+        border-top-left-radius: $dimension !important;
+    }
+}
+
+@each $name, $dimension in $dimensions {
+    .rounded-start-#{$name} {
+        border-top-left-radius: $dimension !important;
+        border-bottom-left-radius: $dimension !important;
+    }
+}
+
+@each $name, $dimension in $dimensions {
+    .rounded-end-#{$name} {
+        border-top-right-radius: $dimension !important;
+        border-bottom-right-radius: $dimension !important;
+    }
+}
+
+
+@each $name, $dimension in $dimensions {
+    .rounded-bot-start-#{$name} {
+        border-bottom-left-radius: $dimension !important;
+    }
+}
+
+@each $name, $dimension in $dimensions {
+    .rounded-bot-end-#{$name} {
+        border-bottom-right-radius: $dimension !important;
+    }
+}
+
+@each $name, $dimension in $dimensions {
+    .rounded-top-start-#{$name} {
+        border-bottom-left-radius: $dimension !important;
+    }
+}
+
+@each $name, $dimension in $dimensions {
+    .rounded-top-end-#{$name} {
+        border-top-right-radius: $dimension !important;
+    }
+}
+
+
+
+
+
+
+
+
+// RADIUS
+
+
+// .rounded-top-start {
+//     border-top-left-radius: 0.2rem !important;
+// }
+
+// .rounded-top-start-1 {
+//     border-top-left-radius: 0.25rem !important;
+// }
+
+// .rounded-top-start-2 {
+//     border-top-left-radius: 0.3rem !important;
+// }
+
+// .rounded-top-start-3 {
+//     border-top-left-radius: 0.35rem !important;
+// }
+
+// .rounded-top-start-4 {
+//     border-top-left-radius: 0.35rem !important;
+// }
+
+// .rounded-top-start-5 {
+//     border-top-left-radius: 0.4rem !important;
+// }
+
+// .rounded-top-start-6 {
+//     border-top-left-radius: 0.45rem !important;
+// }
+
+// .rounded-top-start-7 {
+//     border-top-left-radius: 0.5rem !important;
+// }
+
+// .rounded-top-start-8 {
+//     border-top-left-radius: 0.55rem !important;
+// }
+
+// .rounded-top-start-9 {
+//     border-top-left-radius: 0.6rem !important;
+// }
+
+// .rounded-top-start-10 {
+//     border-top-left-radius: 0.65rem !important;
+// }
+
+// .rounded-top-end {
+//     border-top-right-radius: 0.2rem !important;
+// }
+
+// .rounded-top-end-1 {
+//     border-top-right-radius: 0.25rem !important;
+// }
+
+// .rounded-top-end-2 {
+//     border-top-right-radius: 0.3rem !important;
+// }
+
+// .rounded-top-end-3 {
+//     border-top-right-radius: 0.35rem !important;
+// }
+
+// .rounded-top-end-4 {
+//     border-top-right-radius: 0.35rem !important;
+// }
+
+// .rounded-top-end-5 {
+//     border-top-right-radius: 0.4rem !important;
+// }
+
+// .rounded-top-end-6 {
+//     border-top-right-radius: 0.45rem !important;
+// }
+
+// .rounded-top-end-7 {
+//     border-top-right-radius: 0.5rem !important;
+// }
+
+// .rounded-top-end-8 {
+//     border-top-right-radius: 0.55rem !important;
+// }
+
+// .rounded-top-end-9 {
+//     border-top-right-radius: 0.6rem !important;
+// }
+
+// .rounded-top-end-10 {
+//     border-top-right-radius: 0.65rem !important;
+// }
+
+// .rounded-top {
+//     border-top-right-radius: 0.2rem !important;
+//     border-top-left-radius: 0.2rem !important;
+// }
+
+// .rounded-top-1 {
+//     border-top-right-radius: 0.25rem !important;
+//     border-top-left-radius: 0.25rem !important;
+// }
+
+// .rounded-top-2 {
+//     border-top-right-radius: 0.3rem !important;
+//     border-top-left-radius: 0.3rem !important;
+// }
+
+// .rounded-top-3 {
+//     border-top-right-radius: 0.35rem !important;
+//     border-top-left-radius: 0.35rem !important;
+// }
+
+// .rounded-top-4 {
+//     border-top-right-radius: 0.35rem !important;
+//     border-top-left-radius: 0.35rem !important;
+// }
+
+// .rounded-top-5 {
+//     border-top-right-radius: 0.4rem !important;
+//     border-top-left-radius: 0.4rem !important;
+// }
+
+// .rounded-top-6 {
+//     border-top-right-radius: 0.45rem !important;
+//     border-top-left-radius: 0.45rem !important;
+// }
+
+// .rounded-top-7 {
+//     border-top-right-radius: 0.5rem !important;
+//     border-top-left-radius: 0.5rem !important;
+// }
+
+// .rounded-top-8 {
+//     border-top-right-radius: 0.55rem !important;
+//     border-top-left-radius: 0.55rem !important;
+// }
+
+// .rounded-top-9 {
+//     border-top-right-radius: 0.6rem !important;
+//     border-top-left-radius: 0.6rem !important;
+// }
+
+// .rounded-top-10 {
+//     border-top-right-radius: 0.65rem !important;
+//     border-top-left-radius: 0.65rem !important;
+// }
+
+
+// .rounded-top-end {
+//     border-top-right-radius: 0.2rem !important;
+// }
+
+// .rounded-top-end-1 {
+//     border-top-right-radius: 0.25rem !important;
+// }
+
+// .rounded-top-end-2 {
+//     border-top-right-radius: 0.3rem !important;
+// }
+
+// .rounded-top-end-3 {
+//     border-top-right-radius: 0.35rem !important;
+// }
+
+// .rounded-top-end-4 {
+//     border-top-right-radius: 0.35rem !important;
+// }
+
+// .rounded-top-end-5 {
+//     border-top-right-radius: 0.4rem !important;
+// }
+
+// .rounded-top-end-6 {
+//     border-top-right-radius: 0.45rem !important;
+// }
+
+// .rounded-top-end-7 {
+//     border-top-right-radius: 0.5rem !important;
+// }
+
+// .rounded-top-end-8 {
+//     border-top-right-radius: 0.55rem !important;
+// }
+
+// .rounded-top-end-9 {
+//     border-top-right-radius: 0.6rem !important;
+// }
+
+// .rounded-top-end-10 {
+//     border-top-right-radius: 0.65rem !important;
+// }

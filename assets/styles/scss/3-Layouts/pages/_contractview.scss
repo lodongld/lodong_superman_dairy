@@ -1,0 +1,17 @@
+#viewallcontracts_page {
+    #viewallcontractsbyac_table {
+        tbody {
+            tr {
+                td {
+                    &:nth-child(11) {
+                        color: $primary !important;
+                    }
+
+                    &:nth-child(12) {
+                        color: $danger !important;
+                    }
+                }
+            }
+        }
+    }
+}

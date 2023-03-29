@@ -1,0 +1,42 @@
+// Theme Colors for this site!
+$darkblue: #33588E !default;
+$blue: #003AC9 !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #d63384 !default;
+$red: #FF0000 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #198754 !default;
+$teal: #20c997 !default;
+$cyan: #03C2BE !default;
+$gray: #D9D9D9 !default;
+$light: #EFF1F9 !default;
+$dark: #000 !default;
+$default: #dee2e6 !default;
+
+// scss-docs-start theme-color-variables
+$darkprimary: $darkblue !default;
+$primary: $blue !default;
+$secondary: $gray !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $light !default;
+$dark: $dark !default;
+// scss-docs-end theme-color-variables
+
+// scss-docs-start theme-colors-map
+$theme-colors: (
+    "darkprimary": $darkprimary,
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $light,
+    "dark": $dark
+    ) !default;
+// scss-docs-end theme-colors-map

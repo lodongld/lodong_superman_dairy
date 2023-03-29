@@ -1,0 +1,12 @@
+.modal {
+    z-index: 9999999 !important;
+
+
+    .estDetailsMid {
+        max-height: 320px !important;
+        overflow-y: auto;
+        border-top: 3px solid $secondary;
+        border-bottom: 3px solid $secondary;
+        // border: 1px solid red;
+    }
+}

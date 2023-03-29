@@ -1,0 +1,1100 @@
+      <!-- SERVICE MANAGEMENT PAGE -->
+      <section id="servicemanagement_page" class="d-none content"> 
+        <div class="card-main shadow bg-white col-xl-6 p-3 p-md-5">
+          <!-- INSIDE CONTENTS -->
+          <h2> 결제요청 </h2>
+          <div class="my-4">
+            <div class="card-submain card py-4 px-3 px-md-4 rounded-10 shadow bg-light">
+              <form action="">
+                <div class="mb-4">
+                  <label for="" class="form-label fw-bold"> 상품명</label>
+                  <input type="text" id="" class="form-control" placeholder="안전방충망">
+                </div>
+
+                <div class="mb-4">
+                  <label for="" class="form-label fw-bold"> 프로세스</label>
+                  <textarea class="form-control textarea-7">신청 - 상담 - 실측일정확정 - 실측예정(당일)
+
+-실측완료 - 제작중 -시공예정(당일) - 시공완료</textarea>
+                </div>
+
+                <div class="mb-4">
+                  <label for="" class="form-label fw-bold"> 단위</label>
+                  <input type="text" id="" class="form-control" placeholder="시간">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-- SEND PHOTOS PAGE -->
+      <section id="sendphotos_page" class="d-none content">
+        <div class="card-main shadow bg-white col-xl-6 p-3 p-md-5">
+          <!-- INSIDE CONTENTS -->
+          <div>
+            <h2>사진발송</h2>
+          
+            <form class=""> 
+              <div class="my-4"> 
+                <div class="mb-4">
+                  <div class="d-flex justify-content-start align-items-center">
+                    <p class="form-label fw-bold p-0 m-0">고객에게완료사진발송</p>
+                    <div class="d-flex justify-content-center align-items-center flow-row">
+                      <label class="switch mx-3" >
+                        <input class="switch-input" type="checkbox" />
+                        <span class="switch-label"  data-off="Off" data-on="On"></span> 
+                        <span class="switch-handle"></span> 
+                      </label>
+                    </div>
+                  </div>
+                </div>  
+  
+                <div class="mb-4">
+                  <label for="" class="form-label fw-bold">고객전 화번호</label>
+                  <input type="text" class="form-control" id="" placeholder="010-0000-0000">
+                </div>
+  
+                <div class="mb-2">
+                  <label for="" class="form-label fw-bold">적용 상품 / 프로세스 선택</label>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected hidden>선택하기</option>
+                    <option value="1">제품</option>
+                    <option value="2">제품</option>
+                    <option value="3">제품</option>
+                  </select>
+                </div>
+  
+                <div class="mb-4">
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected hidden>선택하기</option>
+                    <option value="1">제품</option>
+                    <option value="2">제품</option>
+                    <option value="3">제품</option>
+                  </select>
+                </div>
+  
+                <div class="">
+                  <button class="btn btn-primary w-100" type="button">입력완료</button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- Service Management -->
+                  <a id="servicemanagement_btn" href="#servicemanagement" class="accordion-body-item" data-bs-toggle="tooltip" data-bs-placement="right" title="서비스 관리" >
+                    <i class="fa-regular fa-square-2"></i>
+                    <span>서비스 관리</span>
+                  </a>
+
+                  <!-- Send Photos -->
+                  <a id="sendphotos_btn" href="#sendphotos" class="accordion-body-item" data-bs-toggle="tooltip" data-bs-placement="right" title="사진발송" >
+                    <i class="fa-regular fa-square-3"></i>
+                    <span>사진발송</span>
+                  </a>
+
+
+
+
+
+
+
+                  // SERVICE MANAGEMENT PAGE
+    $("#servicemanagement_btn").click(function () {
+        if ($("#servicemanagement_page").hasClass("d-none")) {
+            $("#servicemanagement_page").addClass("d-block").removeClass("d-none");
+            $("#servicemanagement_btn").addClass('active');
+
+            check_page1('home_page');
+            check_page1('profile_page');
+            check_page2('viewallcontracts_page', 'viewallcontracts_btn');
+            check_page2('contractwriting_page', 'contractwriting_btn');
+            check_page2('orderstatus_page', 'orderstatus_btn');
+            check_page2('ordermanagement_page', 'ordermanagement_btn');
+            check_page2('filemanagement_page', 'filemanagement_btn');
+            check_page2('onlinefair_page', 'onlinefair_btn');
+            check_page2('fairmanagement_page', 'fairmanagement_btn');
+            check_page2('paymentrequestmanagement_page', 'paymentrequestmanagement_btn');
+            // check_page2('servicemanagement_page', 'servicemanagement_btn');
+            check_page2('sendphotos_page', 'sendphotos_btn');
+            check_page2('technicianmanagement_page', 'technicianmanagement_btn');
+            check_page2('contract_page', 'contract_btn');
+            check_page2('consulting_page', 'consulting_btn');
+            check_page2('cardusagehistory_page', 'cardusagehistory_btn');
+            check_page2('master_page', 'master_btn');
+            check_accordion2('orderstatus_page', 'ordermanagement_page', 'order_btn', 'order_collapse');
+            check_accordion2('onlinefair_page', 'fairmanagement_page', 'fair_btn', 'fair_collapse');
+            check_accordion4('paymentrequestmanagement_page', 'servicemanagement_page', 'sendphotos_page', 'technicianmanagement_page', 'settings_btn', 'settings_collapse');
+            check_accordion4('contract_page', 'consulting_page', 'cardusagehistory_page', 'master_page', 'menu_btn', 'menu_collapse');
+        }
+    })
+
+    // SEND PHOTOS PAGE
+    $("#sendphotos_btn").click(function () {
+        if ($("#sendphotos_page").hasClass("d-none")) {
+            $("#sendphotos_page").addClass("d-block").removeClass("d-none");
+            $("#sendphotos_btn").addClass('active');
+
+            check_page1('home_page');
+            check_page1('profile_page');
+            check_page2('viewallcontracts_page', 'viewallcontracts_btn');
+            check_page2('contractwriting_page', 'contractwriting_btn');
+            check_page2('orderstatus_page', 'orderstatus_btn');
+            check_page2('ordermanagement_page', 'ordermanagement_btn');
+            check_page2('filemanagement_page', 'filemanagement_btn');
+            check_page2('onlinefair_page', 'onlinefair_btn');
+            check_page2('fairmanagement_page', 'fairmanagement_btn');
+            check_page2('paymentrequestmanagement_page', 'paymentrequestmanagement_btn');
+            check_page2('servicemanagement_page', 'servicemanagement_btn');
+            // check_page2('sendphotos_page', 'sendphotos_btn');
+            check_page2('technicianmanagement_page', 'technicianmanagement_btn');
+            check_page2('contract_page', 'contract_btn');
+            check_page2('consulting_page', 'consulting_btn');
+            check_page2('cardusagehistory_page', 'cardusagehistory_btn');
+            check_page2('master_page', 'master_btn');
+            check_accordion2('orderstatus_page', 'ordermanagement_page', 'order_btn', 'order_collapse');
+            check_accordion2('onlinefair_page', 'fairmanagement_page', 'fair_btn', 'fair_collapse');
+            check_accordion4('paymentrequestmanagement_page', 'servicemanagement_page', 'sendphotos_page', 'technicianmanagement_page', 'settings_btn', 'settings_collapse');
+            check_accordion4('contract_page', 'consulting_page', 'cardusagehistory_page', 'master_page', 'menu_btn', 'menu_collapse');
+        }
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="mgssend">
+                      <div class="mgssend-content">
+                        <div class="mgssend-time"> 10:37 </div>
+                        <div class="mgssend-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="mgsread">
+                      <div class="mgsread-content">
+                        <img src="assets/img/images/tree.png" alt="" height="26" width="26" />
+                        <div class="mgsread-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                        <div class="mgsread-time"> 10:36 </div>
+                      </div>
+                    </div>
+  
+                    <div class="mgssend">
+                      <div class="mgssend-content">
+                        <div class="mgssend-time"> 10:37 </div>
+                        <div class="mgssend-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="mgsread">
+                      <div class="mgsread-content">
+                        <img src="assets/img/images/tree.png" alt="" height="26" width="26" />
+                        <div class="mgsread-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                        <div class="mgsread-time"> 10:36 </div>
+                      </div>
+                    </div>
+    
+  
+                    <div class="mgssend">
+                      <div class="mgssend-content">
+                        <div class="mgssend-time"> 10:37 </div>
+                        <div class="mgssend-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="mgsread">
+                      <div class="mgsread-content">
+                        <img src="assets/img/images/tree.png" alt="" height="26" width="26" />
+                        <div class="mgsread-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                        <div class="mgsread-time"> 10:36 </div>
+                      </div>
+                    </div>
+    
+  
+                    <div class="mgssend">
+                      <div class="mgssend-content">
+                        <div class="mgssend-time"> 10:37 </div>
+                        <div class="mgssend-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="mgsread">
+                      <div class="mgsread-content">
+                        <img src="assets/img/images/tree.png" alt="" height="26" width="26" />
+                        <div class="mgsread-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                        <div class="mgsread-time"> 10:36 </div>
+                      </div>
+                    </div>
+    
+  
+                    <div class="mgssend">
+                      <div class="mgssend-content">
+                        <div class="mgssend-time"> 10:37 </div>
+                        <div class="mgssend-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="mgsread">
+                      <div class="mgsread-content">
+                        <img src="assets/img/images/tree.png" alt="" height="26" width="26" />
+                        <div class="mgsread-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                        <div class="mgsread-time"> 10:36 </div>
+                      </div>
+                    </div>
+    
+  
+                    <div class="mgssend">
+                      <div class="mgssend-content">
+                        <div class="mgssend-time"> 10:37 </div>
+                        <div class="mgssend-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="mgsread">
+                      <div class="mgsread-content">
+                        <img src="assets/img/images/tree.png" alt="" height="26" width="26" />
+                        <div class="mgsread-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                        <div class="mgsread-time"> 10:36 </div>
+                      </div>
+                    </div>
+    
+  
+                    <div class="mgssend">
+                      <div class="mgssend-content">
+                        <div class="mgssend-time"> 10:37 </div>
+                        <div class="mgssend-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="mgsread">
+                      <div class="mgsread-content">
+                        <img src="assets/img/images/tree.png" alt="" height="26" width="26" />
+                        <div class="mgsread-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                        <div class="mgsread-time"> 10:36 </div>
+                      </div>
+                    </div>
+    
+  
+                    <div class="mgssend">
+                      <div class="mgssend-content">
+                        <div class="mgssend-time"> 10:37 </div>
+                        <div class="mgssend-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="mgsread">
+                      <div class="mgsread-content">
+                        <img src="assets/img/images/tree.png" alt="" height="26" width="26" />
+                        <div class="mgsread-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                        <div class="mgsread-time"> 10:36 </div>
+                      </div>
+                    </div>
+    
+  
+                    <div class="mgssend">
+                      <div class="mgssend-content">
+                        <div class="mgssend-time"> 10:37 </div>
+                        <div class="mgssend-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="mgsread">
+                      <div class="mgsread-content">
+                        <img src="assets/img/images/tree.png" alt="" height="26" width="26" />
+                        <div class="mgsread-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                        <div class="mgsread-time"> 10:36 </div>
+                      </div>
+                    </div>
+    
+  
+                    <div class="mgssend">
+                      <div class="mgssend-content">
+                        <div class="mgssend-time"> 10:37 </div>
+                        <div class="mgssend-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="mgsread">
+                      <div class="mgsread-content">
+                        <img src="assets/img/images/tree.png" alt="" height="26" width="26" />
+                        <div class="mgsread-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                        <div class="mgsread-time"> 10:36 </div>
+                      </div>
+                    </div>
+    
+  
+                    <div class="mgssend">
+                      <div class="mgssend-content">
+                        <div class="mgssend-time"> 10:37 </div>
+                        <div class="mgssend-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="mgsread">
+                      <div class="mgsread-content">
+                        <img src="assets/img/images/tree.png" alt="" height="26" width="26" />
+                        <div class="mgsread-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                        <div class="mgsread-time"> 10:36 </div>
+                      </div>
+                    </div>
+    
+                    <div class="mgssend">
+                      <div class="mgssend-content">
+                        <div class="mgssend-time"> 10:37 </div>
+                        <div class="mgssend-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="mgsread">
+                      <div class="mgsread-content">
+                        <img src="assets/img/images/tree.png" alt="" height="26" width="26" />
+                        <div class="mgsread-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                        <div class="mgsread-time"> 10:36 </div>
+                      </div>
+                    </div>
+    
+                    <div class="mgssend">
+                      <div class="mgssend-content">
+                        <div class="mgssend-time"> 10:37 </div>
+                        <div class="mgssend-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="mgsread">
+                      <div class="mgsread-content">
+                        <img src="assets/img/images/tree.png" alt="" height="26" width="26" />
+                        <div class="mgsread-mgs">
+                          고객이 매우 똑똑하다면 원하는 결과를 얻을 수 있을 것입니다. 또한 그는 자신의 고통을 덜어 줄 것입니다. 그리고 말하자면 삶을 거부하는 시간에 그는 여기서 어떤 고난을 견뎌야 하는가. 우리를 위해 사물이 선택되었기 때문입니다.
+                        </div>
+                        <div class="mgsread-time"> 10:36 </div>
+                      </div>
+                    </div>
+
+
+
+
+<div class="homeOrderDiv mb-3 me-2">
+  <div class="d-flex justify-content-between align-items-center flex-row flex-wrap">
+    <p class="h5 fw-bold">{{homeOrderCustName}}</p>
+    <p id="homeOrderStatus{{homeOrderId}}" class="h6">{{homeOrderstatus}}</p>
+
+    <!-- double button (일반: Normal | 보류: Hold)-->
+    <div id="homeNormalHold{{homeOrderId}}" class="{{ btnNorhold }}">
+      <div class="d-flex justify-content-end align-items-end flex-row flex-wrap">
+        <button type="button" id="viewOrderModal{{homeOrderId}}" data-id="{{homeOrderId}}" onclick=" " class="viewOrderModal btn btn-sm btn-outline-primary text-nowrap">계약서 보기</button>
+        <button type="button" id="openOrderInfo{{homeOrderId}}" data-id="{{homeOrderId}}" class="openOrderInfo btn btn-sm btn-primary text-nowrap ms-2">견적서 쓰기</button>
+      </div>
+    </div>
+
+    <!-- single button (반려: Reject)-->
+    <div id="homeReject{{homeOrderId}}" class="{{ btnReject }}">
+      <div class="d-flex justify-content-end align-items-end flex-row flex-wrap">
+        <button type="button" id="openOrderInfo{{homeOrderId}}" data-id="{{homeOrderId}}" class="openOrderInfo btn btn-sm btn-outline-primary text-nowrap">계약서 보기</button>
+      </div>
+    </div>
+
+    <!-- single button (삭제: Delete) -->
+    <div id="homeDelete{{homeOrderId}}" class="{{ btnDelete }}">
+      <div class="d-flex justify-content-end align-items-end flex-row flex-wrap">
+        <button type="button" id="viewOrderModal{{homeOrderId}}" data-id="{{homeOrderId}}" class="viewOrderModal btn btn-sm btn-outline-primary text-nowrap">계약서 보기</button>
+      </div>
+    </div>
+
+  </div>
+  <p class="text-muted text-end d-block fs-14px">{{homeOrderdate}}</p>
+</div>
+
+
+
+<div class="">
+            <h2>계약서 작성</h2>
+            <div class="my-4">
+              <div class="row g-2">
+                <!-- phoneNumber -->
+                <div class="col-12">
+                  <div class="row g-0 align-items-center">
+                    <div class="col-xl-6">
+                      <div class="row g-2">
+                        <div class="col-2 ">
+                          <label class="form-label fw-bold my-0 my-md-2 p-0 lh-1"> 전화번호 </label>
+                        </div>                  
+                        <div class="col-5 col-md-4 ">
+                          <input type="text" id="cwphonenum" class="form-control" placeholder="000-0000-0000">
+                        </div>
+                        <div class="col-5 col-lg-6 ">
+                          <button id="cwretrieveCustBtn" type="button" class="btn btn-primary text-nowrap"> 고객정보 불러오기 </button>
+                        </div>                                
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-12 col-xl-6 ">
+                  <div class="row g-2">
+                    <!-- name -->
+                    <div class="col-2 ">
+                      <label class="form-label fw-bold my-2 p-0 lh-1"> 고객명 </label>
+                    </div>
+                    <div class="col-10 col-lg-4 ">
+                      <input type="text" id="cwcustname" class="form-control" value="" placeholder="이민지">
+                    </div>
+
+                    <!-- apartment name -->
+                    <div class="col-2  text-start text-lg-end">
+                      <label class="form-label fw-bold my-0 my-md-2 p-0 lh-1"> 아파트명 </label>
+                    </div>
+
+                    <div class="col-10 col-lg-4 ">
+                      <input type="text" id="cwapartment"  class="form-control" value="" placeholder="">
+                    </div>
+
+                    <!-- note -->
+                    <div class="col-2  align-items-start">
+                      <label class="form-label fw-bold m-0 p-0"> 비고 </label>
+                    </div>
+
+                    <div class="col-10 ">
+                      <textarea id="cwnote" class="form-control textarea-8" placeholder="특이사항"></textarea>
+                    </div>
+                  </div>
+                </div>
+                    
+                <div class="col-12 col-xl-6">
+                  <div class="row g-2">
+                    <div class="col-2  text-start text-xl-end">
+                      <label class="form-label fw-bold my-0 my-md-2 p-0 lh-1"> 동호수 </label>
+                    </div>
+                  
+                    <div class="col-10 col-md-4 ">
+                      <input type="text" id="cweastlake" class="form-control" value="" placeholder="000동 0000호">
+                    </div>
+
+                    <div class="col-2  text-start text-md-end">
+                      <label class="form-label fw-bold my-0 my-md-2 p-0 lh-1"> 타입 </label>
+                    </div>
+
+                    <div class="col-10 col-md-4 ">
+                      <input type="text" id="cwtype" class="form-control" value="" placeholder="평 수(㎡)">
+                    </div>
+
+                    <div class="col-2  text-start text-xl-end">
+                      <label class="form-label fw-bold my-0 my-lg-2 p-0 lh-1"> 입주일자 </label>
+                    </div>
+
+                    <div class="col-10 col-lg-4 ">
+                      <div class="row g-2">
+                        <div class="col-9">
+                          <input type="date" id="cwmovein_date" value="" class="form-control text-primary" placeholder="20XX-00-00">
+                        </div>
+                        <div class="col-3">
+                          <button type="button" class="cwMoveinBtn btn btn-primary text-nowrap" id="cwMoveinBtn" data-status="false"> 확정 </button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="col-2  text-start text-lg-end">
+                      <label class="form-label fw-bold my-0 my-lg-2 p-0 lh-1"> 시공 <span class="text-nowrap"> 요청일자 </span>   </label>
+                    </div>
+
+                    <div class="col-10 col-lg-4">
+                      <div class="row g-2">
+                        <div class="col-9">
+                          <input type="date" id="cwconstruction_date" class="form-control text-muted" placeholder="20XX-00-00">
+                        </div>
+                        <div class="col-3">
+                          <button type="button" class="cwConstrucBtn btn btn-primary text-nowrap" id="cwConstrucBtn" data-status="false"> 확정 </button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="col-2  text-start text-xl-end">
+                      <label class="form-label fw-bold my-0 my-lg-2 p-0 lh-1"> 현금영수증 </label>
+                    </div>
+                    
+                    <div class="col-10 ">
+                      <div class="row g-0 row-cols-4 align-content-center">
+                        <div class="col-3 ">
+                          <div class="form-check my-lg-1">
+                            <input class="form-check-input cwreceipttype" type="radio" name="cwreceipttype" id="cwapplication" value="true">
+                            <label class="form-check-label my-0" for="cwapplication">
+                              신청
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-3 ">
+                          <div class="form-check my-lg-1">
+                            <input class="form-check-input cwreceipttype" type="radio" name="cwreceipttype" id="cwnotapplied" value="false">
+                            <label class="form-check-label my-0" for="cwnotapplied">
+                              미신청
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-3 cwreceiptCont d-none">
+                          <div class="form-check my-lg-1">
+                            <input class="form-check-input cwreceipt" type="radio" name="cwreceipt" id="cwincomedd" value="true">
+                            <label class="form-check-label my-0" for="cwincomedd">
+                              소득공제용
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-3 cwreceiptCont d-none">
+                          <div class="form-check my-lg-1">
+                            <input class="form-check-input cwreceipt" type="radio" name="cwreceipt" id="cwproofexp" value="false">
+                            <label class="form-check-label my-0" for="cwproofexp">
+                              지출증빙용
+                            </label>
+                          </div>
+                        </div>                        
+                      </div>
+                    </div>
+
+                    <div class="col-2 text-start text-md-end">
+                      <label class="form-label fw-bold my-0 my-lg-2 p-0 lh-1"> &nbsp; </label>
+                    </div>
+
+                    <div class="col-10 col-md-4 cwcustphoneCont d-none">
+                      <input type="hidden" id="cwcustid" value="" >
+                      <input type="text" id="cwcustphone" class="form-control" value="" placeholder="000-0000-0000" disabled>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-12 col-xl-6">
+                  <div class="row g-2">
+                    <div class="col-2  text-start">
+                      <label class="form-label fw-bold my-0 my-md-2 p-0 lh-1"> 신청상품 </label>
+                    </div>
+                    <template id="cwproductTemp">
+                      <option value="{{id}}">{{name}}</option>
+                    </template>                  
+                    <div class="col-10 col-md-4 ">
+                      <select id="cwproductCont" class="form-select">
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <template id="prodArrListTemplate">
+              <tr>
+                <td>{{productname}}</td>
+                <td>{{productamount}}</td>
+                <td style="width: 100px">{{productqty}}</td>
+                <td><button class="deleteData border-0 btn btn-light text-danger" data-id="{{id}}"><i class="fa-regular fa-xmark"></i></button></td>
+              </tr>
+            </template>
+            <template id="discArrListTemplate">
+              <tr>                
+                <td>{{productdisctype}}</td>
+                <td>{{productdiscamount}}</td>
+                <td><button class="deleteDiscount border-0 btn btn-light text-danger" data-id="{{id}}"><i class="fa-regular fa-xmark"></i></button></td>
+              </tr>
+            </template>
+
+            <div class="table-responsive p-1 text-nowrap">
+              <div class="row g-2">
+
+                <div class="col-xxl-6">
+                  <div class="hr-2 bg-primary"></div>
+                  <table id="cwdataTable" class="display table">
+                    <!-- <thead>
+                      <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead> -->
+                    <tbody id="cwdataCont" class="border-0">
+                    </tbody>                                         
+                    <tbody class="border border-dark">
+                      <tr>
+                        <td><input type="text" class="number form-control text-center text-primary" name="productname" id="productname" placeholder="품명 입력" /></td>
+                        <td><input type="text" class="number form-control text-center text-primary" name="productamount" id="productamount" placeholder="단가 입력" /></td>
+                        <td style="width: 100px">
+                          <div class="input-group input-group-sm text-primary flex-nowrap">
+                            <button class="input-group-text text-primary" onclick="decrement('data-cwid',1)"><i class="fa-regular fa-minus"></i></button>
+                            <input type="number" id="productQty" class="number form-control text-center text-primary" min="1" placeholder="1" value="1" data-cwid="1" style="width: 40px" />
+                            <button class="input-group-text text-primary" onclick="increment('data-cwid',1)"><i class="fa-regular fa-plus"></i></button>
+                          </div>
+                        </td>
+                        <td><button id="addDataProd" class="border-0 btn btn-light text-primary"><i class="fa-regular fa-plus"></i></button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="col-xxl-6">
+                    <div class="hr-2 bg-primary"></div>
+                    <table id="cwdiscTable" class="display table">
+                      <!-- <thead>
+                        <tr>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead> -->
+                      <tbody id="cwdiscCont" class="border-0"></tbody>                    
+                      <tbody class="border border-dark">
+                        <tr>
+                          <td><input type="text" class="number form-control text-center text-primary" name="discounttype" id="discounttype" placeholder="할인 여부 입력" /></td>
+                          <td><input type="text" class="number form-control text-center text-primary" name="discountamount" id="discountamount" placeholder="할인가 입력"></td>
+                          <td><button id="addDiscount" class="border-0 btn btn-light text-primary"><i class="fa-regular fa-plus"></i></button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+              </div>
+            </div>
+
+            <template id="cwTotalTemp">
+              <div>{{sum}}</div>
+            </template>
+            <div>
+              <div class="d-flex justify-content-end align-items-center flex-row flex-nowrap">
+                <div class="form-check me-3">
+                  <input class="form-check-input" type="radio" id="cwvat" value="true">
+                  <label class="form-check-label cursor-pointer" for="1">
+                    VAT 포함
+                  </label>
+                </div>
+                <p class="mx-3">합계</p>
+                <p class="text-primary cwsum fw-bold mx-3 h1"  id="cwTotalCont"></p>
+                <p class="text-primary me-3">원</p>
+                <button type="button" id="cwaccept" class="btn btn-primary text-nowrap ms-2"> 수락 </button>
+              </div>
+            </div>
+</div>
+
+
+<div>
+  <h2> 계약서 목록 </h2>
+  <div class="d-flex justify-content-end align-items-center flex-row flex-nowrap">
+    <div>
+      <select name="listSelect" id="listSelect" class="form-select listSelect">
+        <option value="전체">전체</option>
+        <option value="일반">일반</option>
+        <option value="보류">보류</option>
+        <option value="반려">반려</option>
+        <option value="삭제">삭제</option>
+      </select>
+    </div>
+    <div class="mx-2">
+      <input type="text" class="form-control" id="listSearch" placeholder="ex)101동 1011호 → 101 1011">
+    </div>
+    <div>
+      <button type="button" id="listBtn" class="btn btn-primary text-nowrap">검색</button>
+    </div>
+  </div>
+  
+  <div>
+    <div class="card-submain my-3 p-2 overflow-y-auto">
+      <!-- generate contract data here -->
+      <div id="contractlistCont" class="row g-4">
+
+      </div>
+    </div>
+    <div class="mt-5 d-flex justify-content-end align-items-center flex-row flex nowrap">
+      <button type="button" class="btn btn-outline-primary rounded-pill me-3 addContractBtn">
+        <span class="me-2"> 견적서 추가 </span>
+        <i class="fa-light fa-plus"></i>
+      </button>
+      <button type="button" class="btn btn-primary rounded-circle rounded-bot-end-2" style="height: 55px; width:55px;">
+        <i class="fa-solid fa-ellipsis"></i>
+      </button>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+      <div id="contractListsPagination"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="">
+          <!-- INSIDE CONTENTS -->
+          <div class="row m-0 p-0"> 
+            <div class="card-main shadow bg-white col-12 col-xl-6 p-3 p-md-5">
+              <h2>기술자 관리</h2>
+              <div class="min-h-card mt-4 d-flex justify-content-between align-items-start flex-column">
+                <div class="w-100 flex-grow-1">
+                  <label class="form-label fw-bold">기술자 목록</label>
+                  <div class="overflow-y-auto overflow-x-hidden" style="height: 540px;">
+                  <!-- <div> -->
+                    <template id="listTechTemp">
+                      <div class="col-12 col-lg-12 col-xl-6 cursor-pointer">
+                        <div class="card rounded-5 p-3">
+                          <div class="d-flex justify-content-between align-items-center flex-row flex-nowrap">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="ms-2 d-flex justify-content-around align-items-start flex-column">
+                                <p class="fs-15px fw-bold" id="name"> {{name}} </p>
+                                <p class="fs-13px fw-light" id="userConstructorId"> {{userConstructorId}} </p>
+                              </div>
+                            </div>
+                            <div class="">
+                              <label class="switch">
+                                <input class="switch-input techSwitchButton" data-workerId="{{userConstructorId}}" type="checkbox" {{active}}/>
+                                <span class="switch-label" data-off="Off" data-on="On"></span> 
+                                <span class="switch-handle"></span> 
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </template>
+                    <div id="listTechCont" class="row g-3">
+                      <!-- generate data for technician here -->
+                      <!-- <div class="col-12 col-lg-12 col-xl-6 cursor-pointer">
+                        <div class="card rounded-5 p-3">
+                          <div class="d-flex justify-content-between align-items-center flex-row flex-nowrap">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="ms-2 d-flex justify-content-around align-items-start flex-column">
+                                <p class="fs-15px fw-bold"> {{name}} </p>
+                                <p class="fs-13px fw-light"> {{userConstructorId}} </p>
+                              </div>
+                            </div>
+                            <div class="">
+                              <label class="switch">
+                                <input class="switch-input" type="checkbox" checked />
+                                <span class="switch-label" data-off="Off" data-on="On"></span> 
+                                <span class="switch-handle"></span> 
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>                       -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-block w-100 mt-4">
+                  <form action="" >
+                    <div class="mb-2">
+                      <label class="form-label fw-bold">기술자 초대</label>
+                      <div class="row g-2">
+                        <div class="col-xl-6">
+                          <input type="text" class="form-control" name="name" id="techname" placeholder="이름을 입력해 주세요.">
+                        </div>
+                        <div class="col-xl-6">
+                          <input type="text" class="form-control" name="phonenumber" id="phonenumber" placeholder="‘-’ 제외하고 전화번호를 입력해 주세요.">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-2">
+                      <button type="button" id="invBtn" class="btn btn-primary w-100">입력완료</button>
+                    </div>
+                    <!-- <div class="text-center">
+                      <button id="techmanagement_frame2_view" class="btn shadow-none py-0 link-muted"> 
+                        <span class="me-2">가입 신청 목</span>
+                        <i class="fa-regular fa-chevron-right"></i>
+                      </button> -->
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div id="technician-01-card1" class="card-main1">
+            </div>
+            
+            <div id="technician-01-card2" class="card-main2 col-12 col-xl-6 " style="display: none;">
+              <!-- INSIDE CONTENTS --> 
+              <div class="card-main2-content">
+                <div class="row g-2">
+                  <div class="col-md-6 col-lg-12 col-xl-12 col-xxl-6 ">
+                    <div class="card px-3 py-2">
+                      <div class="d-flex justify-content-between align-items-center flex-row flex-nowrap">
+                        <div class="flex-grow-1">
+                          <div class="d-flex justify-content-between align-items-start flex-column">
+                            <p class="fw-bold"> 이재진 </p>
+                            <p class="fw-light text-nowrap"> 010-0000-0000 </p>
+                          </div>
+                        </div>
+
+                        <div class="">
+                          <div class="d-flex justify-content-end align-items-end flex-row flex-wrap ">
+                            <button type="button" class="btn btn-primary btn-sm m-1" data-bs-toggle="modal" data-bs-target="#declineModal">
+                              추가
+                            </button>
+                            <button type="button" class="btn btn-secondary btn-sm m-1"
+                            data-bs-toggle="modal" data-bs-target="#acceptModal">
+                              추가
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>              
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+        </div>
+
+
+
+
+
+    <!-- Contract Details Modal -->
+    <div class="modal fade" id="contractdetailsModal" tabindex="-1" aria-labelledby="contractdetailsModalLabel" aria-hidden="true">
+      <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header py-2 bg-light">
+            <h5 class="modal-title" id="contractdetailsModalLabel"> 계약상세 </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row gx-4 gy-3">
+                <div class="col-6">
+                  <div class="row gx-2 gy-3">
+                      <div class="col-4 text-start fw-bold"> 단지명 </div>
+                      <div class="col-8 text-start"> 의정부센트럴자이 </div>
+                      <div class="col-4 text-start fw-bold"> 주소 </div>
+                      <div class="col-8 text-start"> 108동 903호 </div>
+                      <div class="col-4 text-start fw-bold"> 타입 </div>
+                      <div class="col-8 text-start"> 84 </div>
+                      <div class="col-4 text-start fw-bold"> 견적 </div>
+                      <div class="col-8 text-start"> 150,000원 </div>
+                      <div class="col-4 text-start fw-bold"> 연락처 </div>
+                      <div class="col-8 text-start"> 010-4234-4039 </div>
+                      <div class="col-4 text-start fw-bold"> 신청일정 </div>
+                      <div class="col-8 text-start"> 9/25 오전 10:25 </div>
+                      <div class="col-4 text-start fw-bold"> 시공일정 </div>
+                      <div class="col-8 text-start"> 9/25 오전 10:41 </div>
+                      <div class="col-4 text-start fw-bold"> 비고 </div>
+                      <div class="col-8 text-start"> 아이가 있어서 빠른 시공 원함 비번시공 0341 </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                  <div class="card bg-lightprimary p-3 shadow">
+                    <div class="row g-2">
+                      <div class="col-12 text-center fw-bold"> 미세망교체 </div>
+                      <div class="col-6 text-start fw-bold"> 시공요청일 </div>
+                      <div class="col-6 text-end"> 9/30 </div>
+                      <div class="col-6 text-start fw-bold"> 견적 </div>
+                      <div class="col-6 text-end"> 150,000원 </div>
+                      <div class="col-6 text-start fw-bold"> 시공여부 </div>
+                      <div class="col-6 text-end"> 준비중 </div>
+                      <div class="col-6 text-start fw-bold"> 담당자 </div>
+                      <div class="col-6 text-end"> 미지정 </div>
+                    </div>
+                  </div>
+
+                  <div class="card bg-lightprimary p-3 mt-3 shadow">
+                    <div class="row g-2">
+                      <div class="col-12 text-center fw-bold"> 탄성코팅 </div>
+                      <div class="col-6 text-start fw-bold"> 시공요청일 </div>
+                      <div class="col-6 text-end"> 9/30 </div>
+                      <div class="col-6 text-start fw-bold"> 견적 </div>
+                      <div class="col-6 text-end"> 150,000원 </div>
+                      <div class="col-6 text-start fw-bold"> 시공여부 </div>
+                      <div class="col-6 text-end"> 준비중 </div>
+                      <div class="col-6 text-start fw-bold"> 담당자 </div>
+                      <div class="col-6 text-end"> 미지정 </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- taskstatus Details Modal -->
+    <div class="modal fade" id="orderstatusdetailsModal" tabindex="-1" aria-labelledby="orderstatusdetailsModalLabel" aria-hidden="true">
+      <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header py-2 bg-light">
+            <h5 class="modal-title" id="orderstatusdetailsModalLabel"> 계약상세 </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row gx-4 gy-3">
+                <div class="col-6">
+                  <div class="row gx-2 gy-3">
+                      <div class="col-4 text-start fw-bold"> 단지명 </div>
+                      <div class="col-8 text-start"> 의정부센트럴자이 </div>
+                      <div class="col-4 text-start fw-bold"> 주소 </div>
+                      <div class="col-8 text-start"> 108동 903호 </div>
+                      <div class="col-4 text-start fw-bold"> 타입 </div>
+                      <div class="col-8 text-start"> 84 </div>
+                      <div class="col-4 text-start fw-bold"> 견적 </div>
+                      <div class="col-8 text-start"> 150,000원 </div>
+                      <div class="col-4 text-start fw-bold"> 연락처 </div>
+                      <div class="col-8 text-start"> 010-4234-4039 </div>
+                      <div class="col-4 text-start fw-bold"> 신청일정 </div>
+                      <div class="col-8 text-start"> 9/25 오전 10:25 </div>
+                      <div class="col-4 text-start fw-bold"> 시공일정 </div>
+                      <div class="col-8 text-start"> 9/25 오전 10:41 </div>
+                      <div class="col-4 text-start fw-bold"> 비고 </div>
+                      <div class="col-8 text-start"> 아이가 있어서 빠른 시공 원함 비번시공 0341 </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                  <div class="card bg-lightprimary p-3 shadow">
+                    <div class="row g-2">
+                      <div class="col-12 text-center fw-bold"> 미세망교체 </div>
+                      <div class="col-6 text-start fw-bold"> 시공요청일 </div>
+                      <div class="col-6 text-end"> 9/30 </div>
+                      <div class="col-6 text-start fw-bold"> 견적 </div>
+                      <div class="col-6 text-end"> 150,000원 </div>
+                      <div class="col-6 text-start fw-bold"> 시공여부 </div>
+                      <div class="col-6 text-end"> 준비중 </div>
+                      <div class="col-6 text-start fw-bold"> 담당자 </div>
+                      <div class="col-6 text-end"> 미지정 </div>
+                    </div>
+                  </div>
+
+                  <div class="card bg-lightprimary p-3 mt-3 shadow">
+                    <div class="row g-2">
+                      <div class="col-12 text-center fw-bold"> 탄성코팅 </div>
+                      <div class="col-6 text-start fw-bold"> 시공요청일 </div>
+                      <div class="col-6 text-end"> 9/30 </div>
+                      <div class="col-6 text-start fw-bold"> 견적 </div>
+                      <div class="col-6 text-end"> 150,000원 </div>
+                      <div class="col-6 text-start fw-bold"> 시공여부 </div>
+                      <div class="col-6 text-end"> 준비중 </div>
+                      <div class="col-6 text-start fw-bold"> 담당자 </div>
+                      <div class="col-6 text-end"> 미지정 </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    if(result.length === 0) {
+        console.log('xxx')
+
+        let forDay = new Date();
+        // console.log(forDay);
+        let yy = forDay.getFullYear();
+        let mm = forDay.getMonth() + 1;
+        let dd = forDay.getDate();
+
+        const ymd = new Date(joinDate(yy, mm, dd))  
+        result = fetchPrevChats(getPosDate(ymd), roomID);
+        while (result) {
+            // console.log(result)
+            // dd = forDay.getDate() - 1;
+            // if (dd === 0) {
+            //     mm = forDay.getMonth() - 1 + 1;
+            //     forDay.setMonth(mm);
+            //     forDay = new Date(`${yy}-${mm}`);
+            //     dd = forDay.getDay();
+            // }
+            // if (mm === 0) {
+            //     forDay.setFullYear(yy - 1);
+            //     yy = forDay.getFullYear();
+            // }
+            // forDay.setDate(dd);        
+            // const x = { yy, mm, dd }
+            // console.log(x);
+        }
+
+        displayThisChats(result, customerID, constructorId);
+        autoScrollToBotMsg();
+    } 
+    else if (result.length > 0) {
+        displayThisChats(result, customerID, constructorId);
+        autoScrollToBotMsg();
+    }
+    // console.log(dataResult);    

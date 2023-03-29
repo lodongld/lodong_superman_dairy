@@ -1,0 +1,97 @@
+#fairmanagement_page {
+
+
+    #fmFairCatListDiv {
+        min-height: calc(180px - ((4 * $s2) +  (2 * $s3) + 21px));
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin-top: $s1;
+
+        #fmFairCatLists {
+            display: flex !important;
+            justify-content: flex-start;
+            align-items: start;
+            flex-direction: row;
+            flex-wrap: wrap;
+            
+            .fmcategory {
+                border: 1px solid $primary;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                cursor: pointer;
+
+                // margin-left: $s2;
+                margin-right: $s2;
+                margin-bottom: $s2;
+                border-radius: 50rem !important;
+                
+                overflow: hidden;
+                line-height: normal;
+                
+                &:hover, &.active {
+                    background-color: $primary;
+
+                    .fmFairCatName, .fmFairCatDelBtn {
+                        color: $white !important;
+                    }
+                }
+
+                .fmFairCatName {
+                    font-size: 12px !important;
+                    // border: 1px solid red;
+                    // padding: 6px $s2;
+                    padding-top: 4px;
+                    padding-bottom: 4px;
+                    padding-left: 8px;
+                    padding-right: 6px;
+
+                    border-radius: 0 !important;
+                    border-width: 0px !important; 
+
+                    &:hover {
+                        color: $white !important;
+                        background-color: $transparent !important;
+                    }
+                    
+                }
+
+                .fmFairCatDelBtn {
+                    border-radius: 0 !important;
+                    font-size: 13px;
+                    padding-top: calc($s1 - 1px);
+                    padding-bottom: calc($s1 - 1px);
+                    padding-left: 6px;
+                    padding-right: 12px;
+                    border-radius: 0 !important;
+                    border-width: 0px !important; 
+                    color: $primary !important;
+                    
+                    &:hover {
+                        color: $white !important;
+                    }
+                    // border: 1px solid red;
+                }
+            }
+        }
+        
+    }
+
+
+    #fmExhibiParticipants_table_body {
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+
+        .disInputLink, .disInputHashtag {
+            max-width: 300px;
+            min-width: 120px;
+        }
+    }
+}

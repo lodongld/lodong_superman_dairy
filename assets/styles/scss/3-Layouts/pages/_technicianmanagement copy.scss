@@ -1,0 +1,86 @@
+#technicianmanagement_page {
+    .card-main {
+        min-height: calc(100vh - 50px) !important;
+        background: $white !important;
+        z-index: 101;
+
+        @include breakpoint-xl-up {
+            border-top-left-radius: $s4;
+            border-top-right-radius: $s4;
+            border-bottom-right-radius: $s4;
+            // min-height: calc(100vh - 50px) !important;
+        }
+
+        @include breakpoint-xl {
+            border-top-left-radius: $s4;
+            border-top-right-radius: $s4;
+            border-bottom-right-radius: 0;
+            // min-height: calc(100vh - 50px - 250px) !important;
+        }
+
+        .top-row-card {
+            // height: calc(100vh - (50px + $s4 + (50 * $s2) + (3 * 0.375rem)));
+        }
+    }
+
+    .card-main1 {
+        height: 4px;
+        z-index: 102;
+        background-color: $white;
+
+        @include breakpoint-xl-up {
+            display: none;
+        }
+        
+        @include breakpoint-xl {
+            display: flex;
+        }
+    }
+
+    .card-main2 {
+        z-index: 101;
+        // max-height: calc(100vh - 50px) !important;
+        // background: $white !important;
+        // background: $white !important;
+        // padding: $s3;
+        // display: flex;
+        // justify-content: start !important;
+        // align-items: center !important;
+        // flex-direction: column !important;
+
+        @include breakpoint-xl-up {
+            background: $transparent !important;
+        }
+
+        @include breakpoint-xl { 
+            padding: $s4;
+            border-bottom-right-radius: $s4;
+            background: $white !important;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        .card-main2-content {
+
+            .row {
+                // @include breakpoint-lg-up {
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    max-height: calc(100vh - (50px + (2 * $s2) + (1 * $s4)) ) !important;
+                // }
+            }
+
+            @include breakpoint-xl-up {
+                border-radius: $s4 !important;
+                padding: $s4 !important;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+                background: $white !important;
+            }
+            
+            @include breakpoint-xl { 
+                background: $transparent !important;
+                box-shadow: none !important;
+            }
+        }
+    }
+    
+}

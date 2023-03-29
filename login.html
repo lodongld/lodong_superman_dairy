@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favico/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favico/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favico/favicon-16x16.png">
+        <link rel="manifest" href="assets/img/favico/site.webmanifest">
+        <link rel="mask-icon" href="assets/img/favico/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+
+        <!-- CSS  -->
+        <link rel="stylesheet" href="assets/vendors/font_awesome-6pro/font-awesome.css" />
+        <link rel="stylesheet" href="assets/vendors/bootstrap-5.1.3/css/bootstrap.css" />
+        <link rel="stylesheet" href="assets/styles/css/main.css" />
+
+        <title>Keflavik</title>
+    </head>
+
+    <body class="container-fluid bg-light vh-100">
+        <header class="bg-primary d-flex justify-content-center align-items-center shadow" style="height: 100px">
+            <img class="brand-full" src="assets/img/logo/logo-full.png" alt="" height="30px" />
+        </header>
+
+        <main id="login_main" class="d-flex justify-content-center align-items-center">
+            <section id="login_page" class="">
+                <form action="" class="" id="login_form">
+                    <div class="login_avatar d-flex justify-content-center align-items-center bg-darkprimary text-white rounded-circle shadow">
+                        <i class="fa-light fa-circle-user"></i>
+                    </div>
+                    <div class="login_inputs bg-white shadow">
+                        <div id="errLogin" role="alert" class="d-none alert alert-danger py-2"></div>
+                        <div class="mb-3">
+                            <div class="input-group rounded-0">
+                                <span class="input-group-text rounded-start" id="login_username_prepend">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                <input type="text" class="form-control rounded-end" id="login_username" placeholder="ID" name="username">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="input-group rounded-0">
+                                <span class="input-group-text rounded-start" id="login_password_prepend">
+                                    <i class="fa-solid fa-lock"></i>
+                                </span>
+                                <input type="password" class="form-control" id="login_password" placeholder="Password" name="password">
+                                <span class="input-group-text rounded-end" id="password_toggle">
+                                    <i id="password_icon" class="fa-solid fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-end text-muted"> 아이디 / 비밀번호찾기 </p>
+                        </div>
+                    </div>
+                    <div class="login_button text-center">
+                        <button id="login_submit" class="btn btn-primary shadow"> 로그인 </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <!-- JAVASCRIPTS -->
+        <script src="assets/vendors/jquery-3.6.1/jquery.min.js"></script>
+        <script src="assets/vendors/bootstrap-5.1.3/js/bootstrap.bundle.js"></script>
+        <script src="assets/vendors/stomp.js/stomp.js"></script>
+        <script src="assets/javascript/function.js"></script>
+        <script src="assets/javascript/dom.js"></script>
+        <script src="assets/javascript/vendor.js"></script>
+        <script src="assets/javascript/auth.js"></script>
+        <script> if(session != null){ window.location.href = 'index.html'; } </script>
+    </body>
+</html>

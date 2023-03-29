@@ -1,0 +1,53 @@
+.table {
+    thead {
+        font-size: 14px !important;
+        text-align: center;
+        background-color: $primary;
+        tr {
+            color: $white;
+            font-weight: bold;
+            th {
+                vertical-align: middle;
+                @include py($s2);
+                @include px($s3);
+                text-align: center !important;
+
+                // &:first-of-type{
+                //     border-top-left-radius: $s1 !important;
+                //     border-bottom-left-radius: $s1 !important;
+                // }
+                // &:last-of-type {
+                //     border-top-right-radius: $s1 !important;
+                //     border-bottom-right-radius: $s1 !important;
+                // }
+            }
+        }
+    }
+
+    tbody {
+        font-size: 14px !important;
+        color: $dark;
+        tr {
+            td {
+                // display: flex;
+                // justify-content: center;
+                // align-items: center;
+                vertical-align: middle !important;
+                @include py($s2);
+                @include px($s3);
+                text-align: center;
+                margin-left: auto !important;
+                margin-right: auto !important;
+
+                .switch-div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: row;
+                }
+            }
+        }
+    }
+}
+
+

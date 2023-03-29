@@ -1,0 +1,35 @@
+.fluid-padding {
+    @include px($s5);
+
+    @include breakpoint-lg {
+        @include px($s2);
+    }
+
+    @include breakpoint-md {
+        @include px($s2);
+    }
+}
+
+.align-middle {
+    vertical-align: middle !important;
+}
+
+.md-column {
+    @include breakpoint-md-up {
+        flex-direction: row !important;
+    }
+
+    @include breakpoint-md {
+        flex-direction: column !important;
+    }
+}
+
+.row.row-cols-seven {
+    // width: 14.2857142857% !important;
+    // *width: 14.2857142857% !important;
+
+    .col-seven {
+        width: 14.2857142857% !important;
+        *width: 14.2857142857% !important;
+    }
+}

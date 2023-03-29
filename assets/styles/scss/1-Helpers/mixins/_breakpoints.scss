@@ -1,0 +1,96 @@
+@mixin breakpoint-xxl-up {
+
+    //1441px -> up
+    @media (min-width: $xxl-up) {
+        @content;
+    }
+}
+
+@mixin breakpoint-xxl {
+
+    //1440px -> down
+    @media (max-width: $xxl) {
+        @content;
+    }
+}
+
+@mixin breakpoint-xl-up {
+
+    //1201px -> up
+    @media (min-width: $xl-up) {
+        @content;
+    }
+}
+
+@mixin breakpoint-xl {
+
+    //1200px -> down
+    @media (max-width: $xl) {
+        @content;
+    }
+}
+
+@mixin breakpoint-lg-up {
+
+    //993px -> up
+    @media (min-width: $lg-up) {
+        @content;
+    }
+}
+
+@mixin breakpoint-lg {
+
+    //992px -> down
+    @media (max-width: $lg) {
+        @content;
+    }
+}
+
+@mixin breakpoint-md-up {
+
+    //769px -> up
+    @media (min-width: $md-up) {
+        @content;
+    }
+}
+
+@mixin breakpoint-md {
+
+    //768px -> down
+    @media (max-width: $md) {
+        @content;
+    }
+}
+
+
+@mixin breakpoint-sm-up {
+
+    //577px ->up
+    @media (min-width: $sm-up) {
+        @content;
+    }
+}
+
+@mixin breakpoint-sm {
+
+    //576px ->down
+    @media (max-width: $sm) {
+        @content;
+    }
+}
+
+@mixin breakpoint-xs-up {
+
+    //1px ->up
+    @media (min-width: $xs-up) {
+        @content;
+    }
+}
+
+@mixin breakpoint-xs{
+
+    //0px ->down
+    @media (max-width: $xs) {
+        @content;
+    }
+}

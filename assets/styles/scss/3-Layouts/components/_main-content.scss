@@ -1,0 +1,59 @@
+main {
+    .top-navbar {
+        position: fixed;
+        width: 100%;
+        background-color: $primary;
+        z-index: -9;
+    }
+
+    .content {
+        position: absolute;
+        margin-top: 50px !important;
+        margin-right: $s3 !important;
+        min-height: calc(100vh - 50px) !important;
+        z-index: 100;
+
+        .card-main {
+            min-height: calc(100vh - 50px) !important;
+            background: #fff;
+            border-top-left-radius: $s4;
+            border-top-right-radius: $s4;
+            border-bottom-right-radius: $s4;
+        }
+    }
+}
+
+main.max {
+    @include transition (3000);
+
+    .content {
+        // @include transition (3000);
+        // margin-left: 300px !important;
+        // width: 100%;
+        // max-width: calc(100vw - 300px - $s3);
+
+        @include breakpoint-md-up {
+            @include transition (3000);
+            margin-left: 240px !important;
+            width: 100%;
+            max-width: calc(100vw - 240px - $s3);
+        }
+
+        @include breakpoint-md {
+            @include transition (3000);
+            margin-left: 80px !important;
+            width: 100%;
+            max-width: calc(100vw - 80px - $s3);
+        }
+    }
+}
+
+main.min {
+    @include transition (3000);
+    .content {
+        @include transition (3000);
+        margin-left: 80px !important;
+        width: 100%;
+        max-width: calc(100vw - 80px - $s3);
+    }
+}

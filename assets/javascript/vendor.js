@@ -74,23 +74,6 @@ function ajaxpostImg(data,url){
     return result;
 }
 
-function ajaxPOSTImg(data, url) {
-    let result;
-    const settings = {
-        "url": url,
-        "method": "POST",
-        "timeout": 0,
-        "processData": false,
-        "mimeType": "multipart/form-data",
-        "contentType": false,
-        "data": data
-    };
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });
-}
-
-
 function ajaxPutImg(data, url) {
     var result = null;
     $.ajax({
@@ -177,13 +160,6 @@ const mustacheTemplating = (container,template,data) =>{
     $container.append(Mustache.render($template, data)); 
 }
 
-const mustacheTemplatingCust = (container,template,data) =>{
-    const $container = $(container);
-    const $template = $(template).html();  
-
-    $container.append(Mustache.render($template, data)); 
-}
-
 // call the basic overlay modal
 const modal = (title,modalname) =>{
     $("#"+modalname).modal("show");
@@ -194,23 +170,8 @@ const modalNC = (title, modalname) => {
     $("#" + modalname).modal("show");
     $("#" + modalname).find('.modaltitleNC').text(title);
 }
+	
 
-// call the confirm overlay modal.
-const confirmModal = (title,message) =>{
-    $("#confirmModal").modal("show");
-    $('#confirmModal').find('.modal-title').text(title);
-    $('.alert-secondary').html(message);
-}	
-
-//sample column structure
-/* const varcolumn = [
-    { title: 'Name' },
-    { title: 'Position' },
-    { title: 'Office' },
-    { title: 'Extn.' },
-    { title: 'Start date' },
-    { title: 'Salary' },
-] */
 const displayTableData = (table,dataSet,columnSet) =>{
     $(table).DataTable({
         processing: true,
@@ -260,18 +221,3 @@ function getFileName(fullPath){
         return filename;
     }
 }
-// function formatDate(date) {
-//     var d = new Date(date),
-//         month = '' + (d.getMonth() + 1),
-//         day = '' + d.getDate(),
-//         year = d.getFullYear();
-
-//     if (month.length < 2) 
-//         month = '0' + month;
-//     if (day.length < 2) 
-//         day = '0' + day;
-
-//     return [year, month, day].join('-');
-// }
-
-// previledge checker

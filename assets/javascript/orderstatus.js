@@ -1,5 +1,5 @@
 function displayOrderStatus() {
-    const url = `http://210.99.223.38:8081/api/order/order-status/list?constructorId=${localStorage.LoginSession}`;
+    const url = `http://210.99.223.38:8081/api/order/order-status/list?constructorId=${auths.id}`;
     const result = getData(url).data;
     const container = "orderstatus_cont";
     const template = "orderstatusTemp";

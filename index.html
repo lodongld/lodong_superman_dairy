@@ -3740,6 +3740,7 @@
     <script src="assets/javascript/function.js"></script>
     <script src="assets/javascript/dom.js"></script>
     <script src="assets/javascript/auth.js"></script>
+    <script src="assets/javascript/stompConfig.js"></script>
     <script src="assets/javascript/main.js"></script>
     <script src="assets/javascript/calendar_d.js"></script>   <!-- daily -->
     <script src="assets/javascript/calendar_mw.js"></script>  <!-- monthly/ weekly -->
@@ -3762,7 +3763,7 @@
     <script src="assets/javascript/subscribermanagement.js"></script>
     <script src="assets/javascript/constractormanagement.js"></script>
     <script src="assets/javascript/superadmin.js"></script>
-    <script> if(session === null){ window.location.href = 'login.html'; } </script>
+    <script> if(auths.id === null){ window.location.href = 'login.html'; } </script>
 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
@@ -3787,10 +3788,10 @@
             const messaging = getMessaging(app);
             const key = 'BN5BEiSVaNrn5e0cM_5W3xaScjgLRtqXpcL3SNsC5AhUgUmYAxulrxRWJC3qfCbWrMbCYBIVx3XdKiLsd80vahI';
             getToken(messaging, { vapidKey: key }).then((fcm) => {
-              if (fcm) {localStorage.setItem('FCM', fcm);}
-              // else {console.log('No registration token available. Request permission to generate one.');}
+              if (fcm) {localStorage.setItem('localRandomKey', fcm);}
+              else {console.log('No registration token available. Request permission to generate one.');}
             }).catch((err) => {
-              // console.log('An error occurred while retrieving token. ', err);
+              console.log('An error occurred while retrieving token. ', err);
             });
           } 
           // else { console.log('no permission.') }
@@ -3799,9 +3800,6 @@
 
       requestPermission();
     </script>
-
-    <script>
-      
-    </script>
+    
   </body>
 </html>

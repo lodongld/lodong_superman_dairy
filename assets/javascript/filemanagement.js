@@ -1,4 +1,4 @@
-const fileApartmentListUrl = `http://210.99.223.38:8081/api/constructor/apartment/list?constructorId=${session}`;
+const fileApartmentListUrl = `http://210.99.223.38:8081/api/constructor/apartment/list?constructorId=${auths.id}`;
 var fileApartmentId, fileName;
 
 const fileImageInput = document.querySelector('#fileImageInput');
@@ -54,7 +54,7 @@ function makeImageDroppable(e) {
     // when dropping
     function imageDrop(e) {
         e.preventDefault();
-        let getImageData = `http://210.99.223.38:8081/api/file/price?constructorId=${session}&apartmentId=${fileApartmentId}`;
+        let getImageData = `http://210.99.223.38:8081/api/file/price?constructorId=${auths.id}&apartmentId=${fileApartmentId}`;
         let result = getData(getImageData).data;
 
         if (!result) {
@@ -78,7 +78,7 @@ function makeImageDroppable(e) {
 
     // when clicking 
     function imageUpload() {
-        let getImageData = `http://210.99.223.38:8081/api/file/price?constructorId=${session}&apartmentId=${fileApartmentId}`;
+        let getImageData = `http://210.99.223.38:8081/api/file/price?constructorId=${auths.id}&apartmentId=${fileApartmentId}`;
         let result = getData(getImageData).data;
         
         if(!result) {
@@ -152,13 +152,13 @@ $('#fileApartmentListCont').on('change', function (e) {
     fileApartmentId = $(this).val();
 
     
-    let getImageData = `http://210.99.223.38:8081/api/file/price?constructorId=${session}&apartmentId=${fileApartmentId}`;
+    let getImageData = `http://210.99.223.38:8081/api/file/price?constructorId=${auths.id}&apartmentId=${fileApartmentId}`;
     
     let result = getData(getImageData).data;
     console.log(result)
     if(result) {
         // display the image
-        let imageUrl = `http://210.99.223.38:8081/api/file/price/image?constructorId=${session}&apartmentId=${fileApartmentId}`;
+        let imageUrl = `http://210.99.223.38:8081/api/file/price/image?constructorId=${auths.id}&apartmentId=${fileApartmentId}`;
         displayImage(result, imageUrl);
 
         $('#fileImageInput').addClass('d-none').removeClass('d-block');
@@ -217,7 +217,7 @@ $('#fileUploadBtn').on('click', function (e) {
     const uploadurl = "http://210.99.223.38:8081/api/file/price";
 
     const formData = new FormData();
-    formData.append('constructorId', localStorage.LoginSession);
+    formData.append('constructorId', auths.id);
     formData.append('apartmentId', fileApartmentId);
     formData.append('file', imageFile, imageName);
 
@@ -236,10 +236,10 @@ $('#fileUploadBtn').on('click', function (e) {
         $.notify("File Uploaded", "success");
 
         $('#fileImageDisplay').addClass('d-block').removeClass('d-none');
-        let getImageData = `http://210.99.223.38:8081/api/file/price?constructorId=${session}&apartmentId=${fileApartmentId}`;
+        let getImageData = `http://210.99.223.38:8081/api/file/price?constructorId=${auths.id}&apartmentId=${fileApartmentId}`;
         let result = getData(getImageData).data;
         console.log(result);
-        let imageUrl = `http://210.99.223.38:8081/api/file/price/image?constructorId=${session}&apartmentId=${fileApartmentId}`;
+        let imageUrl = `http://210.99.223.38:8081/api/file/price/image?constructorId=${auths.id}&apartmentId=${fileApartmentId}`;
         displayImage(result, imageUrl);
     }, 2000);
 

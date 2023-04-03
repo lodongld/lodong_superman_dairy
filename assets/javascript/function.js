@@ -152,15 +152,6 @@ function setDefault_master() {
     }
 }
 
-const session = localStorage.getItem('LoginSession');
-const login = localStorage.getItem('Headers');
-const passcode = localStorage.getItem('Body');
-const fcm = localStorage.getItem('FCM');
-let auths = { 'id' : session, login, passcode, fcm }
-// localStorage.clear();
-// console.log(auths);
-
-
 // scroll to Top
 let scrollBtn = document.getElementById("scrollToTop");
 window.onscroll = function () { scrollFunction() };
@@ -202,18 +193,6 @@ function stringMonthDate(number) {
 function formatDate(date) {
     var newDate = new Date(date);
     return newDate.getFullYear() + '-' + stringMonthDate(newDate.getMonth() + 1) + '-' + stringMonthDate(newDate.getDate());
-}
-
-function getTimeStamp() {
-    const dateNow = new Date();
-    const yy = dateNow.getFullYear();
-    const MM = stringMonthDate(dateNow.getMonth() + 1);
-    const dd = stringMonthDate(dateNow.getDate());
-    const HH = stringMonthDate(dateNow.getHours());
-    const mm = dateNow.getMinutes();
-    const ss = dateNow.getSeconds();
-
-    return `${yy}-${MM}-${dd} ${HH}:${mm}:${ss}`;
 }
 
 
@@ -272,4 +251,34 @@ function removeFile(filename, inputfile) {
             break;
         }
     }
+}
+
+function chatImgDisplayStyle(imgs) {
+    const numImages = imgs.length;
+    let width, height, maxwidth;
+    if (numImages === 1) {
+        width = 230;
+        height = 230;
+        maxwidth = 472;
+    } else if (numImages === 2) {
+        width = 200;
+        height = 200;
+        maxwidth = 416;
+    } else if (numImages === 3 || numImages >= 5) {
+        width = 150;
+        height = 150;
+        maxwidth = 474;
+    } else if (numImages === 4) {
+        width = 150;
+        height = 150;
+        maxwidth = 316;
+    } 
+
+    let dimension = {
+        'width': width,
+        'height': height,
+        'maxwidth' : maxwidth
+    }
+
+    return dimension;
 }

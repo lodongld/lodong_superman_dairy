@@ -34,7 +34,7 @@ function decrement() {  document.querySelector('#productQty').stepDown(); }
 
 // fetch products in select option
 function cwDisplayProducts() {
-  const prodUrl = `http://210.99.223.38:8081/api/constructor/product/list?constructorId=${localStorage.LoginSession}`;
+  const prodUrl = `http://210.99.223.38:8081/api/constructor/product/list?constructorId=${auths.id}`;
   const result = getData(prodUrl).data;
   let container = 'cwproduct';
   let template = 'cwproducttemp';
@@ -398,7 +398,7 @@ $('#cwretrieveCustBtn').on('click', function () {
     const fcmUrl = `http://210.99.223.38:8081/api/auth/fcm`;
     const fcmData = {
       'fcm' : result.fcm,
-      'userConstructorId': localStorage.LoginSession
+      'userConstructorId': auths.id
     }
     putData(fcmData, fcmUrl);
   }
@@ -559,7 +559,7 @@ $('#cwaccept').on('click', function () {
   let vat = $('#cwvat').is(":checked");
   let downpayment = $('#cwdownpayment').val();
 
-  let constID = localStorage.LoginSession;
+  let constID = auths.id;
 
   let isCashReceipt;
 

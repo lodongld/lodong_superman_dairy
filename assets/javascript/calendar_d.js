@@ -176,10 +176,10 @@ function dailyDisplayWorkerEvents() {
     let dailyTitle = `${thisyear}년 ${thismonth}월 ${thisday}일`;
     $('#daily_title').text(dailyTitle);
 
-    let holidayUrl = `http://210.99.223.38:8081/api/working/worker/holiday/list?year=${thisyear}&month=${thismonth}&day=${thisday}&constructorId=${session}`;
+    let holidayUrl = `http://210.99.223.38:8081/api/working/worker/holiday/list?year=${thisyear}&month=${thismonth}&day=${thisday}&constructorId=${auths.id}`;
 
 
-    let taskUrl = `http://210.99.223.38:8081/api/working/worker/task/list?year=${thisyear}&month=${thismonth}&day=${thisday}&constructorId=${session}`;
+    let taskUrl = `http://210.99.223.38:8081/api/working/worker/task/list?year=${thisyear}&month=${thismonth}&day=${thisday}&constructorId=${auths.id}`;
 
     dailyFetchDisplayWorkerHolidays(holidayUrl);
     dailyFetchDisplayWorkerTasks(taskUrl);
@@ -197,7 +197,6 @@ function dailyMouseUp(thisElem) {
 }
 
 function dailyMouseMove(e) {
-    // $(this).addClass('cursor-grabbing').removeClass('cursor-grab');
     deltaX = startX - e.pageX;
     parentDiv.scrollLeft += deltaX;
 

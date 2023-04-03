@@ -1,5 +1,5 @@
 function payDisplayDetails() {
-  const getPayUrl = `http://210.99.223.38:8081/api/setting/payment-request?constructorId=${localStorage.LoginSession}`;
+  const getPayUrl = `http://210.99.223.38:8081/api/setting/payment-request?constructorId=${auths.id}`;
   const result = getData(getPayUrl).data;
   console.log(result);
 
@@ -30,7 +30,7 @@ $('#payBtn').on('click', function () {
 
   const url = `http://210.99.223.38:8081/api/setting/payment-request`;
   let data = {
-    'constructorId': localStorage.LoginSession,
+    'constructorId': auths.id,
     'payTemplate': payTemplate,
     'bank': bank,
     'bankAccount': bankAccount

@@ -1,5 +1,5 @@
 function ormanDisplayDetails() {
-    const url = `http://210.99.223.38:8081/api/order/order-send?constructorId=${localStorage.LoginSession}`;
+    const url = `http://210.99.223.38:8081/api/order/order-send?constructorId=${auths.id}`;
 
     const result = getData(url).data;
     console.log(result);
@@ -57,7 +57,7 @@ $('#ormanSend').on('change', function () {
     const url = `http://210.99.223.38:8081/api/order/order-send/on-off`;
 
     const data = {
-        'constructorId': localStorage.LoginSession,
+        'constructorId': auths.id,
         'isSend': bool
     }
 
@@ -78,7 +78,7 @@ $('#ormanMethodEmail').on('change', function () {
         input.attr('placeholder', placeholder);
         label.text(text);
 
-        const url = `http://210.99.223.38:8081/api/order/order-send?constructorId=${localStorage.LoginSession}`;
+        const url = `http://210.99.223.38:8081/api/order/order-send?constructorId=${auths.id}`;
 
         const result = getData(url).data;
 
@@ -103,7 +103,7 @@ $('#ormanMethodPhone').on('change', function () {
         input.attr('placeholder', placeholder);
         label.text(text);
 
-        const url = `http://210.99.223.38:8081/api/order/order-send?constructorId=${localStorage.LoginSession}`;
+        const url = `http://210.99.223.38:8081/api/order/order-send?constructorId=${auths.id}`;
 
         const result = getData(url).data;
 
@@ -123,7 +123,7 @@ $('#ormanSendBtn').on('click', function () {
 
     if (phoneBool === false) {
         const data = {
-            'constructorId': localStorage.LoginSession,
+            'constructorId': auths.id,
             'sendMethod': false,
             'email': value
         }
@@ -137,7 +137,7 @@ $('#ormanSendBtn').on('click', function () {
 
     else if (phoneBool === true) {
         const data = {
-            'constructorId': localStorage.LoginSession,
+            'constructorId': auths.id,
             'sendMethod': true,
             'phoneNumber': value
         }

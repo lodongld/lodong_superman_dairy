@@ -359,13 +359,13 @@ function monthlyGetWorkerUrl(year, month, workerId, event) {
         return 'http://210.99.223.38:8081/api/working/worker/' + event + '?year=' + year + '&month=' + month + '&userConstructorId=' + workerId;
     }
     else if (workerId === 'all') {
-        return 'http://210.99.223.38:8081/api/working/worker/' + event + '/list?year=' + year + '&month=' + month + '&constructorId=' + session;
+        return 'http://210.99.223.38:8081/api/working/worker/' + event + '/list?year=' + year + '&month=' + month + '&constructorId=' + auths.id;
     }
 }
 
 // fetch workers 
 function monthlyFetchWorkers() {
-    let worker_url = 'http://210.99.223.38:8081/api/working/worker/list?constructorId=' + session;
+    let worker_url = 'http://210.99.223.38:8081/api/working/worker/list?constructorId=' + auths.id;
     const workerListsData = getData(worker_url).data;
     const workerTemplate = "monthly_workers_template";
     const workerListsContainer = "monthly_workers-body";
@@ -374,7 +374,7 @@ function monthlyFetchWorkers() {
 
 // fetch contracts
 function monthlyFetchContracts() {
-    let contract_url = 'http://210.99.223.38:8081/api/working/task/no-worker?constructorId=' + session;
+    let contract_url = 'http://210.99.223.38:8081/api/working/task/no-worker?constructorId=' + auths.id;
     const contractListsData = getData(contract_url).data;
     const contractTemplate = "monthly_contracts_template";
     const contractListsContainer = "monthly_contracts-body";
@@ -807,7 +807,7 @@ function weeklyMakeEventListDiv() {
 /** FETCH AND DISPLAY */
 // get url
 function weeklyGetWorkerUrl(year, week, event) {
-    let url = 'http://210.99.223.38:8081/api/working/worker/' + event + '/list?year=' + year + '&week=' + week + '&constructorId=' + session;
+    let url = 'http://210.99.223.38:8081/api/working/worker/' + event + '/list?year=' + year + '&week=' + week + '&constructorId=' + auths.id;
     // console.log(url);
     return url;
 }
@@ -877,7 +877,7 @@ function weeklyFetchDisplayWorkerEvents(year, weeknum, event) {
 
 // fetch contracts
 function weeklyFetchContracts() {
-    let contract_url = 'http://210.99.223.38:8081/api/working/task/no-worker?constructorId=' + session;
+    let contract_url = 'http://210.99.223.38:8081/api/working/task/no-worker?constructorId=' + auths.id;
     const contractListsData = getData(contract_url).data;
     const contractTemplate = "weekly_contracts_template";
     const contractListsContainer = "weekly_contracts-body";
@@ -886,7 +886,7 @@ function weeklyFetchContracts() {
 
 // fetch workers
 function weeklyFetchWorkers() {
-    let worker_url = 'http://210.99.223.38:8081/api/working/worker/list?constructorId=' + session;
+    let worker_url = 'http://210.99.223.38:8081/api/working/worker/list?constructorId=' + auths.id;
     const workerListsData = getData(worker_url).data;
     const workerTemplate = "weekly_workers_template";
     const workerListsContainer = "weekly_workers-body";

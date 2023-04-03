@@ -43,7 +43,7 @@ body.lb-disable-scrolling {
   height: 100% !important;
 
   /* Image border */
-  border: 2px solid white;
+  /* border: 2px solid white; */
 }
 
 .lightbox a img {

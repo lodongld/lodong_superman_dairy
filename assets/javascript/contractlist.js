@@ -189,7 +189,7 @@ function viewContractListDetails(thisElem) {
 $('#contractlistCont').on('change', '.selectStatus', function () {
   let selectID = $(this).data('id'); 
   let selectedStatus = $(this).val();
-  const url = "http://210.99.223.38:8081/api/order/menu/list?constructorId="+localStorage.LoginSession;
+  const url = "http://210.99.223.38:8081/api/order/menu/list?constructorId="+auths.id;
   const putURL ="http://210.99.223.38:8081/api/order/menu/status?requestOrderId="+selectID+"&status="+selectedStatus; 
 
   const statusUpdate = {
@@ -207,7 +207,7 @@ $('#contractlistCont').on('change', '.selectStatus', function () {
 
 // FOR SEARCH / FILTERING OF DATA BY STATUS
 $(".listSelect").on("change", function () {
-  let url = "http://210.99.223.38:8081/api/order/menu/list?constructorId="+localStorage.LoginSession;
+  let url = "http://210.99.223.38:8081/api/order/menu/list?constructorId="+auths.id;
   let sValue = $(".listSelect").val();
   let alldata = getData(url).data;
 
@@ -258,14 +258,15 @@ $(".listSelect").on("change", function () {
 
 // DISPLAY CONTRACT LIST PAGE FROM SIDEBAR - MENU
 $('#contract_btn').on('click',function(){
-    let url = "http://210.99.223.38:8081/api/order/menu/list?constructorId="+localStorage.LoginSession;
+    let url = "http://210.99.223.38:8081/api/order/menu/list?constructorId="+auths.id;
     displayContractList(10, url);
+
 });
 
 
 // button function for search - NO FUNCTION YET, NO PROVIDED API FOR SEARCH
 $('#listBtn').on('click', function(){
-    // let searchUrl = "http://210.99.223.38:8081/api/order/menu/list?constructorId="+localStorage.LoginSession;
+    // let searchUrl = "http://210.99.223.38:8081/api/order/menu/list?constructorId="+auths.id;
     let searchKey = $('#listSearch').val();
     console.log(searchKey);
 });

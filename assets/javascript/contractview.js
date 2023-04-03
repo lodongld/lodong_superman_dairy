@@ -6,13 +6,13 @@ const arType = $('#arselectType');
 const arSearch = $('#arsearchText');
 const arSelect = $('#arapartmentsearch');
 
-const acWorkingList = `http://210.99.223.38:8081/api/working?constructorId=${localStorage.LoginSession}`;
-const arWorkingList = `http://210.99.223.38:8081/api/working?constructorId=${localStorage.LoginSession}&showByNoPay=true`;
+const acWorkingList = `http://210.99.223.38:8081/api/working?constructorId=${auths.id}`;
+const arWorkingList = `http://210.99.223.38:8081/api/working?constructorId=${auths.id}&showByNoPay=true`;
 
 
 // select option display
 function cvSelectDisplay(container, template) {
-    const apartUrl = `http://210.99.223.38:8081/api/constructor/apartment/other/list?constructorId=${localStorage.LoginSession}`;
+    const apartUrl = `http://210.99.223.38:8081/api/constructor/apartment/other/list?constructorId=${auths.id}`;
     const results = getData(apartUrl).data;
     $('#' + container).empty();
     const placeholder = `<option></option>`;
@@ -211,7 +211,7 @@ $('#acsearchBtn').on('click', function () {
             }
 
             else if (string) {
-                const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${localStorage.LoginSession}&phoneNumber=${string.trim()}`;
+                const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${auths.id}&phoneNumber=${string.trim()}`;
                 console.log(url)
                 const results = getData(url).data;
                 console.log(results);
@@ -219,7 +219,7 @@ $('#acsearchBtn').on('click', function () {
             }
         }
         else if (apartment.length > 0) {
-            const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${localStorage.LoginSession}&apartmentId=${apartment}phoneNumber=${string.trim()}`;
+            const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${auths.id}&apartmentId=${apartment}phoneNumber=${string.trim()}`;
             const results = getData(url).data;
             displayACTableData(results);
         }
@@ -238,13 +238,13 @@ $('#acsearchBtn').on('click', function () {
                 displayACTableData(results);
             }
             else if (string) {
-                const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${localStorage.LoginSession}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}`;
+                const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${auths.id}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}`;
                 const results = getData(url).data;
                 displayACTableData(results);
             }
         }
         else if (apartment.length > 0) {
-            const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${localStorage.LoginSession}&apartmentId=${apartment}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}`;
+            const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${auths.id}&apartmentId=${apartment}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}`;
             const results = getData(url).data;
             displayACTableData(results);
         }
@@ -258,7 +258,7 @@ $('#acapartmentsearch').on('change', function () {
     var string = acSearch.val();
 
     if (type === '선택') { 
-        const url = `http://210.99.223.38:8081/api/working/apartment?constructorId=${localStorage.LoginSession}&apartmentId=${apartment}`;
+        const url = `http://210.99.223.38:8081/api/working/apartment?constructorId=${auths.id}&apartmentId=${apartment}`;
         const results = getData(url).data;
         displayACTableData(results);
     }
@@ -270,13 +270,13 @@ $('#acapartmentsearch').on('change', function () {
                 displayACTableData(results);
             }
             else if (string) {
-                const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${localStorage.LoginSession}&phoneNumber=${string.trim()}`;
+                const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${auths.id}&phoneNumber=${string.trim()}`;
                 const results = getData(url);
                 displayACTableData(results);
             }
         }
         else if (apartment.length > 0) {
-            const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${localStorage.LoginSession}&apartmentId=${apartment}phoneNumber=${string.trim()}`;
+            const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${auths.id}&apartmentId=${apartment}phoneNumber=${string.trim()}`;
             const results = getData(url).data;
             displayACTableData(results);
         }
@@ -293,13 +293,13 @@ $('#acapartmentsearch').on('change', function () {
                 displayACTableData(results);
             }
             else if (string) {
-                const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${localStorage.LoginSession}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}`;
+                const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${auths.id}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}`;
                 const results = getData(url).data;
                 displayACTableData(results);
             }
         }
         else if (apartment.length > 0) {
-            const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${localStorage.LoginSession}&apartmentId=${apartment}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}`;
+            const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${auths.id}&apartmentId=${apartment}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}`;
             const results = getData(url).data;
             displayACTableData(results);
         }
@@ -338,7 +338,7 @@ $('#arsearchBtn').on('click', function () {
             }
 
             else if (string) {
-                const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${localStorage.LoginSession}&phoneNumber=${string.trim()}&showByNoPay=true`;
+                const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${auths.id}&phoneNumber=${string.trim()}&showByNoPay=true`;
                 console.log(url)
                 const results = getData(url).data;
                 console.log(results);
@@ -346,7 +346,7 @@ $('#arsearchBtn').on('click', function () {
             }
         }
         else if (apartment.length > 0) {
-            const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${localStorage.LoginSession}&apartmentId=${apartment}phoneNumber=${string.trim()}&showByNoPay=true`;
+            const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${auths.id}&apartmentId=${apartment}phoneNumber=${string.trim()}&showByNoPay=true`;
             const results = getData(url).data;
             displayARTableData(results);
         }
@@ -365,13 +365,13 @@ $('#arsearchBtn').on('click', function () {
                 displayARTableData(results);
             }
             else if (string) {
-                const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${localStorage.LoginSession}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}&showByNoPay=true`;
+                const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${auths.id}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}&showByNoPay=true`;
                 const results = getData(url).data;
                 displayARTableData(results);
             }
         }
         else if (apartment.length > 0) {
-            const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${localStorage.LoginSession}&apartmentId=${apartment}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}&showByNoPay=true`;
+            const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${auths.id}&apartmentId=${apartment}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}&showByNoPay=true`;
             const results = getData(url).data;
             displayARTableData(results);
         }
@@ -385,7 +385,7 @@ $('#arapartmentsearch').on('change', function () {
     var string = arSearch.val();
 
     if (type === '선택') {
-        const url = `http://210.99.223.38:8081/api/working/apartment?constructorId=${localStorage.LoginSession}&apartmentId=${apartment}&showByNoPay=true`;
+        const url = `http://210.99.223.38:8081/api/working/apartment?constructorId=${auths.id}&apartmentId=${apartment}&showByNoPay=true`;
         const results = getData(url).data;
         displayARTableData(results);
     }
@@ -397,13 +397,13 @@ $('#arapartmentsearch').on('change', function () {
                 displayARTableData(results);
             }
             else if (string) {
-                const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${localStorage.LoginSession}&phoneNumber=${string.trim()}&showByNoPay=true`;
+                const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${auths.id}&phoneNumber=${string.trim()}&showByNoPay=true`;
                 const results = getData(url);
                 displayARTableData(results);
             }
         }
         else if (apartment.length > 0) {
-            const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${localStorage.LoginSession}&apartmentId=${apartment}phoneNumber=${string.trim()}&showByNoPay=true`;
+            const url = `http://210.99.223.38:8081/api/working/phone-number?constructorId=${auths.id}&apartmentId=${apartment}phoneNumber=${string.trim()}&showByNoPay=true`;
             const results = getData(url).data;
             displayARTableData(results);
         }
@@ -420,13 +420,13 @@ $('#arapartmentsearch').on('change', function () {
                 displayARTableData(results);
             }
             else if (string) {
-                const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${localStorage.LoginSession}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}&showByNoPay=true`;
+                const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${auths.id}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}&showByNoPay=true`;
                 const results = getData(url).data;
                 displayARTableData(results);
             }
         }
         else if (apartment.length > 0) {
-            const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${localStorage.LoginSession}&apartmentId=${apartment}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}&showByNoPay=true`;
+            const url = `http://210.99.223.38:8081/api/working/dong-hosu?constructorId=${auths.id}&apartmentId=${apartment}&apartmentDong=${dong.trim()}&apartmentHosu=${hosu.trim()}&showByNoPay=true`;
             const results = getData(url).data;
             displayARTableData(results);
         }

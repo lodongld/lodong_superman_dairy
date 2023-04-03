@@ -20,7 +20,6 @@ function loginValidate(details){
         const mgs = postData(details, loginUrl).message;
         return loginMessageResult(mgs);
     }
-
 }
 
 function loginMessageResult(mgs) {
@@ -36,7 +35,7 @@ function loginMessageResult(mgs) {
 }
 
 function loginSession() {
-    if (session === null) { window.location.href = 'login.html'; } 
+    if (localStorage.localKey === null) { window.location.href = 'login.html'; } 
     else { window.location.href = 'index.html'; }
 }
 
@@ -61,17 +60,19 @@ $('#login_form').on('submit', function (e) {
     else if (mgs === 'Login successfully.') {
         const constructorId = postData(loginDetails, loginUrl).data.constructorId;
         
-        localStorage.setItem('LoginSession', constructorId);
-        localStorage.setItem('Headers', username);
-        localStorage.setItem('Body', password);
+        localStorage.setItem('localKey', constructorId);
+        localStorage.setItem('localHeaders', username);
+        localStorage.setItem('localBody', password);
+        // localStorage.setItem('Headers', username);
+        // localStorage.setItem('Body', password);
         loginSession();
     }
 });
 
 $('#logout_btn').on('click', function () {
     localStorage.clear();
-    // auths = [];
-    client.deactivate();
+    unsubscribeStomp();
+    deactiveStomp();
     loginSession();
 });
 

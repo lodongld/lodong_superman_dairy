@@ -214,7 +214,7 @@ $("#cwConstrucBtn").on("click", function () {
 // GET PRODUCT LIST
 const url =
   "http://210.99.223.38:8081/api/constructor/product/list?constructorId=" +
-  localStorage.LoginSession;
+  auths.id;
 const data = getData(url).data;
 displaycwprodlist("cwproductCont", "cwproductTemp", data);
 console.log(data);
@@ -384,7 +384,7 @@ $("#cwaccept").on("click", function () {
       $("#cwConstrucBtn").attr("data-status"),
     cashReceiptPurpose: isPurpose,
     cashReceiptPhoneNumber: $("#cwcustphone").val(),
-    constructorId: localStorage.LoginSession,
+    constructorId: auths.id,
     estimateDetails: cwproductlist_temparray,
     discounts: cwdiscountlist_temparray,
   };

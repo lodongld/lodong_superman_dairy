@@ -189,8 +189,20 @@
                     .chat-MsgHistory {
                         width: 100%;
 
-                        .mgsdate {
+                        .chatDate {
+                            margin-top: $s2;
+                            margin-bottom: $s2;
+                            margin-left: auto;
+                            margin-right: auto;
+                            padding: $s1 $s3;
+                            width: fit-content;
+                            background: $primary;
+                            border-radius: $s2;
                             text-align: center;
+                            color: $white;
+                            // border: 1px solid red;
+                            font-weight: bold;
+
                         }
 
                         .mgssend {
@@ -201,21 +213,36 @@
                             margin-bottom: $s3;
         
                             .mgssend-content {
-                                min-width: auto !important;
                                 max-width: 90%;
                                 display: flex;
                                 justify-content: end;
                                 align-items: end;
+                                width: auto;
+                                margin-left: auto;
                                 
-        
                                 .mgssend-time {
+                                    display: flex;
+                                    justify-content: flex-end;
+                                    align-items: end;
+                                    flex-direction: column;
+
                                     text-align: right;
-                                    padding: 0 $s2;
+                                    margin-right: $s1;
                                     font-size: 11px;
+                                    font-weight: bold;
+                                    
+                                    .sendtime {
+                                        color: $dark;
+                                        font-size: 11px;
+                                    }
+                                    
+                                    .sendviewed {
+                                        color: $primary;
+                                        font-size: 12px;
+                                    }
                                 }
         
                                 .mgssend-mgs {
-                                    // background-color: $blueGray-200;
                                     border: 1px solid $primary;
                                     color: $dark;
                                     padding: $s1 $s2;
@@ -224,40 +251,35 @@
                                     width: auto !important;
                                     word-wrap: break-word !important;
                                     min-height: 30px;
-                                    // text-align: justify;
-                                    // text-justify: inter-word;
+                                    margin-right: $s1;
+
                                 }
 
                                 .mgssend-imgs {
                                     display: flex;
-                                    justify-content: end;
+                                    justify-content: flex-end;
                                     align-items: end;
-                                    flex-direction: row;
                                     flex-wrap: wrap;
-
-                                    border-radius: $s2;
-                                    border-bottom-right-radius: 0;
+                                    text-align: right;
                                     background-color: $transparent;
-                                    border: 1px solid $primary;
-                                    // color: $dark;
-                                    // padding: $s2;
-                                    width: fit-content !important;
-                                    // text-align: right;
-                                    // word-wrap: break-word;
-                                    margin-right: $s2;
-
-                                    
 
                                     a {
+                                        border-radius: $s2;
+                                        overflow: hidden;
                                         display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        margin-top: 2px;
+                                        margin-left: $s2;
+                                        margin-bottom: $s2;
+
+                                        &:first-child{
+                                            margin-left: 0 !important;
+                                        }
 
                                         img {
-                                            border: 1px solid $primary;
-                                            max-height: 250px;
-                                            width: auto;
-                                            max-width: 100%;
-                                            height: auto;
-                                            margin: $s1;
+                                            width: 100%;
+                                            transform: scale(1.1);
                                         }
 
                                     }
@@ -272,13 +294,22 @@
                             align-items: flex-start;
                             margin-bottom: $s3;
         
-        
                             .mgsread-content {
                                 max-width: 90%;
                                 display: flex;
                                 justify-content: flex-start;
                                 align-items: flex-end;
-        
+                                width: auto;
+                                margin-right: auto;
+
+                                    
+                                .mgsread-time {
+                                    text-align: left;
+                                    margin-left: $s1;
+                                    font-size: 11px;
+                                    font-weight: bold;
+                                }
+
                                 .mgsread-mgs {
                                     border-radius: $s2;
                                     border-bottom-left-radius: 0;
@@ -288,55 +319,41 @@
                                     padding: $s2;
                                     width: auto;
                                     word-wrap: break-word;
-                                    margin-left: $s2;
+                                    margin-left: $s1;
                                 }
 
                                 .mgsread-imgs {
                                     display: flex;
-                                    justify-content: start;
-                                    align-items: start;
-                                    flex-direction: row;
+                                    justify-content: flex-start;
+                                    align-items: end;
                                     flex-wrap: wrap;
-                                    
-                                    border-radius: $s2;
-                                    border-bottom-left-radius: 0;
-                                    background-color: $transparent;
-                                    border: 1px solid $dark;
-                                    // color: $dark;
-                                    // padding: $s2;
                                     width: fit-content !important;
-                                    // word-wrap: break-word;
-                                    margin-left: $s2;
-
+                                    text-align: left;
                                     
+                                    background-color: $transparent;
+                                    margin-left: $s1;
 
                                     a {
-                                        
                                         display: flex;
-                                        margin: $s1;
+                                        align-items: center;
+                                        justify-content: center;
+                                        border-radius: $s2;
+                                        overflow: hidden;
+                                        margin-top: 2px;
+                                        margin-right: $s2;
+                                        margin-bottom: $s2;
 
-                                        border: 1px solid $dark;
-                                        max-height: 250px;
-                                        width: auto;
-                                        max-width: 100%;
-                                        height: auto;
+                                        &:last-child{
+                                            margin-right: 0 !important;
+                                        }
 
                                         img {
-                                            // border: 1px solid $dark;
-                                            max-height: 248px;
-                                            width: auto;
-                                            max-width: 100%;
-                                            height: auto;
+                                            width: 100%;
+                                            transform: scale(1.1);
                                         }
 
                                     }
 
-                                }
-        
-                                .mgsread-time {
-                                    text-align: left;
-                                    padding: 0 $s2;
-                                    font-size: 11px;
                                 }
                             }
         
@@ -442,6 +459,7 @@
                                 padding: $s2;
                                 box-shadow: none;
                                 border: 1px solid $transparent !important;
+                                resize: none;
                                 // border: 1px solid red;
 
                             }

@@ -1,7 +1,7 @@
 profDisplayInfo();
 
 function profDisplayInfo() {
-    const profUrl = `http://210.99.223.38:8081/api/constructor?constructorId=${localStorage.LoginSession}`;
+    const profUrl = `http://210.99.223.38:8081/api/constructor?constructorId=${auths.id}`;
     const result = getData(profUrl).data;
 
     // console.log(result);
@@ -63,7 +63,7 @@ $('#profilesaveBtn').on('click', function(e) {
     const address = $('#profAddress').val();
     const addressDetail = $('#profAddress2').val();
     const introduction = $('#profIntro').val();
-    const constructorId = localStorage.LoginSession;
+    const constructorId = auths.id;
 
     // const profileImg = $('#editprofile').val();
     const imageInput = document.querySelector('#editprofile');

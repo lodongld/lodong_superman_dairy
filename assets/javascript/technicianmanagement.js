@@ -72,7 +72,7 @@ function displayTechPage(pageData) {
 
 // onload page
 $('#technicianmanagement_btn').on('click', function () {
-    let url = `http://210.99.223.38:8081/api/setting/worker/on-off?constructorId=${localStorage.LoginSession}`;
+    let url = `http://210.99.223.38:8081/api/setting/worker/on-off?constructorId=${auths.id}`;
     displayTechList(10, url);
 });
 

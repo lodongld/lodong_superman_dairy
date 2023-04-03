@@ -201,7 +201,7 @@ function boardAddComment(thisElem) {
 
     const data = {
         'boardId': boardId,
-        'constructorId' : session,
+        'constructorId' : auths.id,
         'comment': comment,
     }
     
@@ -239,7 +239,7 @@ function boardAddReply(thisElem) {
     const data = {
         'boardId': boardId,
         'commentGroupId': cgId,
-        'constructorId': session,
+        'constructorId': auths.id,
         'comment': reply,
     }
 

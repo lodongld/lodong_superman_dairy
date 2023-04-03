@@ -104,6 +104,8 @@ $(function () {
         if ($("#home_page").hasClass("d-none")) {
             $("#home_page").addClass("d-block").removeClass("d-none");
 
+            unsubscribeStomp();
+            // deactiveStomp();
             // check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page','viewallcontracts_btn');
@@ -133,6 +135,8 @@ $(function () {
         if ($("#profile_page").hasClass("d-none")) {
             $("#profile_page").addClass("d-block").removeClass("d-none");
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             // check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -163,6 +167,8 @@ $(function () {
             $("#viewallcontracts_page").addClass("d-block").removeClass("d-none");
             $("#viewallcontracts_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             // check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -194,6 +200,8 @@ $(function () {
             $("#contractwriting_page").addClass("d-block").removeClass("d-none");
             $("#contractwriting_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -224,6 +232,8 @@ $(function () {
             $("#contractwriting_page").addClass("d-block").removeClass("d-none");
             $("#contractwriting_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -254,6 +264,8 @@ $(function () {
             $("#contractwriting_page").addClass("d-block").removeClass("d-none");
             $("#contractwriting_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -284,6 +296,8 @@ $(function () {
         $("#contractwriting_page").addClass("d-block").removeClass("d-none");
         $("#contractwriting_btn").addClass("active");
 
+        unsubscribeStomp();
+        // deactiveStomp();
         check_page1("home_page");
         check_page1("profile_page");
         check_page2("viewallcontracts_page", "viewallcontracts_btn");
@@ -342,6 +356,8 @@ $(function () {
         $("#contractwriting_page").addClass("d-block").removeClass("d-none");
         $("#contractwriting_btn").addClass("active");
 
+        unsubscribeStomp();
+        // deactiveStomp();
         check_page1("home_page");
         check_page1("profile_page");
         check_page2("viewallcontracts_page", "viewallcontracts_btn");
@@ -400,6 +416,8 @@ $(function () {
             $("#contractwriting_page").addClass("d-block").removeClass("d-none");
             $("#contractwriting_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -430,6 +448,8 @@ $(function () {
             $("#orderstatus_page").addClass("d-block").removeClass("d-none");
             $("#orderstatus_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -460,6 +480,8 @@ $(function () {
             $("#ordermanagement_page").addClass("d-block").removeClass("d-none");
             $("#ordermanagement_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -490,6 +512,8 @@ $(function () {
             $("#filemanagement_page").addClass("d-block").removeClass("d-none");
             $("#filemanagement_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -520,6 +544,8 @@ $(function () {
             $("#onlinefair_page").addClass("d-block").removeClass("d-none");
             $("#onlinefair_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -550,6 +576,8 @@ $(function () {
             $("#fairmanagement_page").addClass("d-block").removeClass("d-none");
             $("#fairmanagement_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -582,6 +610,8 @@ $(function () {
             $("#paymentrequestmanagement_page").addClass("d-block").removeClass("d-none");
             $("#paymentrequestmanagement_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -612,6 +642,8 @@ $(function () {
             $("#technicianmanagement_page").addClass("d-block").removeClass("d-none");
             $("#technicianmanagement_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -642,6 +674,8 @@ $(function () {
             $("#contract_page").addClass("d-block").removeClass("d-none");
             $("#contract_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -672,6 +706,8 @@ $(function () {
             $("#consulting_page").addClass("d-block").removeClass("d-none");
             $("#consulting_btn").addClass('active');
 
+            // unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -702,6 +738,8 @@ $(function () {
             $("#consulting_page").addClass("d-block").removeClass("d-none");
             $("#consulting_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -732,6 +770,8 @@ $(function () {
             $("#cardusagehistory_page").addClass("d-block").removeClass("d-none");
             $("#cardusagehistory_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');
@@ -765,6 +805,8 @@ $(function () {
             $("#master_page").addClass("d-block").removeClass("d-none");
             $("#master_btn").addClass('active');
 
+            unsubscribeStomp();
+            // deactiveStomp();
             check_page1('home_page');
             check_page1('profile_page');
             check_page2('viewallcontracts_page', 'viewallcontracts_btn');

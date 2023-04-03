@@ -132,7 +132,7 @@ function homeViewOrderDetails(thisElem) {
 
 $(function () {
     // display revenue
-    const revenueUrl = `http://210.99.223.38:8081/api/working/num-revenue?constructorId=${localStorage.LoginSession}`;
+    const revenueUrl = `http://210.99.223.38:8081/api/working/num-revenue?constructorId=${auths.id}`;
     const revenueCont = "revenueCont";
     const revenueTemp = "revenueTemp";
     const revenueResult = getData(revenueUrl).data;
@@ -140,33 +140,14 @@ $(function () {
 
 
     // display chats
-    const roomListUrl = `http://210.99.223.38:8081/api/chat/room/list?constructorId=${session}`;
+    const roomListUrl = `http://210.99.223.38:8081/api/chat/room/list?constructorId=${auths.id}`;
     displayHomeRooms(roomListUrl);
 
     // display request orders
-    const orderUrl = `http://210.99.223.38:8081/api/order/list?constructorId=${localStorage.LoginSession}`;
+    const orderUrl = `http://210.99.223.38:8081/api/order/list?constructorId=${auths.id}`;
     const orderCont = "homeOrderCont";
     const orderTemp = "homeOrderTemp";
     const orderResult = getData(orderUrl).data;
     displayHomeOrder(orderCont, orderTemp, orderResult);
 })
 
-// connect to stomp
-// 
-const stompConnected = () => { console.log('Stomp is Connected.'); }
-const stompError = () => { client.reconnect_delay = 200; }
-const stompUrl = `ws://210.99.223.38:8081/ws`;
-const headers = {
-    login: localStorage.Headers,
-    passcode: localStorage.Body
-}
-
-const client = new StompJs.Client({
-    brokerURL: stompUrl,
-    connectHeaders: headers,
-    debug: function (str) { },
-});
-
-client.onConnect = function (frame) { stompConnected(); };
-client.onStompError = function (frame) { stompError(); };
-client.activate();

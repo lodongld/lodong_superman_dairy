@@ -1,7 +1,14 @@
+const chatBox = document.getElementById('#chatMsgHistory');
+
+// Flag to prevent multiple requests at the same time
+let isFetching = false;
+let beforedate;
+
 function autoScrollToBotMsg() {
     $(document).ready(function () {
         const x = $('.chat-MsgVisible').outerHeight();
         var newscrollHeight = $(".chat-MsgVisible").prop("scrollHeight"); 
+
         $(".chat-MsgVisible").animate({
             scrollTop: newscrollHeight
         }, '500');
@@ -62,43 +69,140 @@ function chatDisplayRooms(url) {
     })
 }
 
-
-
-let subscription;
-let oldRoomID, customerID;
 function openThisChat(thisElem) {
     $('#chatMsgHistory').empty();
+
+    const visibleDiv = document.querySelector('.chat-MsgVisible');
+    visibleDiv.removeEventListener('scroll', scrollev);
     $('#chatRoom_cont .chats').siblings().removeClass('active');
     thisElem.classList += ' active';
+    unsubscribeStomp();
 
-    const unsub = () => { subscription.unsubscribe(); }
-    if (oldRoomID) { oldRoomID = null; unsub; }
 
     const custID = thisElem.getAttribute('data-customerID');
-    customerID = custID;
     const roomID = thisElem.getAttribute('data-roomID');
-    oldRoomID = roomID;
+    localStorage.setItem('localRoom', roomID);
+    stompReceiver = custID;
 
-    const currDate = new Date();
-    const timestamp = getPosDate(currDate);
-    let openChatUrl = `http://210.99.223.38:8081/api/chat/list?roomId=${roomID}&dateTime=${timestamp}`;
-    const result = getData(openChatUrl).data;
-    displayThisChats(result, timestamp);
+    fetchMessages(roomID, new Date().toISOString().substring(0, 10));
     autoScrollToBotMsg();
 
-    stompOnMessage(roomID);
+    activateOnScrollEvent();
+
+    // activeStomp();
+    subscribeStomp(roomID);
 }
 
-async function displayThisChats(dataResults, day) {
+// Fetch messages for the given date
+function fetchMessages(room, date) {
+    if (!isFetching) {
+        isFetching = true;
+
+        // Fetch messages for the given date
+        let openChatUrl = `http://210.99.223.38:8081/api/chat/list?roomId=${room}&dateTime=${date}`;
+        const result = getData(openChatUrl);
+        const resdata = result.data;
+        // console.log(resdata)
+
+        if (resdata.length > 0){
+            let dateAtZeroIndex = resdata[0].createAt;
+            let splitZeroIndex = dateAtZeroIndex.split(' ');
+            let splitX = splitZeroIndex[0];
+            
+            if (resdata.length >= 2 ) {
+                let dateAtOneIndex = resdata[1].createAt;
+                let splitOneIndex = dateAtOneIndex.split(' ');
+                let splitY = splitOneIndex[0];
+
+                if (splitX != splitY) {
+                    beforedate = splitX;
+                    resdata.shift();
+
+                    if (resdata.length < 15) {
+                        displayThisChats(resdata, date);
+                        isFetching = false;
+                        fetchPreviousMessages(room, beforedate);
+                    }
+                    else if (resdata.length >= 15) {
+                        isFetching = false;
+                        displayThisChats(resdata, date);
+                    }
+                }
+                else if (splitX === splitY) {
+                    beforedate = null;
+                    isFetching = false;
+                    displayThisChats(resdata, date);
+                }
+            }
+
+            else if (resdata.length === 1) {
+                beforedate = splitX;
+                isFetching = false;
+                // displayThisChats(resdata, date);
+                fetchPreviousMessages(room, beforedate);
+            }
+
+        }
+        else if (resdata.length === 0) { console.log(result.message)}
+    }
+}
+
+// Fetch previous messages and render them at the top of the chat box
+function fetchPreviousMessages(room, date) {
+    if (!isFetching) {
+        isFetching = true;
+        // Fetch messages for the given date
+        let openChatUrl = `http://210.99.223.38:8081/api/chat/list?roomId=${room}&dateTime=${date}`;
+        const result = getData(openChatUrl);
+        const resdata = result.data;
+
+        let dateAtZeroIndex = resdata[0].createAt;
+        let splitZeroIndex = dateAtZeroIndex.split(' ');
+        let splitX = splitZeroIndex[0];
+
+        if (resdata.length >= 2) {
+            let dateAtOneIndex = resdata[1].createAt;
+            let splitOneIndex = dateAtOneIndex.split(' ');
+            let splitY = splitOneIndex[0];
+
+            if (splitX != splitY) {
+                beforedate = splitX;
+                resdata.shift();
+                if (resdata.length < 10) {
+                    isFetching = false;
+                    displayPreviousChats(resdata, date)
+                    fetchPreviousMessages(room, beforedate);
+                }
+                else if (resdata.length >= 10) {
+                    isFetching = false;
+                    displayPreviousChats(resdata, date)
+                }
+            }
+            else if (splitX === splitY) {
+                beforedate = null;
+                isFetching = false;
+                displayPreviousChats(resdata, date);
+            }
+        }
+
+        else if (resdata.length === 1) {
+            beforedate = splitX;
+            isFetching = false;
+            fetchPreviousMessages(room, beforedate);
+        }
+    }
+}
+
+function displayThisChats(dataResults, day) {
     $('#chatMsgHistory').empty();
-    // console.log(dataResults);
+    // console.log('displayThisChats: ', dataResults);
 
     if(dataResults.length > 0) {
         const creAt = day.split('-');
-        const dateTemplate = `<div class="text-center fs-14px">${creAt[0]}년 ${creAt[1]}월 ${creAt[2]}일</div>`;
+        const dateTemplate = `<div class="chatDate text-center fs-14px" data-chatDate='${day}'>${creAt[0]}년 ${creAt[1]}월 ${creAt[2]}일</div>`;
         $('#chatMsgHistory').append(dateTemplate);
     
-        await $.each(dataResults, function (i, d) {
+        $.each(dataResults, function (i, d) {
             let html;
             const imgChat = d.chatImageFile;
             const mgsTime = d.createAt;
@@ -108,9 +212,9 @@ async function displayThisChats(dataResults, day) {
             const chatTimeJoin = `${chatTime[0]}:${chatTime[1]}`;
             const mgsSender = d.sender;
             
-            if (mgsSender != session) {
+            if (mgsSender != auths.id) {
                 if (type === 'MESSAGE') {
-                    html = `<div id='mgsread${d.id}' class='mgsread' data-mgs-type='${type}'>
+                    html = `<div id='mgsread${d.id}' class='mgsread' data-mgs-type='${type}' data-date='${mgsTime}'>
                                 <div class='mgsread-content'>
                                     <img src='./assets/img/images/tree.png' alt='profile-pic' height='26' width='26' />
                                     <div class='mgsread-mgs'> ${d.message} </div>
@@ -121,35 +225,44 @@ async function displayThisChats(dataResults, day) {
                     $('#chatMsgHistory').append(html);
                 }
                 else if (type === 'IMAGE') {
-                    const imgs = (imgChat, id) => {
+                    const maxwidth = chatImgDisplayStyle(imgChat).maxwidth;
+                    const width = chatImgDisplayStyle(imgChat).width;
+                    const height = chatImgDisplayStyle(imgChat).height;
+
+                    const imgs = (imgChat, width, height, id) => {
                         const imgElements = imgChat.flatMap((image) => {
                             return Object.values(image).map((imageName) => {
                                 const imgData = `http://210.99.223.38:8081/api/chat/image?chatImageFileName=${imageName}`;
-                                return `<a href="${imgData}" target="_blank" data-lightbox="msgImg${id}"><img src='${imgData}' alt='chat-img' class='img-fluid' /></a>`;
+                                return `<a href="${imgData}" target="_blank" data-lightbox="msgImg${id}" style='width: ${width}px; height: ${height}px;'>
+                                            <img src='${imgData}' alt='chat-img' class='img-fluid placeholder-glow' style='height: ${height}px;'/>
+                                        </a>`;
                             });
                         }).join('');
 
                         return imgElements;
                     }
     
-                    let htmlImg = `<div id='mgsread${d.id}' class='mgsread' data-mgs-type='${type}'>
+                    let htmlImg = `<div id='mgsread${d.id}' class='mgsread' data-mgs-type='${type}' data-date='${mgsTime}'>
                                         <div class='mgsread-content'>
-                                            <img src='./assets/img/images/tree.png' alt='profile-pic' height='26' width='26' />
-                                            <div class='mgsread-imgs'> 
-                                                ${imgs(imgChat, d.id)}
+                                            <img src='./assets/img/images/tree.png' alt='profile-pic' height='26' width='26' class="mb-2" />
+                                            <div class="mgsread-cont">
+                                                <div class='mgsread-time mb-2'> ${chatTimeJoin} </div>
+                                                <div class='mgsread-imgs' style="max-width: ${maxwidth}px !mportant"> ${imgs(imgChat, width, height, d.id)} </div>
                                             </div>
-                                            <div class='mgsread-time'> ${chatTimeJoin} </div>
                                         </div>
                                     </div>`;
                     $('#chatMsgHistory').append(htmlImg);
                 }
             }
     
-            else if (mgsSender === session) {
+            else if (mgsSender === auths.id) {
                 if (type === 'MESSAGE') {
-                    html = `<div id='mgssend${d.id}' class='mgssend' data-mgs-type='${type}'>
+                    html = `<div id='mgssend${d.id}' class='mgssend' data-mgs-type='${type}' data-date='${mgsTime}'>
                                 <div class='mgssend-content'>
-                                    <div class='mgssend-time'> ${chatTimeJoin} </div>
+                                    <div class="mgssend-time">
+                                        <span class='sendviewed text-end'>1</span>
+                                        <span class='sendtime'> ${chatTimeJoin} </span>
+                                    </div> 
                                     <div class='mgssend-mgs'> ${d.message} </div>
                                 </div>
                             </div>`;
@@ -158,24 +271,32 @@ async function displayThisChats(dataResults, day) {
                 }
     
                 else if (type === 'IMAGE') {
-                    const imgs = (imgChat, id) => {
+                    const maxwidth = chatImgDisplayStyle(imgChat).maxwidth;
+                    const width = chatImgDisplayStyle(imgChat).width;
+                    const height = chatImgDisplayStyle(imgChat).height;
+
+                    const imgs = (imgChat, width, height, id) => {
                         const imgElements = imgChat.flatMap((image) => {
                             return Object.values(image).map((imageName) => {
                                 const imgData = `http://210.99.223.38:8081/api/chat/image?chatImageFileName=${imageName}`;
-                                return `<a href="${imgData}" target="_blank" data-lightbox="msgImg${id}"><img src='${imgData}' alt='chat-img' class='img-fluid' /></a>`;
+                                return `<a href="${imgData}" target="_blank" data-lightbox="msgImg${id}" style='width: ${width}px; height: ${height}px;'>
+                                    <img src='${imgData}' alt='chat-img' class='img-fluid placeholder-glow' style='height: ${height}px;' />
+                                    </a>`;
                             });
                         }).join('');
 
                         return imgElements;
                     }
-    
-                    let htmlImg = `<div id='mgssend${d.id}' class='mgssend' data-mgs-type='${type}'>
-                                        <div class='mgssend-content'>
-                                            <div class='mgssend-time'> ${chatTimeJoin} </div>
-                                            <div class='mgssend-imgs'> ${imgs(imgChat, d.id)} </div>
-                                        </div>
-                                    </div>`;
-    
+
+                    let htmlImg = `<div id='mgssend${d.id}' class='mgssend' data-mgs-type='${type}' data-date='${mgsTime}'>
+                                <div class='mgssend-content'>
+                                    <div class="mgssend-time mb-2">
+                                        <span class='sendviewed text-end'>1</span>
+                                        <span class='sendtime'> ${chatTimeJoin} </span>
+                                    </div> 
+                                    <div class='mgssend-imgs' style="max-width: ${maxwidth}px !important"> ${imgs(imgChat, width, height, d.id)} </div>
+                                </div>
+                            </div>`;
                     $('#chatMsgHistory').append(htmlImg);
                 }
             }
@@ -183,138 +304,198 @@ async function displayThisChats(dataResults, day) {
     }
 }
 
-async function displayCurrChats(mgs) {
-    const res = JSON.parse(mgs);
-    console.log(res);
-    if(res.id) {
-        let html;
-        const imgChat = res.imageFileIdList;
-        console.log(imgChat);
-        const type = res.type;
-        const createAt = res.createAt.split('T');
-        const chatTime = createAt[1].split('.');
-        const chatTT = chatTime[0].split(':');
-        const chatTimeJoin = `${chatTT[0]}:${chatTT[1]}`;
-        const mgsSender = res.senderId;
+function displayPreviousChats(dataResults, day) {
+    if (dataResults.length > 0) {
+        const creAt = day.split('-');
+        const dateTemplate = `<div class="chatDate text-center fs-14px" data-chatDate='${day}'>${creAt[0]}년 ${creAt[1]}월 ${creAt[2]}일</div>`;
+        let htmlContent = '';
+        $.each(dataResults, function (i, d) {
+            let html;
+            const imgChat = d.chatImageFile;
+            const mgsTime = d.createAt;
+            const type = d.type;
+            const createAt = mgsTime.split(' ');
+            const chatTime = createAt[1].split(':');
+            const chatTimeJoin = `${chatTime[0]}:${chatTime[1]}`;
+            const mgsSender = d.sender;
 
-        if (mgsSender != session) {
-            if (type === 'MESSAGE') {
-                html = `<div id='mgsread${res.id}' class='mgsread' data-mgs-type='${type}'>
-                            <div class='mgsread-content'>
-                                <img src='./assets/img/images/tree.png' alt='profile-pic' height='26' width='26' />
-                                <div class='mgsread-mgs'> ${res.message} </div>
-                                <div class='mgsread-time'> ${chatTimeJoin} </div>
-                            </div>
-                        </div>`;
-
-                $('#chatMsgHistory').append(html);
-            }
-            else if (type === 'IMAGE') {
-                const imgs = (imgChat, id) => {
-                    const imgElements = imgChat.map((imageName) => {
-                            const imgData = `http://210.99.223.38:8081/api/chat/image?chatImageFileName=${imageName}`;
-                            return `<a href="${imgData}" target="_blank" data-lightbox="msgImg${id}"><img src='${imgData}' alt='chat-img' class='img-fluid' /></a>`;
+            if (mgsSender != auths.id) {
+                if (type === 'MESSAGE') {
+                    html = `<div id='mgsread${d.id}' class='mgsread' data-mgs-type='${type}' data-date='${mgsTime}'>
+                                <div class='mgsread-content'>
+                                    <img src='./assets/img/images/tree.png' alt='profile-pic' height='26' width='26' />
+                                    <div class='mgsread-mgs'> ${d.message} </div>
+                                    <div class='mgsread-time'> ${chatTimeJoin} </div>
+                                </div>
+                            </div>`;
+                }
+                else if (type === 'IMAGE') {
+                    const maxwidth = chatImgDisplayStyle(imgChat).maxwidth;
+                    const width = chatImgDisplayStyle(imgChat).width;
+                    const height = chatImgDisplayStyle(imgChat).height;
+                    const imgs = (imgChat, width, height, id) => {
+                        const imgElements = imgChat.flatMap((image) => {
+                            return Object.values(image).map((imageName) => {
+                                const imgData = `http://210.99.223.38:8081/api/chat/image?chatImageFileName=${imageName}`;
+                                return `<a href="${imgData}" target="_blank" data-lightbox="msgImg${id}" style='width: ${width}px; height: ${height}px;'>
+                                        <img src='${imgData}' alt='chat-img' class='img-fluid' style='height: ${height}px;'/>
+                                    </a>`;
+                            });
                         }).join('');
 
-                    return imgElements;
+                        return imgElements;
+                    }
+
+                    html = `<div id='mgsread${d.id}' class='mgsread' data-mgs-type='${type}' data-date='${mgsTime}'>
+                                <div class='mgsread-content'>
+                                    <img src='./assets/img/images/tree.png' alt='profile-pic' height='26' width='26' class="mb-2" />
+                                    <div class='mgsread-imgs' style='max-width: ${maxwidth}px !important'> ${imgs(imgChat, width, height, d.id)} </div>
+                                    <div class='mgsread-time mb-2'> ${chatTimeJoin} </div>
+                                </div>
+                            </div>`;
+
                 }
-
-                let htmlImg = `<div id='mgsread${res.id}' class='mgsread' data-mgs-type='${type}'>
-                                    <div class='mgsread-content'>
-                                        <img src='./assets/img/images/tree.png' alt='profile-pic' height='26' width='26' />
-                                        <div class='mgsread-imgs'> 
-                                            ${imgs(imgChat, res.id)}
-                                        </div>
-                                        <div class='mgsread-time'> ${chatTimeJoin} </div>
-                                    </div>
-                                </div>`;
-                $('#chatMsgHistory').append(htmlImg);
-            }
-        }
-
-        else if (mgsSender === session) {
-            if (type === 'MESSAGE') {
-                html = `<div id='mgssend${res.id}' class='mgssend' data-mgs-type='${type}'>
-                            <div class='mgssend-content'>
-                                <div class='mgssend-time'> ${chatTimeJoin} </div>
-                                <div class='mgssend-mgs'> ${res.message} </div>
-                            </div>
-                        </div>`;
-
-                $('#chatMsgHistory').append(html);
             }
 
-            else if (type === 'IMAGE') {
-                const imgs = (imgChat, id) => {
-                    const imgElements = imgChat.map((imageName) => {
-                        const imgData = `http://210.99.223.38:8081/api/chat/image?chatImageFileName=${imageName}`;
-                        return `<a href="${imgData}" target="_blank" data-lightbox="msgImg${id}"><img src='${imgData}' alt='chat-img' class='img-fluid' /></a>`;
-                    }).join('');
-
-                    return imgElements;
+            else if (mgsSender === auths.id) {
+                if (type === 'MESSAGE') {
+                    html = `<div id='mgssend${d.id}' class='mgssend' data-mgs-type='${type}' data-date='${mgsTime}'>
+                                <div class='mgssend-content'>
+                                    <div class="mgssend-time">
+                                        <span class='sendviewed text-end'>1</span>
+                                        <span class='sendtime'> ${chatTimeJoin} </span>
+                                    </div> 
+                                    <div class='mgssend-mgs'> ${d.message} </div>
+                                </div>
+                            </div>`;
                 }
 
-                let htmlImg = `<div id='mgssend${res.id}' class='mgssend' data-mgs-type='${type}'>
-                                    <div class='mgssend-content'>
-                                        <div class='mgssend-time'> ${chatTimeJoin} </div>
-                                        <div class='mgssend-imgs'> ${imgs(imgChat, res.id)} </div>
-                                    </div>
-                                </div>`;
+                else if (type === 'IMAGE') {
+                    const maxwidth = chatImgDisplayStyle(imgChat).maxwidth;
+                    const width = chatImgDisplayStyle(imgChat).width;
+                    const height = chatImgDisplayStyle(imgChat).height;
+                    const imgs = (imgChat, width, height, id) => {
+                        const imgElements = imgChat.flatMap((image) => {
+                            return Object.values(image).map((imageName) => {
+                                const imgData = `http://210.99.223.38:8081/api/chat/image?chatImageFileName=${imageName}`;
+                                return `<a href="${imgData}" target="_blank" data-lightbox="msgImg${id}" style='width: ${width}px; height: ${height}px;'>
+                                    <img src='${imgData}' alt='chat-img' class='img-fluid' style='height: ${height}px;' />
+                                    </a>`;
+                            });
+                        }).join('');
 
-                $('#chatMsgHistory').append(htmlImg);
+                        return imgElements;
+                    }
+
+                    html = `<div id='mgssend${d.id}' class='mgssend' data-mgs-type='${type}' data-date='${mgsTime}'>
+                                <div class='mgssend-content'>
+                                    <div class="mgssend-time mb-2">
+                                        <span class='sendviewed text-end'>1</span>
+                                        <span class='sendtime'> ${chatTimeJoin} </span>
+                                    </div> 
+                                    <div class='mgssend-imgs' style="max-width: ${maxwidth}px !important"> ${imgs(imgChat, width, height, d.id)} </div>
+                                </div>
+                            </div>`;
+                }
+            }
+            htmlContent += html || '';
+        });
+
+        $('#chatMsgHistory').prepend(htmlContent);
+        $('#chatMsgHistory').prepend(dateTemplate);
+    }
+}
+
+function activateOnScrollEvent() {
+    const visibleDiv = document.querySelector('.chat-MsgVisible');
+    visibleDiv.addEventListener('scroll', scrollev);
+}
+
+function scrollev() {
+    const visibleDiv = document.querySelector('.chat-MsgVisible');
+    const ascrollableDiv = document.querySelector('#chatMsgHistory');
+    const ascrollableOffH = ascrollableDiv.offsetHeight;
+
+    if ($('#consulting_btn').hasClass('active')) {
+        if ($(this).scrollTop() <= 5) {
+            if (localStorage.getItem('localRoom') && beforedate != null) {
+                fetchPreviousMessages(localStorage.getItem('localRoom'), beforedate);
+    
+                visibleDiv.removeEventListener('scroll', scrollev);
+    
+                $(document).ready(function () {
+                    const newscrollableDiv = document.querySelector('#chatMsgHistory');
+                    const newscrollableOffH = newscrollableDiv.offsetHeight;
+                    const returnPrevScrollingPositionY = newscrollableOffH - ascrollableOffH - 4;
+    
+                    $(".chat-MsgVisible").animate({
+                        scrollTop: returnPrevScrollingPositionY
+                    }, '0');
+    
+                    visibleDiv.addEventListener('scroll', scrollev);
+                })
             }
         }
     }
 }
 
-
-function stompOnMessage(roomID) {
-    const onmessage = (message) => {
-        console.log('mgs.body: ', message.body)
-        displayCurrChats(message.body); 
-        autoScrollToBotMsg();
-    };
-
-    const room = `/topic/room.${roomID}`;
-    const headers = { ack: 'client' };
-    subscription = client.subscribe(room, onmessage, headers);
-}
-
 // onload page
 $('#consulting_btn, #cpOpenChat').on('click', function () {
-    autoScrollToBotMsg();
-    const roomListUrl = `http://210.99.223.38:8081/api/chat/room/list?constructorId=${session}`;
+    const roomListUrl = `http://210.99.223.38:8081/api/chat/room/list?constructorId=${auths.id}`;
     chatDisplayRooms(roomListUrl);
     $('#chatMsgHistory').empty();
+    autoScrollToBotMsg();
+
+    unsubscribeStomp();
 })
 
 //  send button
 $('#mgsSendBtn').on('click', function() {
-    const msg = $('#mgsSendInput').val();
+    const msg = $('#mgsSendInput').val().trim();
     const fileValue = $('#mgsSendUpload').val();
     const input = document.querySelector('#mgsSendUpload');
 
-    console.log(oldRoomID)
-    if (!oldRoomID) {  if (!fileValue || !msg) { return; } }
+    
+    // console.log(curSubRoom)
+    if (!localStorage.getItem('localRoom')) {  if (!fileValue || !msg) { return; } }
 
     let imgIds = [];
     let chatImgDto, type, messageDto;
 
-    console.log(input.files.length);
+    // console.log(input.files.length);
 
-    if (input.files.length > 0) {
+    if (msg.length > 0) {
+        type = 'MESSAGE';
+
+        messageDto = {
+            'roomId': localStorage.getItem('localRoom'),
+            'senderId': auths.id,
+            'receiverId': stompReceiver,
+            'message': msg,
+            'type': type,
+            'fcm': localStorage.FCM,
+        }
+
+        publishStomp(messageDto);
+        $('#mgsSendInput').val(null);
+
+        setTimeout(function () {
+            if (input.files.length > 0) {
+                $('#mgsSendBtn').trigger('click');
+            }
+        }, 50);
+    }
+
+    else if (input.files.length > 0) {
         type = 'IMAGE';
         const imageFile = input.files;
         const formData = new FormData();
-
-        // formData.append('files', imageFile[0], imageFile[0].name);
 
         for (var i = 0; i < imageFile.length; i++) {
             formData.append('files', imageFile[i], imageFile[i].name);
         }
 
         const uploadurl = `http://210.99.223.38:8081/api/chat/image`;
-
         const settings = {
             "url": uploadurl,
             "method": "POST",
@@ -327,66 +508,25 @@ $('#mgsSendBtn').on('click', function() {
 
         $.ajax(settings).done(function (response) {
             chatImgDto = response;
-            // console.log(chatImgDto);
             cImgDto = JSON.parse(chatImgDto);
-            console.log(cImgDto);
-
             imgIds = cImgDto.data.ChatFilesDTO
 
-            console.log(imgIds);
-
             messageDto = {
-                'roomId': oldRoomID,
-                'senderId': session,
-                'receiverId': customerID,
+                'roomId': localStorage.getItem('localRoom'),
+                'senderId': auths.id,
+                'receiverId': stompReceiver,
                 'message': msg,
                 'type': type,
                 'fcm': localStorage.FCM,
                 'imageFileIdList': imgIds
             }
+            
+            publishStomp(messageDto);
 
-            const destination = `/pub/msg`;
-            const tx = client.begin();
-            client.publish({
-                destination: destination,
-                headers: { transaction: tx.id },
-                body: JSON.stringify(messageDto),
-                skipContentLengthHeader: true,
-            });
-            tx.commit();
+            $('#chatImgContainer').addClass('d-none');
+            input.value = "";
         });
     }
-
-    else if (input.files.length === 0) {
-        type = 'MESSAGE';
-
-        messageDto = {
-            'roomId': oldRoomID,
-            'senderId': session,
-            'receiverId': customerID,
-            'message': msg,
-            'type': type,
-            'fcm': localStorage.FCM,
-        }
-
-        const destination = `/pub/msg`;
-        const tx = client.begin();
-        client.publish({
-            destination: destination,
-            headers: { transaction: tx.id },
-            body: JSON.stringify(messageDto),
-            skipContentLengthHeader: true,
-        });
-        tx.commit();
-    }
-
-
-    
-    $('#chatImgContainer').addClass('d-none');
-    input.value = "";
-    $('#mgsSendInput').val(null);
-
-    
 });
 
 
@@ -435,7 +575,6 @@ $('#mgsSendInput').on('input', function () {
     else { $('#mgsSendTxtDiv').addClass('hasnoimg').removeClass('hasimg'); }
 })
 
-
 // delete chat img pic before send
 $('#chatImgContainer').on('click', '.mgsSendImgCloseBtn', function() {
     const name = $(this).data('name');
@@ -447,5 +586,4 @@ $('#chatImgContainer').on('click', '.mgsSendImgCloseBtn', function() {
     removeFile(name, 'mgsSendUpload');
 
     if (input.files.length === 0) { $('#chatImgContainer').addClass('d-none'); }
-    console.log(input.files);
 })
